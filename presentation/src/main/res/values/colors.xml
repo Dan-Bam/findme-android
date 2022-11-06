@@ -13,4 +13,5 @@
     <color name="black">#2D2F30</color>
     <color name="darkGray">#7B7E80</color>
     <color name="gray">#DFDFDF</color>
+    <color name="hint">#B6B6B6</color>
 </resources>
