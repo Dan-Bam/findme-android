@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">lost-android</string>
+    <string name="app_name">Find-Me</string>
     
     <string name="findItem">찾고있는 물건들</string>
     <string name="home">홈</string>
