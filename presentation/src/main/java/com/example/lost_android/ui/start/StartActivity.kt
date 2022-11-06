@@ -18,6 +18,5 @@ class StartActivity: BaseActivity<ActivityStartBinding> (R.layout.activity_start
             R.id.loginBtn -> startActivity(Intent(this, LoginActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
             R.id.registerBtn -> startActivity(Intent(this, RegisterActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
         }
-        finish()
     }
 }
