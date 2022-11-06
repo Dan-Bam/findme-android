@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import kotlin.system.exitProcess
 
 
 abstract class BaseActivity<B: ViewDataBinding>(
@@ -33,7 +35,8 @@ abstract class BaseActivity<B: ViewDataBinding>(
         val intervalTime = tempTime - backPressedTime
 
         if (intervalTime in 0..finishTime) {
-            finish()
+            ActivityCompat.finishAffinity(this)
+            exitProcess(0)
         } else {
             backPressedTime = tempTime
             Toast.makeText(applicationContext, "한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show()
