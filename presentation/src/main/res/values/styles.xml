@@ -19,4 +19,42 @@
         <item name="android:background">@drawable/bg_btn_white</item>
         <item name="android:paddingVertical">15dp</item>
     </style>
+
+    <style name="editText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_edit_text</item>
+        <item name="android:layout_marginHorizontal">15dp</item>
+        <item name="android:paddingVertical">12dp</item>
+        <item name="hintTextColor">@color/hint</item>
+        <item name="android:textSize">16sp</item>
+        <item name="fontWeight">400</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    
+    <style name="darkGray16500">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/darkGray</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontWeight">500</item>
+    </style>
+    
+    <style name="blue14500">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontWeight">500</item>
+        <item name="android:textColor">@color/mainColor</item>
+        <item name="android:background">@color/transparent</item>
+    </style>
+
+    <style name="blue13400">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontWeight">400</item>
+        <item name="android:textColor">@color/mainColor</item>
+    </style>
 </resources>
