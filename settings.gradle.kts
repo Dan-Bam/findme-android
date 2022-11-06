@@ -13,4 +13,6 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "lost-android"
-include ':app'
+include(":presentation")
+include(":domain")
+include(":data")
