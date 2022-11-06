@@ -15,10 +15,8 @@ class LoginActivity: BaseActivity<ActivityLoginBinding> (R.layout.activity_login
 
     fun click(view: View) {
         when (view.id) {
-            R.id.backBtn, R.id.backTxt -> finish()
             R.id.registerBtn -> {
                 startActivity(Intent(this, RegisterActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
-                finish()
             }
         }
     }
