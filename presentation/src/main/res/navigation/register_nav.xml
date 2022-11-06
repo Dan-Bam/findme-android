@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/register_navigation"
+    app:startDestination="@id/phoneFragment">
+
+    <fragment
+        android:id="@+id/phoneFragment"
+        android:name="com.example.lost_android.ui.register.PhoneFragment"
+        android:label="PhoneFragment"
+        tools:layout="@layout/fragment_register_phone">
+        <action
+            android:id="@+id/action_phoneFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.example.lost_android.ui.register.InfoFragment"
+        android:label="InfoFragment"
+        tools:layout="@layout/fragment_register_info">
+        <action
+            android:id="@+id/action_infoFragment_to_nameFragment"
+            app:destination="@id/nameFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nameFragment"
+        android:name="com.example.lost_android.ui.register.NameFragment"
+        android:label="NameFragment"
+        tools:layout="@layout/fragment_register_name">
+        <action
+            android:id="@+id/action_nameFragment_to_addressFragment"
+            app:destination="@id/addressFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addressFragment"
+        android:name="com.example.lost_android.ui.register.AddressFragment"
+        android:label="AddressFragment"
+        tools:layout="@layout/fragment_register_address"/>
+</navigation>
