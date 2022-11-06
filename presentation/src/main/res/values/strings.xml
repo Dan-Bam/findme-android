@@ -1,3 +1,77 @@
 <resources>
     <string name="app_name">lost-android</string>
+    
+    <string name="findItem">찾고있는 물건들</string>
+    <string name="home">홈</string>
+    <string name="map">지도</string>
+    <string name="chatting">채팅</string>
+    <string name="entry">등록</string>
+    <string name="cancel">취소</string>
+    <string name="back">뒤로가기</string>
+    <string name="find">찾았어요!</string>
+    <string name="myLocation">내 위치</string>
+    <string name="next">다음</string>
+    <string name="select">선택</string>
+    <string name="editMyInfo">내정보 수정</string>
+    <string name="finish">완료</string>
+    
+<!--    분실물 등록-->
+    <string name="selectCategory">분류될 카테고리를 선택해주세요.</string>
+    <string name="lostImageEntry">분실물 사진 등록</string>
+    <string name="title">제목</string>
+    <string name="writeTitle">제목을 입력해주세요.</string>
+    <string name="description">설명</string>
+    <string name="writeDescription">설명을 입력해주세요.</string>
+    <string name="chooseLocation">위치 선택</string>
+    <string name="setTag">특정 태그 설정</string>
+    <string name="addTag">태그 추가</string>
+    <string name="securityService">안심 서비스</string>
+    <string name="whatSecurityService">안심 서비스란?</string>
+    
+<!--    등록 다이얼로그-->
+    <string name="whatEntry">무엇을 등록할지 선택해주세요.</string>
+    <string name="lostEntry">분실물 등록</string>
+    <string name="findEntry">습득물 등록</string>'
+    
+<!--    습득물 이동 다이얼로그-->
+    <string name="moveFind">습득물 등록으로 이동</string>
+    <string name="moveFindQuestion">습득물 사진 등록 후 요청을 보내고\n분실자가 요청 승인 후\n채팅 할 수 있습니다.</string>
+    
+<!--    카테고리-->
+    <string name="all">전체</string>
+    <string name="IT">전자기기</string>
+    <string name="metal">귀금속</string>
+    <string name="cloth">의류</string>
+    <string name="life">생활용품</string>
+    <string name="etc">기타</string>
+    
+<!--    로그인 및 회원가입-->
+    <string name="register">회원가입</string>
+    <string name="login">로그인</string>
+    <string name="writeId">아이디를 입력해주세요.</string>
+    <string name="writePw">비밀번호를 입력해주세요.</string>
+    <string name="isNoId">아이디가 없으신가요?</string>
+    <string name="go">하러가기</string>
+    <string name="requestPhone">회원가입을 하실려면\n먼저 전화 번호를 인증해 주셔야해요!</string>
+    <string name="writePhone">전화번호를 입력해주세요.</string>
+    <string name="sendNumber">인증번호 발송</string>
+    <string name="certify">인증</string>
+    <string name="requestIdAndPw">사용하실 아이디와 비밀번호를 입력해주세요.</string>
+    <string name="writeIdUse">사용하실 아이디를 입력해주세요.</string>
+    <string name="writePwUse">사용하실 비밀번호를 입력해주세요.</string>
+    <string name="writeRePw">비밀번호를 재입력해주세요.</string>
+    <string name="requestName">분실물 배송 및 보안을 위해서\n실명(실제의 이름)을 입력해주세요.</string>
+    <string name="writeName">실명을 입력해주세요.</string>
+    <string name="requestAddress">분실물 배송을 위해 주소를 입력해주세요.</string>
+    <string name="writeAddress">주소를 입력해주세요.</string>
+    <string name="findAddress">주소 찾기</string>
+    
+<!--    채팅방-->
+    <string name="chatRoom">채팅방</string>
+    <string name="writeMessage">메세지를 입력해주세요.</string>
+    <string name="ship">배송</string>
+
+<!--    배송 다이얼로그-->
+    <string name="isShip">분실자에게 배송</string>
+    <string name="explainShip">안심거래 등록 사용자입니다.\n저희의 검증 과정을 거친 후 분실자에게\n전달됩니다. </string>
 </resources>
