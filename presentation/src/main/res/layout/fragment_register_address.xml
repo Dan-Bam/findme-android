@@ -41,7 +41,7 @@
             app:layout_constraintBottom_toBottomOf="@id/backBtn"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/nextBtn"
+            android:id="@+id/finishBtn"
             style="@style/blueBtn"
             android:onClick="@{address::click}"
             android:text="@string/finish"
