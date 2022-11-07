@@ -44,6 +44,7 @@
         tools:layout="@layout/fragment_register_certify">
         <action
             android:id="@+id/action_certifyFragment_to_infoFragment"
-            app:destination="@id/infoFragment" />
+            app:destination="@id/infoFragment"
+            app:popUpTo="@id/phoneFragment"/>
     </fragment>
 </navigation>
