@@ -7,7 +7,9 @@ import com.example.lost_android.ui.login.LoginActivity
 import com.example.lost_android.ui.main.MainActivity
 import com.example.presentation.R
 import com.example.presentation.databinding.ActivitySplashBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SplashActivity: BaseActivity<ActivitySplashBinding> (R.layout.activity_splash) {
     override fun createView() {
         Handler().postDelayed({
