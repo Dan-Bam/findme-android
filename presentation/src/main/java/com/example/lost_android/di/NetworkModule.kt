@@ -1,5 +1,6 @@
 package com.example.lost_android.di
 
+import com.example.data.remote.network.AuthAPI
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,10 +14,9 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-    const val BASE_URL = ""
+    const val BASE_URL = "http://10.82.17.129:8082/"
 
     @Provides
-    @Singleton
     fun provideOkhttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .connectTimeout(30, TimeUnit.SECONDS)
@@ -26,7 +26,6 @@ object NetworkModule {
     }
 
     @Provides
-    @Singleton
     fun provideRetrofitInstance(
         okHttpClient: OkHttpClient,
         gsonConverterFactory: GsonConverterFactory
@@ -40,8 +39,12 @@ object NetworkModule {
     }
 
     @Provides
-    @Singleton
     fun provideConverterFactory(): GsonConverterFactory {
         return GsonConverterFactory.create()
+    }
+
+    @Provides
+    fun provideAuthAPI(retrofit: Retrofit): AuthAPI {
+        return retrofit.create(AuthAPI::class.java)
     }
 }
