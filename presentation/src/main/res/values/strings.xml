@@ -66,7 +66,9 @@
     <string name="requestAddress">분실물 배송을 위해 주소를 입력해주세요.</string>
     <string name="writeAddress">주소를 입력해주세요.</string>
     <string name="findAddress">주소 찾기</string>
-    
+    <string name="roadName">도로명</string>
+    <string name="roadNum">지번</string>
+
 <!--    채팅방-->
     <string name="chatRoom">채팅방</string>
     <string name="writeMessage">메세지를 입력해주세요.</string>
