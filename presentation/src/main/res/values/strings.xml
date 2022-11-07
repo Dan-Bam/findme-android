@@ -55,7 +55,8 @@
     <string name="requestPhone">회원가입을 하실려면\n먼저 전화 번호를 인증해 주셔야해요!</string>
     <string name="writePhone">전화번호를 입력해주세요.</string>
     <string name="sendNumber">인증번호 발송</string>
-    <string name="certify">인증</string>
+    <string name="writeNumber">인증번호를 입력해주세요.</string>
+    <string name="reSend">재발송</string>
     <string name="requestIdAndPw">사용하실 아이디와 비밀번호를 입력해주세요.</string>
     <string name="writeIdUse">사용하실 아이디를 입력해주세요.</string>
     <string name="writePwUse">사용하실 비밀번호를 입력해주세요.</string>
