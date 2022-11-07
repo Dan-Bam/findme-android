@@ -1,5 +1,7 @@
 package com.example.lost_android.ui.register
 
+import android.telephony.PhoneNumberFormattingTextWatcher
+import android.text.InputType
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
@@ -22,7 +24,7 @@ class PhoneFragment: BaseFragment<FragmentRegisterPhoneBinding> (R.layout.fragme
             R.id.nextBtn -> {
                 registerViewModel.setPhone(binding.writePhone.text.toString())
                 activity?.findNavController(R.id.registerContainer)
-                    ?.navigate(R.id.action_phoneFragment_to_infoFragment)
+                    ?.navigate(R.id.action_phoneFragment_to_certifyFragment)
             }
         }
     }

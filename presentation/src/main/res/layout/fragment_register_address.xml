@@ -52,7 +52,7 @@
 
         <TextView
             android:id="@+id/requestAddress"
-            style="@style/darkGray16500"
+            style="@style/black16500"
             android:text="@string/requestAddress"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
