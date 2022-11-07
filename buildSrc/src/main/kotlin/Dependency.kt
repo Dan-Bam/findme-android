@@ -7,7 +7,6 @@ object Dependency {
     }
 
     object Kotlin {
-        const val KOTLIN_STDLIB = "org.jetbrains.kotlin:kotlin-stdlib:${Version.KOTLIN_VERSION}"
         const val COROUTINES_CORE =
             "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Version.KOTLINX_COROUTINES}"
         const val COROUTINES_ANDROID =
@@ -20,7 +19,6 @@ object Dependency {
         const val CORE_KTX = "androidx.core:core-ktx:${Version.CORE_KTX}"
         const val APP_COMPAT = "androidx.appcompat:appcompat:${Version.APP_COMPAT}"
 
-        const val ACTIVITY_KTX = "androidx.activity:activity-ktx:${Version.ACTIVITY_KTX}"
         const val FRAGMENT_KTX = "androidx.fragment:fragment-ktx:${Version.FRAGMENT_KTX}"
 
         const val LIFECYCLE_VIEWMODEL_KTX =
@@ -33,7 +31,6 @@ object Dependency {
         const val HILT_ANDROID = "com.google.dagger:hilt-android:${Version.HILT}"
         const val HILT_ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:${Version.HILT}"
         const val MATERIAL = "com.google.android.material:material:${Version.MATERIAL}"
-        const val COMPOSE_NAV = "androidx.navigation:navigation-compose:${Version.NAV}"
     }
 
     object Libraries {
