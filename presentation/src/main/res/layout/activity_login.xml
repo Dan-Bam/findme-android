@@ -62,17 +62,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="20dp">
             <TextView
-                style="@style/black13400"
+                style="@style/text13400"
+                android:textColor="@color/black"
                 android:text="@string/isNoId"/>
             <TextView
                 android:id="@+id/registerBtn"
                 android:onClick="click"
-                style="@style/blue13400"
+                style="@style/text13400"
                 android:text="@string/register"
+                android:textColor="@color/mainColor"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"/>
             <TextView
-                style="@style/black13400"
+                style="@style/text13400"
+                android:textColor="@color/black"
                 android:text="@string/go"/>
         </LinearLayout>
 

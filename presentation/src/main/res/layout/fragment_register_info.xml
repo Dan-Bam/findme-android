@@ -33,8 +33,9 @@
         <TextView
             android:id="@+id/backTxt"
             android:onClick="@{info::click}"
-            style="@style/blue13400"
+            style="@style/text13400"
             android:text="@string/back"
+            android:textColor="@color/mainColor"
             app:layout_constraintStart_toEndOf="@id/backBtn"
             android:layout_marginStart="8dp"
             app:layout_constraintTop_toTopOf="@id/backBtn"
@@ -52,7 +53,8 @@
 
         <TextView
             android:id="@+id/requestIdAndPw"
-            style="@style/black16500"
+            style="@style/text16500"
+            android:textColor="@color/black"
             android:text="@string/requestIdAndPw"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
