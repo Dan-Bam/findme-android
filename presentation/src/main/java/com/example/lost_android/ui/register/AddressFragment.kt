@@ -2,13 +2,16 @@ package com.example.lost_android.ui.register
 
 import android.content.Intent
 import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.lost_android.ui.base.BaseFragment
 import com.example.lost_android.ui.login.LoginActivity
+import com.example.lost_android.viewmodel.RegisterViewModel
 import com.example.presentation.R
 import com.example.presentation.databinding.FragmentRegisterAddressBinding
 
 class AddressFragment: BaseFragment<FragmentRegisterAddressBinding> (R.layout.fragment_register_address) {
+    private val registerViewModel by activityViewModels<RegisterViewModel>()
     override fun createView() {
         binding.address = this
     }
@@ -18,6 +21,7 @@ class AddressFragment: BaseFragment<FragmentRegisterAddressBinding> (R.layout.fr
             R.id.backBtn, R.id.backTxt -> activity?.findNavController(R.id.registerContainer)?.popBackStack()
             R.id.findBtn -> {}
             R.id.finishBtn -> {
+                registerViewModel.setAddress(binding.writeAddress.text.toString())
                 startActivity(Intent(context, LoginActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
                 activity?.finish()
             }
