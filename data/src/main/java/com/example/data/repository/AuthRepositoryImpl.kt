@@ -4,6 +4,7 @@ import com.example.data.remote.datasource.AuthDataSource
 import com.example.data.remote.request.toRequest
 import com.example.data.remote.response.toEntity
 import com.example.domain.entity.LoginEntity
+import com.example.domain.entity.RefreshEntity
 import com.example.domain.param.auth.LoginParam
 import com.example.domain.param.auth.SignUpParam
 import com.example.domain.repository.AuthRepository
@@ -18,5 +19,9 @@ class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun login(loginParam: LoginParam): LoginEntity {
         return authDataSource.login(loginRequest = loginParam.toRequest()).toEntity()
+    }
+
+    override suspend fun refresh(): RefreshEntity {
+        return authDataSource.refresh().toEntity()
     }
 }

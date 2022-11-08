@@ -3,6 +3,7 @@ package com.example.data.remote.datasource
 import com.example.data.remote.request.LoginRequest
 import com.example.data.remote.request.SignUpRequest
 import com.example.data.remote.response.LoginResponse
+import com.example.data.remote.response.RefreshResponse
 
 interface AuthDataSource {
     suspend fun signUp(
@@ -12,4 +13,6 @@ interface AuthDataSource {
     suspend fun login(
         loginRequest: LoginRequest
     ): LoginResponse
+
+    suspend fun refresh(): RefreshResponse
 }
