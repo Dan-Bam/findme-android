@@ -1,6 +1,7 @@
 package com.example.data.remote.network
 
 import com.example.data.remote.request.LoginRequest
+import com.example.data.remote.request.SendNumRequest
 import com.example.data.remote.request.SignUpRequest
 import com.example.data.remote.response.LoginResponse
 import com.example.data.remote.response.RefreshResponse
@@ -22,4 +23,9 @@ interface AuthAPI {
 
     @PATCH("auth/reissue")
     suspend fun refresh(): RefreshResponse
+
+    @POST("auth/send/message")
+    suspend fun sendNum(
+        @Body sendNumRequest: SendNumRequest
+    ): Void
 }

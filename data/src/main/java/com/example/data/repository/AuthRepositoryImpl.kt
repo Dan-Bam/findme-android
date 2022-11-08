@@ -6,6 +6,7 @@ import com.example.data.remote.response.toEntity
 import com.example.domain.entity.LoginEntity
 import com.example.domain.entity.RefreshEntity
 import com.example.domain.param.auth.LoginParam
+import com.example.domain.param.auth.SendNumParam
 import com.example.domain.param.auth.SignUpParam
 import com.example.domain.repository.AuthRepository
 import javax.inject.Inject
@@ -23,5 +24,9 @@ class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun refresh(): RefreshEntity {
         return authDataSource.refresh().toEntity()
+    }
+
+    override suspend fun sendNum(sendNumParam: SendNumParam): Void {
+        return authDataSource.sendNum(sendNumRequest = sendNumParam.toRequest())
     }
 }

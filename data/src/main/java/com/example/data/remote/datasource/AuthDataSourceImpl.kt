@@ -2,6 +2,7 @@ package com.example.data.remote.datasource
 
 import com.example.data.remote.network.AuthAPI
 import com.example.data.remote.request.LoginRequest
+import com.example.data.remote.request.SendNumRequest
 import com.example.data.remote.request.SignUpRequest
 import com.example.data.remote.response.LoginResponse
 import com.example.data.remote.response.RefreshResponse
@@ -26,6 +27,12 @@ class AuthDataSourceImpl @Inject constructor(
     override suspend fun refresh(): RefreshResponse {
         return HttpHandler<RefreshResponse>()
             .httpRequest { authAPI.refresh() }
+            .sendRequest()
+    }
+
+    override suspend fun sendNum(sendNumRequest: SendNumRequest): Void {
+        return HttpHandler<Void>()
+            .httpRequest { authAPI.sendNum(sendNumRequest = sendNumRequest) }
             .sendRequest()
     }
 }
