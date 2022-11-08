@@ -8,6 +8,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding> (R.layout.activity_main) {
     override fun createView() {
-
+        binding.bottomNav.itemIconTintList = null
     }
 }

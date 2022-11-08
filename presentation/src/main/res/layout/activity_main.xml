@@ -12,14 +12,46 @@
         android:layout_height="match_parent"
         tools:context="com.example.lost_android.ui.main.MainActivity">
 
-        <TextView
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/bottomNavTop"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.93"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/AppBarBottom"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.06"/>
+
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello World!"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/AppBarBottom"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginEnd="14dp"
+            android:background="@drawable/bg_profile"/>
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/text22700"
+            app:layout_constraintStart_toStartOf="@id/AppBarBottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/AppBarBottom"/>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNav"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:itemRippleColor="@color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="@id/bottomNavTop"
+            app:menu="@menu/bottom_menu"
+            app:itemTextColor="@drawable/selector_bottom_nav"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
