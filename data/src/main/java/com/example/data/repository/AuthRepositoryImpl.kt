@@ -5,6 +5,7 @@ import com.example.data.remote.request.toRequest
 import com.example.data.remote.response.toEntity
 import com.example.domain.entity.LoginEntity
 import com.example.domain.entity.RefreshEntity
+import com.example.domain.param.auth.CheckNumParam
 import com.example.domain.param.auth.LoginParam
 import com.example.domain.param.auth.SendNumParam
 import com.example.domain.param.auth.SignUpParam
@@ -28,5 +29,9 @@ class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun sendNum(sendNumParam: SendNumParam): Void {
         return authDataSource.sendNum(sendNumRequest = sendNumParam.toRequest())
+    }
+
+    override suspend fun checkNum(checkNumParam: CheckNumParam): Void {
+        return authDataSource.checkNum(checkNumRequest = checkNumParam.toRequest())
     }
 }

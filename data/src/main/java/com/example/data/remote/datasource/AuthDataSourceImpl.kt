@@ -1,6 +1,7 @@
 package com.example.data.remote.datasource
 
 import com.example.data.remote.network.AuthAPI
+import com.example.data.remote.request.CheckNumRequest
 import com.example.data.remote.request.LoginRequest
 import com.example.data.remote.request.SendNumRequest
 import com.example.data.remote.request.SignUpRequest
@@ -33,6 +34,12 @@ class AuthDataSourceImpl @Inject constructor(
     override suspend fun sendNum(sendNumRequest: SendNumRequest): Void {
         return HttpHandler<Void>()
             .httpRequest { authAPI.sendNum(sendNumRequest = sendNumRequest) }
+            .sendRequest()
+    }
+
+    override suspend fun checkNum(checkNumRequest: CheckNumRequest): Void {
+        return HttpHandler<Void>()
+            .httpRequest { authAPI.checkNum(checkNumRequest = checkNumRequest) }
             .sendRequest()
     }
 }

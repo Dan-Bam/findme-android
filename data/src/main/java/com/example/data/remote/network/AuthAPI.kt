@@ -1,5 +1,6 @@
 package com.example.data.remote.network
 
+import com.example.data.remote.request.CheckNumRequest
 import com.example.data.remote.request.LoginRequest
 import com.example.data.remote.request.SendNumRequest
 import com.example.data.remote.request.SignUpRequest
@@ -27,5 +28,10 @@ interface AuthAPI {
     @POST("auth/send/message")
     suspend fun sendNum(
         @Body sendNumRequest: SendNumRequest
+    ): Void
+
+    @POST("auth/check/message")
+    suspend fun checkNum(
+        @Body checkNumRequest: CheckNumRequest
     ): Void
 }
