@@ -11,8 +11,8 @@
         android:label="PhoneFragment"
         tools:layout="@layout/fragment_register_phone">
         <action
-            android:id="@+id/action_phoneFragment_to_certifyFragment"
-            app:destination="@id/certifyFragment" />
+            android:id="@+id/action_phoneFragment_to_nameFragment"
+            app:destination="@id/nameFragment" />
     </fragment>
     <fragment
         android:id="@+id/infoFragment"
@@ -37,14 +37,4 @@
         android:name="com.example.lost_android.ui.register.AddressFragment"
         android:label="AddressFragment"
         tools:layout="@layout/fragment_register_address"/>
-    <fragment
-        android:id="@+id/certifyFragment"
-        android:name="com.example.lost_android.ui.register.CertifyFragment"
-        android:label="CertifyFragment"
-        tools:layout="@layout/fragment_register_certify">
-        <action
-            android:id="@+id/action_certifyFragment_to_nameFragment"
-            app:destination="@id/nameFragment"
-            app:popUpTo="@id/phoneFragment"/>
-    </fragment>
 </navigation>

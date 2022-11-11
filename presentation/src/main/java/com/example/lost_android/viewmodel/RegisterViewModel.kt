@@ -1,6 +1,6 @@
 package com.example.lost_android.viewmodel
 
-import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.param.auth.SignUpParam
@@ -14,27 +14,29 @@ import javax.inject.Inject
 class RegisterViewModel @Inject constructor(
     private val signUpUseCase: SignUpUseCase
 ) : ViewModel() {
-    private val _registerData = SingleLiveEvent<SignUpParam>()
-    val registerData get() = _registerData
+    private val registerData = SingleLiveEvent<SignUpParam>()
+
+    private val _certify = SingleLiveEvent<Boolean>()
+    val certify: MutableLiveData<Boolean> get() = _certify
 
     fun setPhone(phone: String) {
         registerData.value = SignUpParam("", "", "", "", "")
-        _registerData.value?.phone = phone
+        registerData.value?.phone = phone
     }
 
     fun setInfo(id: String, pw: String) {
-        _registerData.value.apply {
+        registerData.value.apply {
             this?.id = id
             this?.password = pw
         }
     }
 
     fun setName(name: String) {
-        _registerData.value?.name = name
+        registerData.value?.name = name
     }
 
     fun setAddress(address: String) {
-        _registerData.value?.address = address
+        registerData.value?.address = address
     }
 
     fun signUp() {
@@ -43,7 +45,6 @@ class RegisterViewModel @Inject constructor(
                 signUpUseCase.execute(registerData.value!!)
             }.onSuccess {
             }.onFailure {
-
             }
         }
     }
