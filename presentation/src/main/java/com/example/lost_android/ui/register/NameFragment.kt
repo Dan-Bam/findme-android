@@ -4,6 +4,8 @@ import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.lost_android.ui.base.BaseFragment
+import com.example.lost_android.util.setNextBtn
+import com.example.lost_android.util.setOnTextChanged
 import com.example.lost_android.viewmodel.RegisterViewModel
 import com.example.presentation.R
 import com.example.presentation.databinding.FragmentRegisterNameBinding
@@ -12,6 +14,13 @@ class NameFragment: BaseFragment<FragmentRegisterNameBinding> (R.layout.fragment
     private val registerViewModel by activityViewModels<RegisterViewModel>()
     override fun createView() {
         binding.name = this
+        initEditText()
+    }
+
+    private fun initEditText() {
+        binding.writeName.setOnTextChanged { p0, _, _, _ ->
+            setNextBtn(p0, binding.nextBtn)
+        }
     }
 
     fun click(view: View) {

@@ -6,6 +6,8 @@ import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.lost_android.ui.base.BaseFragment
+import com.example.lost_android.util.setNextBtn
+import com.example.lost_android.util.setOnTextChanged
 import com.example.lost_android.viewmodel.RegisterViewModel
 import com.example.presentation.R
 import com.example.presentation.databinding.FragmentRegisterPhoneBinding
@@ -15,6 +17,17 @@ class PhoneFragment: BaseFragment<FragmentRegisterPhoneBinding> (R.layout.fragme
 
     override fun createView() {
         binding.phone = this
+        initEditText()
+    }
+
+    private fun initEditText() {
+        binding.writePhone.setOnTextChanged { p0, _, _, _ ->
+            if (p0?.length == 11) {
+                setNextBtn(p0, binding.nextBtn)
+            } else {
+                setNextBtn("", binding.nextBtn)
+            }
+        }
     }
 
     fun click(view: View) {

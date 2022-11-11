@@ -43,7 +43,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/nextBtn"
-            style="@style/blueBtn"
+            style="@style/registerBtn"
             android:onClick="@{phone::click}"
             android:text="@string/next"
             app:layout_constraintStart_toStartOf="parent"
@@ -73,6 +73,7 @@
         <EditText
             android:id="@+id/writePhone"
             style="@style/editText"
+            android:inputType="number"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/requestPhone"

@@ -43,7 +43,7 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/finishBtn"
-            style="@style/blueBtn"
+            style="@style/registerBtn"
             android:onClick="@{address::click}"
             android:text="@string/finish"
             app:layout_constraintStart_toStartOf="parent"
