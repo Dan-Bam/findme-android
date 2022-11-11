@@ -7,7 +7,7 @@ import com.example.data.remote.request.SignUpRequest
 import com.example.data.remote.response.LoginResponse
 import com.example.data.remote.response.RefreshResponse
 
-interface AuthDataSource {
+interface RemoteAuthDataSource {
     suspend fun signUp(
         signUpRequest: SignUpRequest
     ): Void

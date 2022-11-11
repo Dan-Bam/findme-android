@@ -10,9 +10,9 @@ import com.example.data.remote.response.RefreshResponse
 import com.example.data.util.HttpHandler
 import javax.inject.Inject
 
-class AuthDataSourceImpl @Inject constructor(
+class RemoteAuthDataSourceImpl @Inject constructor(
     private val authAPI: AuthAPI
-): AuthDataSource {
+): RemoteAuthDataSource {
     override suspend fun signUp(signUpRequest: SignUpRequest): Void {
         return HttpHandler<Void>()
             .httpRequest { authAPI.signUp(signUpRequest = signUpRequest) }
