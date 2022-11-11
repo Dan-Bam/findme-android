@@ -1,5 +1,8 @@
 package com.example.lost_android.util
 
+import android.app.Activity
+import android.content.Context
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.appcompat.widget.AppCompatButton
 
@@ -28,3 +31,8 @@ private fun isNextPw(p0: CharSequence?, id: EditText, pw: EditText): Boolean =
 
 private fun isNext(p0: CharSequence?): Boolean =
     !p0.isNullOrBlank()
+
+fun keyboardHide(context: Activity) {
+    val inputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    inputMethodManager.hideSoftInputFromWindow(context.currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+}
