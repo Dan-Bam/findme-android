@@ -19,7 +19,7 @@ class PhoneFragment: BaseFragment<FragmentRegisterPhoneBinding> (R.layout.fragme
 
     fun click(view: View) {
         when (view.id) {
-            R.id.backBtn, R.id.backTxt -> activity?.finish()
+            R.id.backBtn, R.id.backTxt -> activity?.findNavController(R.id.registerContainer)?.popBackStack()
             R.id.sendBtn -> {}
             R.id.nextBtn -> {
                 registerViewModel.setPhone(binding.writePhone.text.toString())

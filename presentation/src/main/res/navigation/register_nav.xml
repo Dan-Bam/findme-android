@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/register_navigation"
-    app:startDestination="@id/phoneFragment">
+    app:startDestination="@id/infoFragment">
 
     <fragment
         android:id="@+id/phoneFragment"
@@ -20,8 +20,8 @@
         android:label="InfoFragment"
         tools:layout="@layout/fragment_register_info">
         <action
-            android:id="@+id/action_infoFragment_to_nameFragment"
-            app:destination="@id/nameFragment" />
+            android:id="@+id/action_infoFragment_to_phoneFragment"
+            app:destination="@id/phoneFragment" />
     </fragment>
     <fragment
         android:id="@+id/nameFragment"
@@ -43,8 +43,7 @@
         android:label="CertifyFragment"
         tools:layout="@layout/fragment_register_certify">
         <action
-            android:id="@+id/action_certifyFragment_to_infoFragment"
-            app:destination="@id/infoFragment"
-            app:popUpTo="@id/phoneFragment"/>
+            android:id="@+id/action_certifyFragment_to_nameFragment"
+            app:destination="@id/nameFragment" />
     </fragment>
 </navigation>

@@ -16,11 +16,11 @@ class InfoFragment: BaseFragment<FragmentRegisterInfoBinding> (R.layout.fragment
 
     fun click(view: View) {
         when (view.id) {
-            R.id.backBtn, R.id.backTxt -> activity?.findNavController(R.id.registerContainer)?.popBackStack()
+            R.id.backBtn, R.id.backTxt -> activity?.finish()
             R.id.nextBtn -> {
                 registerViewModel.setInfo(binding.writeId.text.toString(), binding.writePw.text.toString())
                 activity?.findNavController(R.id.registerContainer)
-                    ?.navigate(R.id.action_infoFragment_to_nameFragment)
+                    ?.navigate(R.id.action_infoFragment_to_phoneFragment)
             }
         }
     }

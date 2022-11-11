@@ -26,7 +26,7 @@ class CertifyFragment :
             R.id.sendBtn -> {}
             R.id.nextBtn -> {
                 activity?.findNavController(R.id.registerContainer)
-                    ?.navigate(R.id.action_certifyFragment_to_infoFragment)
+                    ?.navigate(R.id.action_certifyFragment_to_nameFragment)
             }
         }
     }
