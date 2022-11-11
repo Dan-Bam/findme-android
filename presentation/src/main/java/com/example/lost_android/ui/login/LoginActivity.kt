@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import com.example.lost_android.ui.base.BaseActivity
 import com.example.lost_android.ui.main.MainActivity
 import com.example.lost_android.ui.register.RegisterActivity
+import com.example.lost_android.util.keyboardHide
 import com.example.lost_android.viewmodel.LoginViewModel
 import com.example.presentation.R
 import com.example.presentation.databinding.ActivityLoginBinding
@@ -16,6 +17,10 @@ class LoginActivity: BaseActivity<ActivityLoginBinding> (R.layout.activity_login
     private val loginViewModel by viewModels<LoginViewModel>()
     override fun createView() {
         observeLogin()
+        binding.loginLayout.setOnTouchListener { _, _ ->
+            keyboardHide(this)
+            false
+        }
     }
 
     fun click(view: View) {
