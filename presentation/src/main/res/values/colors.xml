@@ -13,7 +13,8 @@
     <color name="black">#2D2F30</color>
     <color name="darkGray">#7B7E80</color>
     <color name="gray">#DFDFDF</color>
-    <color name="hint">#B6B6B6</color>
-    <color name="underLine">#D7D7D7</color>
+    <color name="gray2">#B8B8B8</color>
+    <color name="gray3">#7E7E7E</color>
+    <color name="gray4">#979B9F</color>
     <color name="transparent">#00000000</color>
 </resources>
