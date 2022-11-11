@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="registerBtn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginHorizontal">12dp</item>
+        <item name="android:background">@drawable/selector_btn_register</item>
+        <item name="android:paddingVertical">15dp</item>
+    </style>
+
     <style name="blueBtn">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -26,7 +36,7 @@
         <item name="android:background">@drawable/bg_edit_text</item>
         <item name="android:layout_marginHorizontal">20dp</item>
         <item name="android:paddingVertical">12dp</item>
-        <item name="hintTextColor">@color/hint</item>
+        <item name="hintTextColor">@color/gray2</item>
         <item name="android:textSize">16sp</item>
         <item name="fontWeight">400</item>
         <item name="android:textColor">@color/black</item>
