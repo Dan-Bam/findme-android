@@ -43,6 +43,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/AppBarBottom"/>
 
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/mainContainer"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:defaultNavHost="true"
+            app:layout_constraintTop_toTopOf="@id/AppBarBottom"
+            app:layout_constraintBottom_toBottomOf="@id/bottomNavTop"
+            app:navGraph="@navigation/bottom_nav" />
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNav"
             android:layout_width="match_parent"
