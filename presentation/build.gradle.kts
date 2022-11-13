@@ -3,6 +3,7 @@ plugins {
     id("dagger.hilt.android.plugin")
     id("kotlin-android")
     id("kotlin-kapt")
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
@@ -67,6 +68,8 @@ dependencies {
 
     implementation(Dependency.Google.MATERIAL)
     implementation(Dependency.Google.HILT_ANDROID)
+    implementation(Dependency.Google.MAP)
+    implementation(Dependency.Google.MAP_UTILS)
     kapt(Dependency.Google.HILT_ANDROID_COMPILER)
 
     implementation(Dependency.Libraries.RETROFIT)

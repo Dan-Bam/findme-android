@@ -17,8 +17,12 @@ object Version {
     const val FRAGMENT_KTX = "1.3.4"
     const val LIFECYCLE_KTX = "2.3.1"
 
+    const val GRADLE_MAP = "2.0.1"
+
     const val HILT = "2.38.1"
     const val MATERIAL = "1.3.0"
+    const val MAP = "18.1.0"
+    const val MAP_UTILS = "2.4.0"
 
     const val RETROFIT = "2.7.1"
     const val OKHTTP = "3.14.9"

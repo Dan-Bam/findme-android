@@ -4,6 +4,7 @@ object Dependency {
         const val GRADLE_ANDROID = "com.android.tools.build:gradle:${Version.GRADLE_ANDROID}"
         const val GRADLE_KOTLIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.GRADLE_KOTLIN}"
         const val GRADLE_HILT = "com.google.dagger:hilt-android-gradle-plugin:${Version.HILT}"
+        const val GRADLE_MAP = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:${Version.GRADLE_MAP}"
     }
 
     object Kotlin {
@@ -31,6 +32,8 @@ object Dependency {
         const val HILT_ANDROID = "com.google.dagger:hilt-android:${Version.HILT}"
         const val HILT_ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:${Version.HILT}"
         const val MATERIAL = "com.google.android.material:material:${Version.MATERIAL}"
+        const val MAP = "com.google.android.gms:play-services-maps:${Version.MAP}"
+        const val MAP_UTILS = "com.google.maps.android:android-maps-utils:${Version.MAP_UTILS}"
     }
 
     object Libraries {
