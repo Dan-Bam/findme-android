@@ -2,9 +2,18 @@ package com.example.lost_android.util
 
 import android.app.Activity
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.location.Address
+import android.location.Geocoder
+import android.os.Build
+import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat
+import java.util.*
 
 
 fun setNextBtn(
@@ -20,7 +29,7 @@ fun setNextBtn(
         Keyboard.PW -> isNextPw(p0, id!!, pw!!)
         Keyboard.DEFAULT -> isNext(p0)
     }
-    this.isClickable = this.isActivated
+    this.isEnabled = this.isActivated
 }
 
 private fun isNextId(p0: CharSequence?, pw: EditText, pwRe: EditText): Boolean =
@@ -33,6 +42,10 @@ private fun isNext(p0: CharSequence?): Boolean =
     !p0.isNullOrBlank()
 
 fun keyboardHide(context: Activity) {
-    val inputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-    inputMethodManager.hideSoftInputFromWindow(context.currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+    val inputMethodManager =
+        context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    inputMethodManager.hideSoftInputFromWindow(
+        context.currentFocus?.windowToken,
+        InputMethodManager.HIDE_NOT_ALWAYS
+    )
 }
