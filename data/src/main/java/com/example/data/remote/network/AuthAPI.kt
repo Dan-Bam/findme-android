@@ -25,12 +25,12 @@ interface AuthAPI {
     @PATCH("auth/reissue")
     suspend fun refresh(): RefreshResponse
 
-    @POST("auth/send/message")
+    @POST("auth/send")
     suspend fun sendNum(
         @Body sendNumRequest: SendNumRequest
     ): Void
 
-    @POST("auth/check/message")
+    @POST("auth/check")
     suspend fun checkNum(
         @Body checkNumRequest: CheckNumRequest
     ): Void
