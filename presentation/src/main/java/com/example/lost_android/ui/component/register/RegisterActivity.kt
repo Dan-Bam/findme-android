@@ -1,4 +1,4 @@
-package com.example.lost_android.ui.register
+package com.example.lost_android.ui.component.register
 
 import com.example.lost_android.ui.base.BaseActivity
 import com.example.lost_android.util.keyboardHide

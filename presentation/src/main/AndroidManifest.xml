@@ -22,7 +22,7 @@
             android:value="AIzaSyB26m5pILyW-J7drluAXspH00rpKYizKsM" />
 
         <activity
-            android:name=".ui.splash.SplashActivity"
+            android:name=".ui.component.splash.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.Lostandroid.Splash">
             <intent-filter>
@@ -32,13 +32,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.main.MainActivity"
+            android:name=".ui.component.main.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.login.LoginActivity"
+            android:name=".ui.component.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.register.RegisterActivity"
+            android:name=".ui.component.register.RegisterActivity"
             android:exported="false" />
     </application>
 

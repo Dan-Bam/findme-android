@@ -1,4 +1,4 @@
-package com.example.lost_android.ui.chat
+package com.example.lost_android.ui.component.chat
 
 import com.example.lost_android.ui.base.BaseFragment
 import com.example.presentation.R

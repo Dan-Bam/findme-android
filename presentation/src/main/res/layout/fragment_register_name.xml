@@ -5,7 +5,7 @@
     <data>
         <variable
             name="name"
-            type="com.example.lost_android.ui.register.NameFragment" />
+            type="com.example.lost_android.ui.component.register.NameFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

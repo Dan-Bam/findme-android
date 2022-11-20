@@ -1,7 +1,7 @@
-package com.example.lost_android.ui.map
+package com.example.lost_android.ui.component.map
 
 import com.example.lost_android.ui.base.BaseFragment
-import com.example.lost_android.ui.map.model.MapData
+import com.example.lost_android.ui.component.map.model.MapData
 import com.example.presentation.R
 import com.example.presentation.databinding.FragmentMapBinding
 import com.google.android.gms.maps.CameraUpdateFactory

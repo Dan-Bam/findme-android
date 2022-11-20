@@ -1,4 +1,4 @@
-package com.example.lost_android.ui.register
+package com.example.lost_android.ui.component.register
 
 import android.view.View
 import androidx.fragment.app.activityViewModels

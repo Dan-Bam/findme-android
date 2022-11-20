@@ -1,4 +1,4 @@
-package com.example.lost_android.ui.main
+package com.example.lost_android.ui.component.main
 
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController

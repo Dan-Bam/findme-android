@@ -1,4 +1,4 @@
-package com.example.lost_android.ui.map.model
+package com.example.lost_android.ui.component.map.model
 
 import android.content.Context
 import com.google.android.gms.maps.model.LatLng

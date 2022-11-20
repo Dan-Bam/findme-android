@@ -1,11 +1,11 @@
-package com.example.lost_android.ui.login
+package com.example.lost_android.ui.component.login
 
 import android.content.Intent
 import android.view.View
 import androidx.activity.viewModels
 import com.example.lost_android.ui.base.BaseActivity
-import com.example.lost_android.ui.main.MainActivity
-import com.example.lost_android.ui.register.RegisterActivity
+import com.example.lost_android.ui.component.main.MainActivity
+import com.example.lost_android.ui.component.register.RegisterActivity
 import com.example.lost_android.util.keyboardHide
 import com.example.lost_android.viewmodel.LoginViewModel
 import com.example.presentation.R

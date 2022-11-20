@@ -1,4 +1,4 @@
-package com.example.lost_android.ui.register
+package com.example.lost_android.ui.component.register
 
 import android.view.View
 import androidx.fragment.app.activityViewModels
@@ -16,6 +16,7 @@ class InfoFragment: BaseFragment<FragmentRegisterInfoBinding> (R.layout.fragment
     override fun createView() {
         binding.info = this
         initEditText()
+        registerViewModel.getAddress("남풍빌라")
     }
 
     private fun initEditText() {
