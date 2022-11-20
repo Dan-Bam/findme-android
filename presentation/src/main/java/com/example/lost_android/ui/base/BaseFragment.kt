@@ -15,11 +15,14 @@ abstract class BaseFragment <B: ViewDataBinding>(
     val binding get() = mBinding!!
     private var mBinding: B ?= null
 
+    var savedInstanceState: Bundle? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        this.savedInstanceState = savedInstanceState
         mBinding = DataBindingUtil.inflate(inflater, layoutRes, container, false)
         createView()
         return binding.root
