@@ -17,9 +17,16 @@ class LoginActivity: BaseActivity<ActivityLoginBinding> (R.layout.activity_login
     private val loginViewModel by viewModels<LoginViewModel>()
     override fun createView() {
         observeLogin()
+        isLogin()
         binding.loginLayout.setOnTouchListener { _, _ ->
             keyboardHide(this)
             false
+        }
+    }
+
+    private fun isLogin() {
+        if (getSharedPreferences("TOKEN", MODE_PRIVATE).getString("ACCESS_TOKEN", null) != null) {
+            startActivity(Intent(this, RegisterActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
         }
     }
 
