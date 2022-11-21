@@ -65,7 +65,9 @@
     <string name="writeName">실명을 입력해주세요.</string>
     <string name="requestAddress">분실물 배송을 위해 주소를 입력해주세요.</string>
     <string name="writeAddress">주소를 입력해주세요.</string>
+    <string name="writeDetailAddress">상세주소를 입력해주세요.</string>
     <string name="findAddress">주소 찾기</string>
+    <string name="change">변경</string>
     <string name="roadName">도로명</string>
     <string name="roadNum">지번</string>
 
