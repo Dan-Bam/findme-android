@@ -49,3 +49,12 @@ fun keyboardHide(context: Activity) {
         InputMethodManager.HIDE_NOT_ALWAYS
     )
 }
+
+fun keyboardShow(context: Activity) {
+    val inputMethodManager =
+        context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    inputMethodManager.toggleSoftInput(
+        InputMethodManager.SHOW_FORCED,
+        InputMethodManager.HIDE_IMPLICIT_ONLY
+    )
+}
