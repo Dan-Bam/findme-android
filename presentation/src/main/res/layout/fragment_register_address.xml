@@ -60,29 +60,86 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/requestTop"/>
 
-        <EditText
-            android:id="@+id/writeAddress"
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/writeAddressView"
             style="@style/editText"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/requestAddress"
             android:layout_marginTop="99dp"
-            android:hint="@string/writeAddress"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/findBtn"
-            style="@style/text14500"
-            android:onClick="@{address::click}"
-            android:text="@string/findAddress"
-            android:textColor="@color/mainColor"
-            app:layout_constraintEnd_toEndOf="@id/writeAddress"
-            app:layout_constraintTop_toTopOf="@id/writeAddress"
-            app:layout_constraintBottom_toBottomOf="@id/writeAddress"/>
+            <TextView
+                android:id="@+id/writeAddressTxt"
+                style="@style/text16500"
+                android:layout_width="0dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/findBtn"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <EditText
+                android:id="@+id/writeAddress"
+                android:background="@null"
+                android:layout_width="0dp"
+                android:textSize="16sp"
+                android:textFontWeight="400"
+                android:singleLine="true"
+                android:layout_marginEnd="10dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/findBtn"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:hint="@string/writeAddress"/>
+
+            <TextView
+                android:id="@+id/findBtn"
+                style="@style/text14500"
+                android:onClick="@{address::click}"
+                android:text="@string/findAddress"
+                android:gravity="end|center_vertical"
+                android:textColor="@color/mainColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/reFindBtn"
+                style="@style/text14500"
+                android:onClick="@{address::click}"
+                android:text="@string/change"
+                android:gravity="end|center_vertical"
+                android:textColor="@color/mainColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <EditText
+            android:id="@+id/writeDetailAddress"
+            android:visibility="gone"
+            style="@style/editText"
+            android:layout_marginTop="12dp"
+            app:layout_constraintTop_toBottomOf="@id/writeAddressView"
+            android:hint="@string/writeDetailAddress"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/addressList"
+            android:visibility="gone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/writeAddress"
+            android:layout_height="200dp"
+            app:layout_constraintTop_toBottomOf="@id/writeAddressView"
             android:layout_marginHorizontal="20dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
