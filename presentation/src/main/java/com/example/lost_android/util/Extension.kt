@@ -19,6 +19,10 @@ fun String.convertNumberToPhoneNumber(): String {
     }
 }
 
+fun String.removeDot(): String {
+    return this.replace("^\"|\"$".toRegex(), "")
+}
+
 fun EditText.setOnTextChanged(action: (p0: CharSequence?, p1: Int, p2: Int, p3: Int) -> Unit) {
     this.addTextChangedListener(object : TextWatcher {
         override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) = Unit
