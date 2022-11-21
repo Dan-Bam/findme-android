@@ -16,7 +16,6 @@ class InfoFragment: BaseFragment<FragmentRegisterInfoBinding> (R.layout.fragment
     override fun createView() {
         binding.info = this
         initEditText()
-        registerViewModel.getAddress("남풍빌라")
     }
 
     private fun initEditText() {
