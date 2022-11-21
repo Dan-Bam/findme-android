@@ -12,6 +12,7 @@ class LocalAuthDataStoreImpl @Inject constructor(
         const val TOKEN = "TOKEN"
         const val ACCESS_TOKEN = "ACCESS_TOKEN"
         const val REFRESH_TOKEN = "REFRESH_TOKEN"
+        const val EXPIRED_AT = "EXPIRED_AT"
     }
     override fun setAccessToken(token: String) {
         getSharedPreferences().edit().let {
@@ -33,6 +34,17 @@ class LocalAuthDataStoreImpl @Inject constructor(
 
     override fun getRefreshToken(): String {
         return this.getSharedPreferences().getString(REFRESH_TOKEN, "") ?: ""
+    }
+
+    override fun setExpiredAt(expiredAt: String) {
+        getSharedPreferences().edit().let {
+            it.putString(EXPIRED_AT, expiredAt)
+            it.apply()
+        }
+    }
+
+    override fun getExpiredAt(): String {
+        return this.getSharedPreferences().getString(EXPIRED_AT, "") ?: ""
     }
 
     private fun getSharedPreferences() =

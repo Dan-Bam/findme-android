@@ -7,4 +7,7 @@ interface LocalAuthDataStore {
 
     fun setRefreshToken(token: String)
     fun getRefreshToken(): String
+
+    fun setExpiredAt(expiredAt: String)
+    fun getExpiredAt(): String
 }

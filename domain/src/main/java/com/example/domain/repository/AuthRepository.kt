@@ -1,7 +1,6 @@
 package com.example.domain.repository
 
-import com.example.domain.entity.LoginEntity
-import com.example.domain.entity.RefreshEntity
+import com.example.domain.entity.auth.TokenEntity
 import com.example.domain.param.auth.CheckNumParam
 import com.example.domain.param.auth.LoginParam
 import com.example.domain.param.auth.SendNumParam
@@ -14,9 +13,7 @@ interface AuthRepository {
 
     suspend fun login(
         loginParam: LoginParam
-    ): LoginEntity
-
-    suspend fun refresh(): RefreshEntity
+    ): TokenEntity
 
     suspend fun sendNum(
         sendNumParam: SendNumParam

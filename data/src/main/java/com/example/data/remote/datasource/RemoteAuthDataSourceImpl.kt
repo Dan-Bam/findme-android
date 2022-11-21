@@ -5,8 +5,7 @@ import com.example.data.remote.request.CheckNumRequest
 import com.example.data.remote.request.LoginRequest
 import com.example.data.remote.request.SendNumRequest
 import com.example.data.remote.request.SignUpRequest
-import com.example.data.remote.response.LoginResponse
-import com.example.data.remote.response.RefreshResponse
+import com.example.data.remote.response.TokenResponse
 import com.example.data.util.HttpHandler
 import javax.inject.Inject
 
@@ -19,15 +18,9 @@ class RemoteAuthDataSourceImpl @Inject constructor(
             .sendRequest()
     }
 
-    override suspend fun login(loginRequest: LoginRequest): LoginResponse {
-        return HttpHandler<LoginResponse>()
+    override suspend fun login(loginRequest: LoginRequest): TokenResponse {
+        return HttpHandler<TokenResponse>()
             .httpRequest { authAPI.login(loginRequest = loginRequest) }
-            .sendRequest()
-    }
-
-    override suspend fun refresh(): RefreshResponse {
-        return HttpHandler<RefreshResponse>()
-            .httpRequest { authAPI.refresh() }
             .sendRequest()
     }
 
