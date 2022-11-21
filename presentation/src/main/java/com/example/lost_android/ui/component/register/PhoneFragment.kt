@@ -17,6 +17,14 @@ class PhoneFragment : BaseFragment<FragmentRegisterPhoneBinding>(R.layout.fragme
     override fun createView() {
         binding.phone = this
         initEditText()
+        observeCertify()
+    }
+
+    private fun observeCertify() = registerViewModel.certify.observe(this) {
+        if (it) {
+            activity?.findNavController(R.id.registerContainer)
+                ?.navigate(R.id.action_phoneFragment_to_nameFragment)
+        }
     }
 
     private fun initEditText() {
@@ -51,8 +59,6 @@ class PhoneFragment : BaseFragment<FragmentRegisterPhoneBinding>(R.layout.fragme
             }
             R.id.nextBtn -> {
                 registerViewModel.checkNum(binding.writeCertify.text.toString())
-                activity?.findNavController(R.id.registerContainer)
-                    ?.navigate(R.id.action_phoneFragment_to_nameFragment)
             }
         }
     }
