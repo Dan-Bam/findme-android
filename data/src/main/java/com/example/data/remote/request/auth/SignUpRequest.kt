@@ -1,4 +1,4 @@
-package com.example.data.remote.request
+package com.example.data.remote.request.auth
 
 import com.example.domain.param.auth.SignUpParam
 import com.google.gson.annotations.SerializedName
