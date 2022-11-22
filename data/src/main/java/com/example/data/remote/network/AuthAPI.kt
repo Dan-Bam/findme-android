@@ -1,10 +1,10 @@
 package com.example.data.remote.network
 
-import com.example.data.remote.request.CheckNumRequest
-import com.example.data.remote.request.LoginRequest
-import com.example.data.remote.request.SendNumRequest
-import com.example.data.remote.request.SignUpRequest
-import com.example.data.remote.response.TokenResponse
+import com.example.data.remote.request.auth.CheckNumRequest
+import com.example.data.remote.request.auth.LoginRequest
+import com.example.data.remote.request.auth.SendNumRequest
+import com.example.data.remote.request.auth.SignUpRequest
+import com.example.data.remote.response.auth.TokenResponse
 import retrofit2.http.Body
 import retrofit2.http.POST
 

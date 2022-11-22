@@ -2,8 +2,8 @@ package com.example.data.repository
 
 import com.example.data.local.datasource.LocalAuthDataStore
 import com.example.data.remote.datasource.RemoteAuthDataSource
-import com.example.data.remote.request.toRequest
-import com.example.data.remote.response.toEntity
+import com.example.data.remote.request.auth.toRequest
+import com.example.data.remote.response.auth.toEntity
 import com.example.domain.entity.auth.TokenEntity
 import com.example.domain.param.auth.CheckNumParam
 import com.example.domain.param.auth.LoginParam
