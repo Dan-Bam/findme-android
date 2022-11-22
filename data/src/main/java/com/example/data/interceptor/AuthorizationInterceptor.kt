@@ -6,6 +6,7 @@ import com.google.gson.Gson
 import okhttp3.*
 import java.time.LocalDateTime
 import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 class AuthorizationInterceptor @Inject constructor(
@@ -22,12 +23,15 @@ class AuthorizationInterceptor @Inject constructor(
             "/auth/check"
         )
         if (ignorePath.contains(path)) return chain.proceed(request)
-        val expiredAt = localAuthDataStore.getExpiredAt() as LocalDateTime
+        val expiredAt = LocalDateTime.parse(
+            localAuthDataStore.getExpiredAt(),
+            DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH-mm-ss")
+        )
         val currentTime = LocalDateTime.now(ZoneId.systemDefault())
         if (expiredAt.isBefore(currentTime)) {
             val client = OkHttpClient()
             val request = Request.Builder()
-                .url("http://192.168.16.86:8080/auth/reissue")
+                .url("http://10.82.20.18:8080/auth/reissue")
                 .patch(RequestBody.create(MediaType.parse("application/json"), ""))
                 .addHeader("RefreshToken", localAuthDataStore.getRefreshToken())
                 .build()
