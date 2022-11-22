@@ -26,7 +26,8 @@ class LoginActivity: BaseActivity<ActivityLoginBinding> (R.layout.activity_login
 
     private fun isLogin() {
         if (getSharedPreferences("TOKEN", MODE_PRIVATE).getString("ACCESS_TOKEN", null) != null) {
-            startActivity(Intent(this, RegisterActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
+            startActivity(Intent(this, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
+            finish()
         }
     }
 
