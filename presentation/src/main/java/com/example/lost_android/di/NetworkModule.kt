@@ -2,6 +2,7 @@ package com.example.lost_android.di
 
 import com.example.data.interceptor.AuthorizationInterceptor
 import com.example.data.remote.network.AuthAPI
+import com.example.data.remote.network.LostAPI
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +16,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-    const val BASE_URL = "http://192.168.16.86:8080/"
+    const val BASE_URL = "http://10.82.20.18:8080/"
 
     @Provides
     fun provideOkhttpClient(
@@ -49,5 +50,10 @@ object NetworkModule {
     @Provides
     fun provideAuthAPI(retrofit: Retrofit): AuthAPI {
         return retrofit.create(AuthAPI::class.java)
+    }
+
+    @Provides
+    fun provideLostAPI(retrofit: Retrofit): LostAPI {
+        return retrofit.create(LostAPI::class.java)
     }
 }
