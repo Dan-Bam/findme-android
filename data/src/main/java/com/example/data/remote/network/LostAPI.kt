@@ -26,6 +26,11 @@ interface LostAPI {
         @Path("lostId") lostId: String
     )
 
+    @GET("lost/{lostId}")
+    suspend fun detailLost(
+        @Path("lostId") lostId: String
+    ): LostResponse
+
     @GET("lost/findAll")
     suspend fun findAll(): List<LostResponse>
 }

@@ -7,5 +7,6 @@ interface RemoteLostDataSource {
     suspend fun registerLost(lostRequest: LostRequest)
     suspend fun editLost(lostId: String, lostRequest: LostRequest)
     suspend fun deleteLost(lostId: String)
+    suspend fun detailLost(lostId: String): LostResponse
     suspend fun findAll(): List<LostResponse>
 }

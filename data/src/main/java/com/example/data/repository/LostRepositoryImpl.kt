@@ -23,6 +23,10 @@ class LostRepositoryImpl @Inject constructor(
         return lostDataSource.deleteLost(lostId)
     }
 
+    override suspend fun detailLost(lostId: String): LostEntity {
+        return lostDataSource.detailLost(lostId).toEntity()
+    }
+
     override suspend fun findAll(): List<LostEntity> {
         return lostDataSource.findAll().map { it.toEntity() }
     }

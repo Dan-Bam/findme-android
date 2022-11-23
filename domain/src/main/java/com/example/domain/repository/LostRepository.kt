@@ -7,5 +7,6 @@ interface LostRepository {
     suspend fun registerLost(lostParam: LostParam)
     suspend fun editLost(lostId: String, lostParam: LostParam)
     suspend fun deleteLost(lostId: String)
+    suspend fun detailLost(lostId: String): LostEntity
     suspend fun findAll(): List<LostEntity>
 }
