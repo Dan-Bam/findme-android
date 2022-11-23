@@ -13,24 +13,28 @@ data class FindAllResponse(
     @SerializedName("place")
     val place: String,
     @SerializedName("lostImages")
-    val lostImages: List<LostImage>,
+    val lostImages: List<String>,
     @SerializedName("category")
-    val category: String,
+    val category: List<Category>,
     @SerializedName("tags")
     val tags: List<String>,
     @SerializedName("isSafe")
-    val isSafe: Boolean
+    val isSafe: Boolean,
+    @SerializedName("latitude")
+    val latitude: String,
+    @SerializedName("longitude")
+    val longitude: String
 ) {
-    data class LostImage(
-        @SerializedName("id")
-        val imageId: String,
-        @SerializedName("imageUrl")
-        val imageUrl: String,
+    data class Category(
+        @SerializedName("mainCategory")
+        val mainCategory: String,
+        @SerializedName("subCategory")
+        val subCategory: String
     )
 
-    fun LostImage.toEntity() = FindAllEntity.LostImage(
-        imageId = imageId,
-        imageUrl = imageUrl
+    fun Category.toEntity() = FindAllEntity.Category(
+        mainCategory = mainCategory,
+        subCategory = subCategory
     )
 }
 
@@ -39,8 +43,10 @@ fun FindAllResponse.toEntity() = FindAllEntity(
     title = title,
     description = description,
     place = place,
-    lostImages = lostImages.map { it.toEntity() },
-    category = category,
+    lostImages = lostImages,
+    category = category.map { it.toEntity() },
     tags = tags,
-    isSafe = isSafe
+    isSafe = isSafe,
+    latitude = latitude,
+    longitude = longitude
 )

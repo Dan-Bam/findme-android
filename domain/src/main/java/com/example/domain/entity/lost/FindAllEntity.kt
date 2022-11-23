@@ -6,13 +6,15 @@ data class FindAllEntity(
     val title: String,
     val description: String,
     val place: String,
-    val lostImages: List<LostImage>,
-    val category: String,
+    val lostImages: List<String>,
+    val category: List<Category>,
     val tags: List<String>,
-    val isSafe: Boolean
+    val isSafe: Boolean,
+    val latitude: String,
+    val longitude: String
 ) {
-    data class LostImage(
-        val imageId: String,
-        val imageUrl: String
+    data class Category(
+        val mainCategory: String,
+        val subCategory: String
     )
 }
