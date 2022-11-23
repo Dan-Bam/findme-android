@@ -1,7 +1,7 @@
 package com.example.domain.entity.lost
 
 
-data class FindAllEntity(
+data class LostEntity(
     val id: String,
     val title: String,
     val description: String,

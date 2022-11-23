@@ -1,9 +1,9 @@
 package com.example.data.remote.response.lost
 
-import com.example.domain.entity.lost.FindAllEntity
+import com.example.domain.entity.lost.LostEntity
 import com.google.gson.annotations.SerializedName
 
-data class FindAllResponse(
+data class LostResponse(
     @SerializedName("id")
     val id: String,
     @SerializedName("title")
@@ -32,13 +32,13 @@ data class FindAllResponse(
         val subCategory: String
     )
 
-    fun Category.toEntity() = FindAllEntity.Category(
+    fun Category.toEntity() = LostEntity.Category(
         mainCategory = mainCategory,
         subCategory = subCategory
     )
 }
 
-fun FindAllResponse.toEntity() = FindAllEntity(
+fun LostResponse.toEntity() = LostEntity(
     id = id,
     title = title,
     description = description,
