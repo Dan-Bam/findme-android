@@ -3,6 +3,7 @@ package com.example.data.remote.network
 import com.example.data.remote.request.lost.LostRequest
 import com.example.data.remote.response.lost.LostResponse
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.POST
@@ -18,6 +19,11 @@ interface LostAPI {
     suspend fun editLost(
         @Path("lostId") lostId: String,
         @Body lostRequest: LostRequest
+    )
+
+    @DELETE("lost/{lostId}")
+    suspend fun deleteLost(
+        @Path("lostId") lostId: String
     )
 
     @GET("lost/findAll")
