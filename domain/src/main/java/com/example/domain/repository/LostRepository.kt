@@ -5,5 +5,6 @@ import com.example.domain.param.lost.LostParam
 
 interface LostRepository {
     suspend fun registerLost(lostParam: LostParam)
+    suspend fun editLost(lostId: String, lostParam: LostParam)
     suspend fun findAll(): List<LostEntity>
 }

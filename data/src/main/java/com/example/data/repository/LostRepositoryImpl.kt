@@ -15,6 +15,10 @@ class LostRepositoryImpl @Inject constructor(
         return lostDataSource.registerLost(lostParam.toRequest())
     }
 
+    override suspend fun editLost(lostId: String, lostParam: LostParam) {
+        return lostDataSource.editLost(lostId, lostParam.toRequest())
+    }
+
     override suspend fun findAll(): List<LostEntity> {
         return lostDataSource.findAll().map { it.toEntity() }
     }

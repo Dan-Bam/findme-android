@@ -15,6 +15,12 @@ class RemoteLostDataSourceImpl @Inject constructor(
             .sendRequest()
     }
 
+    override suspend fun editLost(lostId: String, lostRequest: LostRequest) {
+        return HttpHandler<Unit>()
+            .httpRequest { lostAPI.editLost(lostId, lostRequest) }
+            .sendRequest()
+    }
+
     override suspend fun findAll(): List<LostResponse> {
         return HttpHandler<List<LostResponse>>()
             .httpRequest { lostAPI.findAll() }
