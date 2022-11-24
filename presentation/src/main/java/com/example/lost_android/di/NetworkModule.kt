@@ -2,6 +2,7 @@ package com.example.lost_android.di
 
 import com.example.data.interceptor.AuthorizationInterceptor
 import com.example.data.remote.network.AuthAPI
+import com.example.data.remote.network.FoundAPI
 import com.example.data.remote.network.LostAPI
 import dagger.Module
 import dagger.Provides
@@ -55,5 +56,10 @@ object NetworkModule {
     @Provides
     fun provideLostAPI(retrofit: Retrofit): LostAPI {
         return retrofit.create(LostAPI::class.java)
+    }
+
+    @Provides
+    fun provideFoundAPI(retrofit: Retrofit): FoundAPI {
+        return retrofit.create(FoundAPI::class.java)
     }
 }

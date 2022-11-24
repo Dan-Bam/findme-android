@@ -1,8 +1,10 @@
 package com.example.lost_android.di
 
 import com.example.data.repository.AuthRepositoryImpl
+import com.example.data.repository.FoundRepositoryImpl
 import com.example.data.repository.LostRepositoryImpl
 import com.example.domain.repository.AuthRepository
+import com.example.domain.repository.FoundRepository
 import com.example.domain.repository.LostRepository
 import dagger.Binds
 import dagger.Module
@@ -20,4 +22,9 @@ abstract class RepositoryModule {
     abstract fun provideLostRepository(
         lostRepositoryImpl: LostRepositoryImpl
     ): LostRepository
+
+    @Binds
+    abstract fun provideFoundRepository(
+        foundRepositoryImpl: FoundRepositoryImpl
+    ): FoundRepository
 }

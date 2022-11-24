@@ -1,9 +1,6 @@
 package com.example.lost_android.di
 
-import com.example.data.remote.datasource.RemoteAuthDataSource
-import com.example.data.remote.datasource.RemoteAuthDataSourceImpl
-import com.example.data.remote.datasource.RemoteLostDataSource
-import com.example.data.remote.datasource.RemoteLostDataSourceImpl
+import com.example.data.remote.datasource.*
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -21,4 +18,9 @@ abstract class RemoteDataSourceModule {
     abstract fun provideRemoteLostDataSource(
         remoteLostDataSourceImpl: RemoteLostDataSourceImpl
     ): RemoteLostDataSource
+
+    @Binds
+    abstract fun provideRemoteFoundDataSource(
+        remoteFoundDataSourceImpl: RemoteFoundDataSourceImpl
+    ): RemoteFoundDataSource
 }
