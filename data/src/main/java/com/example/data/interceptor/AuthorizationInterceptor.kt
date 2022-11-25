@@ -3,6 +3,8 @@ package com.example.data.interceptor
 import com.example.data.local.datasource.LocalAuthDataStore
 import com.example.domain.entity.auth.TokenEntity
 import com.google.gson.Gson
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import okhttp3.*
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -31,19 +33,17 @@ class AuthorizationInterceptor @Inject constructor(
         if (expiredAt.isBefore(currentTime)) {
             val client = OkHttpClient()
             val request = Request.Builder()
-                .url("http://10.82.20.18:8080/auth/reissue")
+                .url("http://3.35.190.72:8080/auth/reissue")
                 .patch(RequestBody.create(MediaType.parse("application/json"), ""))
                 .addHeader("RefreshToken", localAuthDataStore.getRefreshToken())
                 .build()
+            val jsonParser = JsonParser()
             val response = client.newCall(request).execute()
             if (response.isSuccessful) {
-                val token = Gson().fromJson(
-                    response.body().toString(),
-                    TokenEntity::class.java
-                )
-                localAuthDataStore.setAccessToken(token.accessToken)
-                localAuthDataStore.setRefreshToken(token.refreshToken)
-                localAuthDataStore.setExpiredAt(token.expiredAt)
+                val token = jsonParser.parse(response.body()!!.string()) as JsonObject
+                localAuthDataStore.setAccessToken(token["accessToken"].toString().removeDot())
+                localAuthDataStore.setRefreshToken(token["refreshToken"].toString().removeDot())
+                localAuthDataStore.setExpiredAt(token["expiredAt"].toString().removeDot())
             } else throw RuntimeException()
         }
         return chain.proceed(
@@ -53,4 +53,8 @@ class AuthorizationInterceptor @Inject constructor(
             ).build()
         )
     }
+}
+
+private fun String.removeDot(): String {
+    return this.replace("^\"|\"$".toRegex(), "")
 }
