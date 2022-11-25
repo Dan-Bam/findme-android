@@ -9,7 +9,7 @@ data class LostRequest(
     @SerializedName("description")
     val description: String,
     @SerializedName("category")
-    val category: List<Category>,
+    val category: String,
     @SerializedName("tags")
     val tags: List<String>,
     @SerializedName("isSafe")
@@ -20,27 +20,15 @@ data class LostRequest(
     val latitude: String,
     @SerializedName("longitude")
     val longitude: String
-) {
-    data class Category(
-        @SerializedName("mainCategory")
-        val mainCategory: String,
-        @SerializedName("subCategory")
-        val subCategory: String
-    )
-}
+)
 
 fun LostParam.toRequest() = LostRequest(
     title = title,
     description = description,
-    category = category.map { it.toRequest() },
+    category = category,
     tags = tags,
     isSafe = isSafe,
     place = place,
     latitude = latitude,
     longitude = longitude
-)
-
-fun LostParam.Category.toRequest() = LostRequest.Category(
-    mainCategory = mainCategory,
-    subCategory = subCategory
 )
