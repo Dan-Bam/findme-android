@@ -7,14 +7,9 @@ data class LostEntity(
     val description: String,
     val place: String,
     val lostImages: List<String>,
-    val category: List<Category>,
+    val category: String,
     val tags: List<String>,
     val isSafe: Boolean,
     val latitude: String,
     val longitude: String
-) {
-    data class Category(
-        val mainCategory: String,
-        val subCategory: String
-    )
-}
+)

@@ -15,7 +15,7 @@ data class LostResponse(
     @SerializedName("lostImages")
     val lostImages: List<String>,
     @SerializedName("category")
-    val category: List<Category>,
+    val category: String,
     @SerializedName("tags")
     val tags: List<String>,
     @SerializedName("isSafe")
@@ -24,19 +24,7 @@ data class LostResponse(
     val latitude: String,
     @SerializedName("longitude")
     val longitude: String
-) {
-    data class Category(
-        @SerializedName("mainCategory")
-        val mainCategory: String,
-        @SerializedName("subCategory")
-        val subCategory: String
-    )
-
-    fun Category.toEntity() = LostEntity.Category(
-        mainCategory = mainCategory,
-        subCategory = subCategory
-    )
-}
+)
 
 fun LostResponse.toEntity() = LostEntity(
     id = id,
@@ -44,7 +32,7 @@ fun LostResponse.toEntity() = LostEntity(
     description = description,
     place = place,
     lostImages = lostImages,
-    category = category.map { it.toEntity() },
+    category = category,
     tags = tags,
     isSafe = isSafe,
     latitude = latitude,
