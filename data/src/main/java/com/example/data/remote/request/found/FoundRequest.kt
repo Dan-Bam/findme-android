@@ -1,6 +1,6 @@
 package com.example.data.remote.request.found
 
-import com.example.domain.param.param.FoundParam
+import com.example.domain.param.found.FoundParam
 import com.google.gson.annotations.SerializedName
 
 data class FoundRequest(

@@ -1,4 +1,4 @@
-package com.example.domain.param.param
+package com.example.domain.param.found
 
 data class FoundParam(
     val title: String,
