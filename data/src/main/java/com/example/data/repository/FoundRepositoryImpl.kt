@@ -17,4 +17,8 @@ class FoundRepositoryImpl @Inject constructor(
     override suspend fun editFound(foundId: String, editFoundParam: EditFoundParam) {
         return foundDataSource.editFound(foundId, editFoundParam.toRequest())
     }
+
+    override suspend fun deleteFound(foundId: String) {
+        return foundDataSource.deleteFound(foundId)
+    }
 }

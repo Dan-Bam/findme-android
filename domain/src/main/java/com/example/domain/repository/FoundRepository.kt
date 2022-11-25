@@ -6,4 +6,5 @@ import com.example.domain.param.found.FoundParam
 interface FoundRepository {
     suspend fun registerFound(foundParam: FoundParam)
     suspend fun editFound(foundId: String, editFoundParam: EditFoundParam)
+    suspend fun deleteFound(foundId: String)
 }

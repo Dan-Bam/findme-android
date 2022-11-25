@@ -20,4 +20,10 @@ class RemoteFoundDataSourceImpl @Inject constructor(
             .httpRequest { foundAPI.editFound(foundId, editFoundRequest) }
             .sendRequest()
     }
+
+    override suspend fun deleteFound(foundId: String) {
+        return HttpHandler<Unit>()
+            .httpRequest { foundAPI.deleteFound(foundId) }
+            .sendRequest()
+    }
 }

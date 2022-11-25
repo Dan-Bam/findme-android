@@ -6,4 +6,5 @@ import com.example.data.remote.request.found.FoundRequest
 interface RemoteFoundDataSource {
     suspend fun registerFound(foundRequest: FoundRequest)
     suspend fun editFound(foundId: String, editFoundRequest: EditFoundRequest)
+    suspend fun deleteFound(foundId: String)
 }
