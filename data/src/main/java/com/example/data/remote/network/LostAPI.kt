@@ -1,5 +1,6 @@
 package com.example.data.remote.network
 
+import com.example.data.remote.request.lost.EditLostRequest
 import com.example.data.remote.request.lost.LostRequest
 import com.example.data.remote.response.lost.LostResponse
 import retrofit2.http.Body
@@ -18,7 +19,7 @@ interface LostAPI {
     @PATCH("lost/{lostId}")
     suspend fun editLost(
         @Path("lostId") lostId: String,
-        @Body lostRequest: LostRequest
+        @Body editLostRequest: EditLostRequest
     )
 
     @DELETE("lost/{lostId}")

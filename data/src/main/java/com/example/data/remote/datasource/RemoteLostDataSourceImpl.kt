@@ -1,6 +1,7 @@
 package com.example.data.remote.datasource
 
 import com.example.data.remote.network.LostAPI
+import com.example.data.remote.request.lost.EditLostRequest
 import com.example.data.remote.request.lost.LostRequest
 import com.example.data.remote.response.lost.LostResponse
 import com.example.data.util.HttpHandler
@@ -15,9 +16,9 @@ class RemoteLostDataSourceImpl @Inject constructor(
             .sendRequest()
     }
 
-    override suspend fun editLost(lostId: String, lostRequest: LostRequest) {
+    override suspend fun editLost(lostId: String, editLostRequest: EditLostRequest) {
         return HttpHandler<Unit>()
-            .httpRequest { lostAPI.editLost(lostId, lostRequest) }
+            .httpRequest { lostAPI.editLost(lostId, editLostRequest) }
             .sendRequest()
     }
 
