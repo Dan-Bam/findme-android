@@ -1,7 +1,9 @@
 package com.example.lost_android.util
 
+import android.Manifest
 import android.app.Activity
 import android.content.Context
+import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.location.Address
@@ -57,4 +59,18 @@ fun keyboardShow(context: Activity) {
         InputMethodManager.SHOW_FORCED,
         InputMethodManager.HIDE_IMPLICIT_ONLY
     )
+}
+
+fun checkPermission(context: Activity, permissions: List<String>): Boolean {
+    permissions.forEach {
+        val permission = ContextCompat.checkSelfPermission(context, it)
+        if (permission == PackageManager.PERMISSION_DENIED) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                context.requestPermissions(arrayOf(it), 1)
+                return false
+            }
+            return false
+        }
+    }
+    return true
 }
