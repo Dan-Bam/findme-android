@@ -1,8 +1,11 @@
 package com.example.lost_android.ui.component.main
 
+import android.view.View
+import androidx.activity.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.lost_android.ui.base.BaseActivity
+import com.example.lost_android.viewmodel.MainViewModel
 import com.example.presentation.R
 import com.example.presentation.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -10,9 +13,20 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding> (R.layout.activity_main) {
+    private val mainViewModel by viewModels<MainViewModel>()
     override fun createView() {
         binding.bottomNav.itemIconTintList = null
         settingBottomNav()
+        observeTitle()
+    }
+
+    private fun observeTitle() = mainViewModel.currentTitle.observe(this) {
+        binding.titleTxt.text = it
+        if (it.equals(getString(R.string.findItem)) || it.equals(getString(R.string.chatRoom))) {
+            binding.optionBtn.visibility = View.GONE
+        } else {
+            binding.optionBtn.visibility = View.VISIBLE
+        }
     }
 
     private fun settingBottomNav(){

@@ -11,6 +11,7 @@ import com.example.lost_android.ui.base.BaseFragment
 import com.example.lost_android.ui.component.map.model.MapData
 import com.example.lost_android.util.checkPermission
 import com.example.lost_android.util.getBitmapFromVectorDrawable
+import com.example.lost_android.viewmodel.MainViewModel
 import com.example.lost_android.viewmodel.MapViewModel
 import com.example.presentation.R
 import com.example.presentation.databinding.FragmentMapBinding
@@ -24,12 +25,14 @@ import com.google.maps.android.clustering.ClusterManager
 
 class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map), OnMapReadyCallback {
     private val mapViewModel by activityViewModels<MapViewModel>()
+    private val mainViewModel by activityViewModels<MainViewModel>()
     private lateinit var mMap: GoogleMap
     private lateinit var currentLatLng: LatLng
     private lateinit var clusterManager: ClusterManager<MapData>
 
     override fun createView() {
         mapViewModel.findAll()
+        mainViewModel.setTitle(getString(R.string.findItem))
         binding.map.apply {
             onCreate(savedInstanceState)
             getMapAsync(this@MapFragment)
