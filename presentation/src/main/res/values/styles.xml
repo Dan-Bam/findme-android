@@ -32,6 +32,7 @@
     </style>
 
     <style name="editText">
+        <item name="android:fontFamily">@font/pretendard</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/bg_edit_text</item>
@@ -44,7 +45,17 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="text24700">
+        <item name="android:fontFamily">@font/pretendard</item>
+        <item name="android:fontStyle">normal</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontWeight">700</item>
+    </style>
+
     <style name="text22700">
+        <item name="android:fontFamily">@font/pretendard</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">22sp</item>
@@ -52,6 +63,7 @@
     </style>
     
     <style name="text16500">
+        <item name="android:fontFamily">@font/pretendard</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
@@ -60,6 +72,7 @@
     </style>
     
     <style name="text14500">
+        <item name="android:fontFamily">@font/pretendard</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">14sp</item>
@@ -68,6 +81,7 @@
     </style>
 
     <style name="text13500">
+        <item name="android:fontFamily">@font/pretendard</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">13sp</item>
@@ -75,6 +89,7 @@
     </style>
 
     <style name="text13400">
+        <item name="android:fontFamily">@font/pretendard</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">13sp</item>
