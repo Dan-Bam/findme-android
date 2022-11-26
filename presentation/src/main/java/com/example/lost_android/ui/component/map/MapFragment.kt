@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
+import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.example.lost_android.ui.base.BaseFragment
@@ -31,21 +32,19 @@ class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map), OnM
     private lateinit var clusterManager: ClusterManager<MapData>
 
     override fun createView() {
+        binding.mapFragment = this
+        this.checkPermission()
         mapViewModel.findAll()
         mainViewModel.setTitle(getString(R.string.findItem))
         binding.map.apply {
             onCreate(savedInstanceState)
             getMapAsync(this@MapFragment)
         }
-        if (checkPermission(requireActivity(), listOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION))) {
-            val locationManager = activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-            val location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-            if (location == null) {
-                Toast.makeText(context, "위치를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show()
-                currentLatLng = LatLng(37.5662952,126.97794509999994)
-            } else {
-                currentLatLng = LatLng(location.latitude, location.longitude)
-            }
+    }
+
+    fun click(view: View) {
+        when(view.id) {
+            R.id.myLocationBtn -> {mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLatLng))}
         }
     }
 
@@ -69,6 +68,19 @@ class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map), OnM
             setOnCameraIdleListener(clusterManager)
         }
         observeMap()
+    }
+
+    private fun checkPermission() {
+        if (checkPermission(requireActivity(), listOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION))) {
+            val locationManager = activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+            val location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+            currentLatLng = if (location == null) {
+                Toast.makeText(context, "위치를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show()
+                LatLng(37.5662952,126.97794509999994)
+            } else {
+                LatLng(location.latitude, location.longitude)
+            }
+        }
     }
 
     override fun onResume() {
