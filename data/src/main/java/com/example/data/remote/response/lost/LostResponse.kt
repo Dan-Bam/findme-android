@@ -12,7 +12,7 @@ data class LostResponse(
     val description: String,
     @SerializedName("place")
     val place: String,
-    @SerializedName("lostImages")
+    @SerializedName("imageUrl")
     val lostImages: List<String>,
     @SerializedName("category")
     val category: String,
