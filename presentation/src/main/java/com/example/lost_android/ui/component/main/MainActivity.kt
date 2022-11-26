@@ -22,10 +22,11 @@ class MainActivity : BaseActivity<ActivityMainBinding> (R.layout.activity_main) 
 
     private fun observeTitle() = mainViewModel.currentTitle.observe(this) {
         binding.titleTxt.text = it
+        val optionView = arrayOf(binding.optionBtn, binding.locateTxt, binding.optionLocationBtn)
         if (it.equals(getString(R.string.findItem)) || it.equals(getString(R.string.chatRoom))) {
-            binding.optionBtn.visibility = View.GONE
+            optionView.forEach { it.visibility = View.GONE }
         } else {
-            binding.optionBtn.visibility = View.VISIBLE
+            optionView.forEach { it.visibility = View.VISIBLE }
         }
     }
 
