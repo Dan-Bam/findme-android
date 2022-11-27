@@ -8,6 +8,8 @@ data class LostResponse(
     val id: String,
     @SerializedName("userId")
     val userId: String,
+    @SerializedName("isMine")
+    val isMine: Boolean,
     @SerializedName("title")
     val title: String,
     @SerializedName("description")
@@ -31,6 +33,7 @@ data class LostResponse(
 fun LostResponse.toEntity() = LostEntity(
     id = id,
     userId = userId,
+    isMine = isMine,
     title = title,
     description = description,
     place = place,

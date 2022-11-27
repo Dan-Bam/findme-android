@@ -4,6 +4,7 @@ package com.example.domain.entity.lost
 data class LostEntity(
     val id: String,
     val userId: String,
+    val isMine: Boolean,
     val title: String,
     val description: String,
     val place: String,
