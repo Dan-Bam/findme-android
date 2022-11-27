@@ -31,7 +31,7 @@
     <string name="whatSecurityService">안심 서비스란?</string>
     
 <!--    등록 다이얼로그-->
-    <string name="whatEntry">무엇을 등록할지 선택해주세요.</string>
+    <string name="whatEntry">어떤걸 등록할지 선택해주세요.</string>
     <string name="lostEntry">분실물 등록</string>
     <string name="findEntry">습득물 등록</string>'
     
