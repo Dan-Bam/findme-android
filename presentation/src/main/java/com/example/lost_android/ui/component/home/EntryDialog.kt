@@ -30,8 +30,8 @@ class EntryDialog: DialogFragment() {
         when (view.id) {
             R.id.findEntry -> startActivity(Intent(context, EntryActivity::class.java).putExtra("type", getString(R.string.findEntry)).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
             R.id.lostEntry -> startActivity(Intent(context, EntryActivity::class.java).putExtra("type", getString(R.string.lostEntry)).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
-            R.id.cancel -> dismiss()
         }
+        dismiss()
     }
 
     override fun onResume() {
