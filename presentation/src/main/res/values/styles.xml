@@ -116,4 +116,12 @@
         <item name="android:textSize">13sp</item>
         <item name="android:fontWeight">400</item>
     </style>
+
+    <style name="text11400">
+        <item name="android:fontFamily">@font/pretendard</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:fontWeight">400</item>
+    </style>
 </resources>
