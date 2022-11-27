@@ -5,6 +5,8 @@ import androidx.activity.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.lost_android.ui.base.BaseActivity
+import com.example.lost_android.ui.component.home.AreaDialog
+import com.example.lost_android.viewmodel.HomeViewModel
 import com.example.lost_android.viewmodel.MainViewModel
 import com.example.presentation.R
 import com.example.presentation.databinding.ActivityMainBinding
@@ -14,10 +16,21 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding> (R.layout.activity_main) {
     private val mainViewModel by viewModels<MainViewModel>()
+    private val homeViewModel by viewModels<HomeViewModel>()
     override fun createView() {
+        binding.mainActivity = this
         binding.bottomNav.itemIconTintList = null
         settingBottomNav()
         observeTitle()
+        observeArea()
+    }
+
+    fun click(view: View) {
+        when (view.id) {
+            R.id.locateTxt, R.id.optionLocationBtn -> {
+                AreaDialog().show(supportFragmentManager, "AreaDialog")
+            }
+        }
     }
 
     private fun observeTitle() = mainViewModel.currentTitle.observe(this) {
@@ -28,6 +41,10 @@ class MainActivity : BaseActivity<ActivityMainBinding> (R.layout.activity_main) 
         } else {
             optionView.forEach { it.visibility = View.VISIBLE }
         }
+    }
+
+    private fun observeArea() = homeViewModel.currentArea.observe(this) {
+        binding.locateTxt.text = it.areaName
     }
 
     private fun settingBottomNav(){

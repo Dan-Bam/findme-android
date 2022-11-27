@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="mainActivity"
+            type="com.example.lost_android.ui.component.main.MainActivity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -49,6 +51,7 @@
         <TextView
             android:id="@+id/locateTxt"
             style="@style/text15500"
+            android:onClick="@{mainActivity::click}"
             android:text="광산구"
             android:textColor="@color/darkGray"
             android:layout_marginStart="14dp"
@@ -58,6 +61,7 @@
 
         <ImageView
             android:id="@+id/optionLocationBtn"
+            android:onClick="@{mainActivity::click}"
             android:layout_width="10dp"
             android:layout_height="6dp"
             android:layout_marginStart="4dp"
