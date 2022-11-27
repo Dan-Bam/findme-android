@@ -16,6 +16,7 @@ class LostAdapter(private val callback: (LostEntity) -> Unit) :
         fun bind(item: LostEntity) = binding.apply {
             binding.lostItem = item
             binding.lostImg.load(item.lostImages[0])
+            binding.lostLayout.setOnClickListener { callback(item) }
         }
     }
 

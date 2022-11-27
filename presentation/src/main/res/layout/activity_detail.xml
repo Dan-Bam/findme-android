@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="detailActivity"
+            type="com.example.lost_android.ui.component.detail.DetailActivity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/AppBarBottom"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.06" />
+
+        <ImageView
+            android:id="@+id/backBtn"
+            android:onClick="@{detailActivity::click}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/ic_back"
+            app:layout_constraintBottom_toBottomOf="@id/AppBarBottom"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/backTxt"
+            android:onClick="@{detailActivity::click}"
+            style="@style/text13400"
+            android:layout_marginStart="8dp"
+            android:text="@string/back"
+            android:textColor="@color/mainColor"
+            app:layout_constraintBottom_toBottomOf="@id/backBtn"
+            app:layout_constraintStart_toEndOf="@id/backBtn"
+            app:layout_constraintTop_toTopOf="@id/backBtn" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
