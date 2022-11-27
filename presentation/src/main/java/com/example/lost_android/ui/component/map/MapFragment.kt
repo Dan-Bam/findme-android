@@ -24,6 +24,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.maps.android.clustering.ClusterManager
+import com.google.maps.android.clustering.ClusterManager.OnClusterItemClickListener
+
 
 class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map), OnMapReadyCallback {
     private val mapViewModel by activityViewModels<MapViewModel>()
@@ -59,10 +61,13 @@ class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map), OnM
         it.forEach {
             clusterManager.addItem(
                 MapData(
+                    it.lostImages[0],
                     it.latitude.toDouble(),
                     it.longitude.toDouble(),
                     it.title,
-                    it.description
+                    it.description,
+                    it.place,
+                    it.tags
                 )
             )
         }
@@ -75,6 +80,10 @@ class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map), OnM
         mMap.apply {
             clusterManager = ClusterManager<MapData>(requireContext(), mMap)
             clusterManager.renderer = ClusterAdapter(requireContext(), mMap, clusterManager)
+            clusterManager.setOnClusterItemClickListener { it ->
+                DetailDialog(requireContext(), it).show()
+                false
+            }
             setMinZoomPreference(8f)
             setMaxZoomPreference(17f)
             setOnCameraIdleListener(clusterManager)
