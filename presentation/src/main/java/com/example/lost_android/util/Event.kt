@@ -15,6 +15,7 @@ import android.widget.EditText
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
+import androidx.fragment.app.Fragment
 import java.util.*
 
 
@@ -77,9 +78,9 @@ fun getBitmapFromVectorDrawable(context: Context, drawableId: Int): Bitmap {
     return bitmap
 }
 
-fun checkPermission(context: Activity, permissions: List<String>): Boolean {
+fun checkPermission(context: Fragment, permissions: List<String>): Boolean {
     permissions.forEach {
-        val permission = ContextCompat.checkSelfPermission(context, it)
+        val permission = ContextCompat.checkSelfPermission(context.requireContext(), it)
         if (permission == PackageManager.PERMISSION_DENIED) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 context.requestPermissions(arrayOf(it), 1)
