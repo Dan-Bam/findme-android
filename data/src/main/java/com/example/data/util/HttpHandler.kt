@@ -16,6 +16,7 @@ class HttpHandler<T> {
         try {
             httpRequest()
         } catch (e: HttpException) {
+            println("안녕 ${e.code()}")
             throw errorStatus(e.code(), e.message())
         }
 }
