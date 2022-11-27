@@ -6,6 +6,8 @@ import com.google.gson.annotations.SerializedName
 data class LostResponse(
     @SerializedName("id")
     val id: String,
+    @SerializedName("userId")
+    val userId: String,
     @SerializedName("title")
     val title: String,
     @SerializedName("description")
@@ -28,6 +30,7 @@ data class LostResponse(
 
 fun LostResponse.toEntity() = LostEntity(
     id = id,
+    userId = userId,
     title = title,
     description = description,
     place = place,
