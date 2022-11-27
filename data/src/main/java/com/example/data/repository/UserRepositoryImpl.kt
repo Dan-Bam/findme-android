@@ -21,4 +21,8 @@ class UserRepositoryImpl @Inject constructor(
     override suspend fun myInfo(): InfoEntity {
         return userDataSource.myInfo().toEntity()
     }
+
+    override suspend fun logout() {
+        return userDataSource.logout()
+    }
 }

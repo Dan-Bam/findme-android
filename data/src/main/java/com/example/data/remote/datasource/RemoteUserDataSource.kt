@@ -7,4 +7,5 @@ interface RemoteUserDataSource {
     suspend fun myLost(): List<MyEntryResponse>
     suspend fun myFound(): List<MyEntryResponse>
     suspend fun myInfo(): InfoResponse
+    suspend fun logout()
 }

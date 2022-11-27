@@ -7,4 +7,5 @@ interface UserRepository {
     suspend fun myLost(): List<MyEntryEntity>
     suspend fun myFound(): List<MyEntryEntity>
     suspend fun myInfo(): InfoEntity
+    suspend fun logout()
 }

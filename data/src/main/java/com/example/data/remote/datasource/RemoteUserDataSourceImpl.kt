@@ -26,4 +26,10 @@ class RemoteUserDataSourceImpl @Inject constructor(
             .httpRequest { userAPI.myInfo() }
             .sendRequest()
     }
+
+    override suspend fun logout() {
+        return HttpHandler<Unit>()
+            .httpRequest { userAPI.logout() }
+            .sendRequest()
+    }
 }
