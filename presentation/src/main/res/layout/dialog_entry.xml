@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="entryDialog"
+            type="com.example.lost_android.ui.component.home.EntryDialog" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/bg_search_area_layout">
+
+        <TextView
+            style="@style/text17300"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:text="@string/entry"
+            android:textColor="@color/black" />
+
+        <TextView
+            style="@style/text13400"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="2dp"
+            android:text="@string/whatEntry"
+            android:textColor="@color/black"/>
+
+        <View
+            android:layout_width="270dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="#435C3C3C"/>
+        
+        <TextView
+            android:id="@+id/findEntry"
+            android:onClick="@{entryDialog::click}"
+            style="@style/text17300"
+            android:text="@string/findEntry"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/mainColor"
+            android:layout_marginVertical="11dp"/>
+
+        <View
+            android:layout_width="270dp"
+            android:layout_height="1dp"
+            android:background="#435C3C3C"/>
+
+        <TextView
+            android:id="@+id/lostEntry"
+            android:onClick="@{entryDialog::click}"
+            style="@style/text17300"
+            android:text="@string/lostEntry"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/mainColor"
+            android:layout_marginVertical="11dp"/>
+
+        <View
+            android:layout_width="270dp"
+            android:layout_height="1dp"
+            android:background="#435C3C3C"/>
+
+        <TextView
+            android:id="@+id/cancel"
+            android:onClick="@{entryDialog::click}"
+            style="@style/text17300"
+            android:text="@string/cancel"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/mainColor"
+            android:layout_marginVertical="11dp"/>
+
+    </LinearLayout>
+</layout>
