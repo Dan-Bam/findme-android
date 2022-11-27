@@ -1,10 +1,12 @@
 package com.example.lost_android.util
 
+import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
 import java.text.ParseException
 import java.util.regex.Pattern
+import kotlin.math.roundToInt
 
 fun String.convertNumberToPhoneNumber(): String {
     return try {
@@ -21,6 +23,11 @@ fun String.convertNumberToPhoneNumber(): String {
 
 fun String.removeDot(): String {
     return this.replace("^\"|\"$".toRegex(), "")
+}
+
+fun Int.dp(context: Context): Int {
+    val destiny = context.resources.displayMetrics.density
+    return (this * destiny).roundToInt()
 }
 
 fun EditText.setOnTextChanged(action: (p0: CharSequence?, p1: Int, p2: Int, p3: Int) -> Unit) {
