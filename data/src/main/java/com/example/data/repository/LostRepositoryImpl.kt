@@ -31,4 +31,8 @@ class LostRepositoryImpl @Inject constructor(
     override suspend fun findAll(): List<LostEntity> {
         return lostDataSource.findAll().map { it.toEntity() }
     }
+
+    override suspend fun findCategory(category: String?, address: String): List<LostEntity> {
+        return lostDataSource.findCategory(category, address).map { it.toEntity() }
+    }
 }

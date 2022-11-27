@@ -9,6 +9,7 @@ import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface LostAPI {
     @POST("lost")
@@ -34,4 +35,10 @@ interface LostAPI {
 
     @GET("lost/findAll")
     suspend fun findAll(): List<LostResponse>
+
+    @GET("lost")
+    suspend fun findCategory(
+        @Query("category") category: String?,
+        @Query("place") address: String
+    ): List<LostResponse>
 }

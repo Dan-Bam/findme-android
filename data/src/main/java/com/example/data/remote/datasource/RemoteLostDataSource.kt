@@ -10,4 +10,5 @@ interface RemoteLostDataSource {
     suspend fun deleteLost(lostId: String)
     suspend fun detailLost(lostId: String): LostResponse
     suspend fun findAll(): List<LostResponse>
+    suspend fun findCategory(category: String?, address: String): List<LostResponse>
 }

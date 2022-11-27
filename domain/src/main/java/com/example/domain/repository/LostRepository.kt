@@ -10,4 +10,5 @@ interface LostRepository {
     suspend fun deleteLost(lostId: String)
     suspend fun detailLost(lostId: String): LostEntity
     suspend fun findAll(): List<LostEntity>
+    suspend fun findCategory(category: String?, address: String): List<LostEntity>
 }

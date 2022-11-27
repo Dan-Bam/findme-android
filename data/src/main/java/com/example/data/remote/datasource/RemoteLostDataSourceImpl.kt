@@ -39,4 +39,10 @@ class RemoteLostDataSourceImpl @Inject constructor(
             .httpRequest { lostAPI.findAll() }
             .sendRequest()
     }
+
+    override suspend fun findCategory(category: String?, address: String): List<LostResponse> {
+        return HttpHandler<List<LostResponse>>()
+            .httpRequest { lostAPI.findCategory(category, address) }
+            .sendRequest()
+    }
 }
