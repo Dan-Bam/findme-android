@@ -35,6 +35,7 @@ class AreaDialog: DialogFragment() {
             dismiss()
         }
         initList()
+        binding.closeBtn.setOnClickListener { dismiss() }
         homeViewModel.areaList.observe(this) {
             adapter.submitList(it)
         }
