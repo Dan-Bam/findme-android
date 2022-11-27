@@ -71,23 +71,7 @@ class HomeViewModel @Inject constructor(
 
     fun search() = viewModelScope.launch {
         kotlin.runCatching {
-            val category = when (_currentCategory.value) {
-                "전체보기" -> null
-                "핸드폰" -> "phone"
-                "노트북" -> "labtop"
-                "패드" -> "pad"
-                "웨어러블" -> "wearable"
-                "이어폰" -> "earphone"
-                "반지" -> "ring"
-                "팔찌" -> "brace"
-                "목걸이" -> "necklace"
-                "시계" -> "watch"
-                "겉옷" -> "jacket"
-                "가방" -> "bag"
-                "지갑" -> "wallet"
-                else -> null
-            }
-            findCategoryUseCase.execute(category, _currentArea.value?.fullName ?: "충주")
+            findCategoryUseCase.execute(_currentCategory.value, _currentArea.value?.fullName ?: "충주")
         }.onSuccess {
             _lostList.value = it
         }.onFailure {
@@ -99,7 +83,7 @@ class HomeViewModel @Inject constructor(
         _currentArea.value = area
     }
 
-    fun setCategory(category: String) {
+    fun setCategory(category: String?) {
         _currentCategory.value = category
     }
 

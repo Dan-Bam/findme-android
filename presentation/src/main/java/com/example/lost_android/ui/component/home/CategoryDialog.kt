@@ -11,7 +11,7 @@ import com.example.presentation.R
 import com.example.presentation.databinding.DialogCategoryBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
-class CategoryDialog(context: Context, private val action: (String) -> Unit): BottomSheetDialog(context) {
+class CategoryDialog(context: Context, private val action: (String?) -> Unit): BottomSheetDialog(context) {
     lateinit var binding: DialogCategoryBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +28,7 @@ class CategoryDialog(context: Context, private val action: (String) -> Unit): Bo
 
     fun click(view: View) {
         when (view.id) {
-            R.id.allHolder -> action(context.getString(R.string.all))
+            R.id.allHolder -> action(null)
             R.id.phoneHolder -> action(context.getString(R.string.phone))
             R.id.laptopHolder -> action(context.getString(R.string.laptop))
             R.id.padHolder -> action(context.getString(R.string.pad))
