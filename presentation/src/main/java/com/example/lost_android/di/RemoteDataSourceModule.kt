@@ -23,4 +23,9 @@ abstract class RemoteDataSourceModule {
     abstract fun provideRemoteFoundDataSource(
         remoteFoundDataSourceImpl: RemoteFoundDataSourceImpl
     ): RemoteFoundDataSource
+
+    @Binds
+    abstract fun provideRemoteUserDataSource(
+        remoteUserDataSourceImpl: RemoteUserDataSourceImpl
+    ): RemoteUserDataSource
 }

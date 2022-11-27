@@ -4,6 +4,7 @@ import com.example.data.interceptor.AuthorizationInterceptor
 import com.example.data.remote.network.AuthAPI
 import com.example.data.remote.network.FoundAPI
 import com.example.data.remote.network.LostAPI
+import com.example.data.remote.network.UserAPI
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,6 +12,7 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -61,5 +63,10 @@ object NetworkModule {
     @Provides
     fun provideFoundAPI(retrofit: Retrofit): FoundAPI {
         return retrofit.create(FoundAPI::class.java)
+    }
+
+    @Provides
+    fun provideUserAPI(retrofit: Retrofit): UserAPI {
+        return retrofit.create(UserAPI::class.java)
     }
 }
