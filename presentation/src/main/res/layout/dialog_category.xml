@@ -100,7 +100,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_all"
+                android:background="@drawable/ic_handphone"
                 app:layout_constraintBottom_toBottomOf="@id/phoneHolder"
                 app:layout_constraintEnd_toEndOf="@id/phoneHolder"
                 app:layout_constraintStart_toStartOf="@id/phoneHolder"
@@ -129,7 +129,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_all"
+                android:background="@drawable/ic_laptop"
                 app:layout_constraintBottom_toBottomOf="@id/laptopHolder"
                 app:layout_constraintEnd_toEndOf="@id/laptopHolder"
                 app:layout_constraintStart_toStartOf="@id/laptopHolder"
@@ -158,7 +158,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_all"
+                android:background="@drawable/ic_pad"
                 app:layout_constraintBottom_toBottomOf="@id/padHolder"
                 app:layout_constraintEnd_toEndOf="@id/padHolder"
                 app:layout_constraintStart_toStartOf="@id/padHolder"
@@ -187,7 +187,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_all"
+                android:background="@drawable/ic_wear"
                 app:layout_constraintBottom_toBottomOf="@id/wearHolder"
                 app:layout_constraintEnd_toEndOf="@id/wearHolder"
                 app:layout_constraintStart_toStartOf="@id/wearHolder"
@@ -216,7 +216,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_all"
+                android:background="@drawable/ic_earphone"
                 app:layout_constraintBottom_toBottomOf="@id/earPhoneHolder"
                 app:layout_constraintEnd_toEndOf="@id/earPhoneHolder"
                 app:layout_constraintStart_toStartOf="@id/earPhoneHolder"
@@ -255,7 +255,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_all"
+                android:background="@drawable/ic_ring"
                 app:layout_constraintBottom_toBottomOf="@id/ringHolder"
                 app:layout_constraintEnd_toEndOf="@id/ringHolder"
                 app:layout_constraintStart_toStartOf="@id/ringHolder"
@@ -284,7 +284,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_all"
+                android:background="@drawable/ic_hand_ring"
                 app:layout_constraintBottom_toBottomOf="@id/handRingHolder"
                 app:layout_constraintEnd_toEndOf="@id/handRingHolder"
                 app:layout_constraintStart_toStartOf="@id/handRingHolder"
@@ -313,7 +313,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_all"
+                android:background="@drawable/ic_neck_ring"
                 app:layout_constraintBottom_toBottomOf="@id/neckRingHolder"
                 app:layout_constraintEnd_toEndOf="@id/neckRingHolder"
                 app:layout_constraintStart_toStartOf="@id/neckRingHolder"
@@ -342,7 +342,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_all"
+                android:background="@drawable/ic_watch"
                 app:layout_constraintBottom_toBottomOf="@id/watchHolder"
                 app:layout_constraintEnd_toEndOf="@id/watchHolder"
                 app:layout_constraintStart_toStartOf="@id/watchHolder"
@@ -381,7 +381,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_all"
+                android:background="@drawable/ic_outer"
                 app:layout_constraintBottom_toBottomOf="@id/outerHolder"
                 app:layout_constraintEnd_toEndOf="@id/outerHolder"
                 app:layout_constraintStart_toStartOf="@id/outerHolder"
@@ -410,7 +410,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_all"
+                android:background="@drawable/ic_bag"
                 app:layout_constraintBottom_toBottomOf="@id/bagHolder"
                 app:layout_constraintEnd_toEndOf="@id/bagHolder"
                 app:layout_constraintStart_toStartOf="@id/bagHolder"
@@ -439,7 +439,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_all"
+                android:background="@drawable/ic_wallet"
                 app:layout_constraintBottom_toBottomOf="@id/walletHolder"
                 app:layout_constraintEnd_toEndOf="@id/walletHolder"
                 app:layout_constraintStart_toStartOf="@id/walletHolder"
