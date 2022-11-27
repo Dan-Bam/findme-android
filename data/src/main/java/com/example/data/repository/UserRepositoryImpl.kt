@@ -12,4 +12,8 @@ class UserRepositoryImpl @Inject constructor(
     override suspend fun myLost(): List<MyEntryEntity> {
         return userDataSource.myLost().map { it.toEntity() }
     }
+
+    override suspend fun myFound(): List<MyEntryEntity> {
+        return userDataSource.myFound().map { it.toEntity() }
+    }
 }

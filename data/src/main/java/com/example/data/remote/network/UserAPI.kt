@@ -6,4 +6,6 @@ import retrofit2.http.GET
 interface UserAPI {
     @GET("user/lost")
     suspend fun myLost(): List<MyEntryResponse>
+    @GET("user/found")
+    suspend fun myFound(): List<MyEntryResponse>
 }

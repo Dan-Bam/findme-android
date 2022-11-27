@@ -13,4 +13,10 @@ class RemoteUserDataSourceImpl @Inject constructor(
             .httpRequest { userAPI.myLost() }
             .sendRequest()
     }
+
+    override suspend fun myFound(): List<MyEntryResponse> {
+        return HttpHandler<List<MyEntryResponse>>()
+            .httpRequest { userAPI.myFound() }
+            .sendRequest()
+    }
 }
