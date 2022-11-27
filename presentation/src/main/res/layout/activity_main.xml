@@ -38,8 +38,8 @@
 
         <ImageView
             android:id="@+id/optionBtn"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
+            android:layout_width="18dp"
+            android:layout_height="11dp"
             android:layout_marginStart="6dp"
             app:layout_constraintStart_toEndOf="@id/titleTxt"
             app:layout_constraintTop_toTopOf="parent"
