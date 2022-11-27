@@ -31,6 +31,7 @@
         <TextView
             android:id="@+id/titleTxt"
             style="@style/text24700"
+            android:onClick="@{mainActivity::click}"
             android:fontFamily="@font/pretendard_bold"
             android:textColor="@color/black"
             android:layout_marginStart="12dp"
@@ -40,6 +41,7 @@
 
         <ImageView
             android:id="@+id/optionBtn"
+            android:onClick="@{mainActivity::click}"
             android:layout_width="18dp"
             android:layout_height="11dp"
             android:layout_marginStart="6dp"

@@ -6,6 +6,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.lost_android.ui.base.BaseActivity
 import com.example.lost_android.ui.component.home.AreaDialog
+import com.example.lost_android.ui.component.home.CategoryDialog
 import com.example.lost_android.viewmodel.HomeViewModel
 import com.example.lost_android.viewmodel.MainViewModel
 import com.example.presentation.R
@@ -23,12 +24,18 @@ class MainActivity : BaseActivity<ActivityMainBinding> (R.layout.activity_main) 
         settingBottomNav()
         observeTitle()
         observeArea()
+        observeCategory()
     }
 
     fun click(view: View) {
         when (view.id) {
             R.id.locateTxt, R.id.optionLocationBtn -> {
                 AreaDialog().show(supportFragmentManager, "AreaDialog")
+            }
+            R.id.titleTxt, R.id.optionBtn -> {
+                CategoryDialog(this) {
+                    homeViewModel.setCategory(it)
+                }.show()
             }
         }
     }
@@ -45,6 +52,12 @@ class MainActivity : BaseActivity<ActivityMainBinding> (R.layout.activity_main) 
 
     private fun observeArea() = homeViewModel.currentArea.observe(this) {
         binding.locateTxt.text = it.areaName
+        homeViewModel.search()
+    }
+
+    private fun observeCategory() = homeViewModel.currentCategory.observe(this) {
+        binding.titleTxt.text = it
+        homeViewModel.search()
     }
 
     private fun settingBottomNav(){

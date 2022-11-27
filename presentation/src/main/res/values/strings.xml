@@ -40,14 +40,26 @@
     <string name="moveFindQuestion">습득물 사진 등록 후 요청을 보내고\n분실자가 요청 승인 후\n채팅 할 수 있습니다.</string>
     
 <!--    카테고리-->
-    <string name="all">전체</string>
+    <string name="all">전체보기</string>
     <string name="IT">전자기기</string>
-    <string name="metal">귀금속</string>
+    <string name="metal">귀중품</string>
     <string name="cloth">의류</string>
-    <string name="life">생활용품</string>
-    <string name="etc">기타</string>
-    
-<!--    로그인 및 회원가입-->
+
+    <string name="entire">전체</string>
+    <string name="phone">핸드폰</string>
+    <string name="laptop">노트북</string>
+    <string name="pad">패드</string>
+    <string name="wear">웨어러블</string>
+    <string name="earphone">이어폰</string>
+    <string name="ring">반지</string>
+    <string name="handRing">팔찌</string>
+    <string name="neckRing">목걸이</string>
+    <string name="watch">시계</string>
+    <string name="outer">겉옷</string>
+    <string name="bag">가방</string>
+    <string name="wallet">지갑</string>
+
+    <!--    로그인 및 회원가입-->
     <string name="register">회원가입</string>
     <string name="login">로그인</string>
     <string name="writeId">아이디를 입력해주세요.</string>
