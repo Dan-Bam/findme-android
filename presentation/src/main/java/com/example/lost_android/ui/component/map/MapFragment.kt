@@ -7,6 +7,7 @@ import android.location.LocationManager
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
+import com.example.lost_android.ui.adapter.ClusterAdapter
 import com.example.lost_android.ui.base.BaseFragment
 import com.example.lost_android.ui.component.map.model.MapData
 import com.example.lost_android.util.checkPermission
@@ -73,6 +74,7 @@ class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map), OnM
         mMap = p0
         mMap.apply {
             clusterManager = ClusterManager<MapData>(requireContext(), mMap)
+            clusterManager.renderer = ClusterAdapter(requireContext(), mMap, clusterManager)
             setMinZoomPreference(8f)
             setMaxZoomPreference(17f)
             setOnCameraIdleListener(clusterManager)
