@@ -56,7 +56,11 @@ class MainActivity : BaseActivity<ActivityMainBinding> (R.layout.activity_main) 
     }
 
     private fun observeCategory() = homeViewModel.currentCategory.observe(this) {
-        binding.titleTxt.text = it
+        if (it == null) {
+            binding.titleTxt.text = getString(R.string.all)
+        } else {
+            binding.titleTxt.text = it
+        }
         homeViewModel.search()
     }
 
