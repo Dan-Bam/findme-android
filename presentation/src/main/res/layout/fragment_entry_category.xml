@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="entryCategoryFragment"
+            type="com.example.lost_android.ui.component.entry.EntryCategoryFragment" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/ic_back"
+            android:onClick="@{entryCategoryFragment::click}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/backTxt"
+            style="@style/text13400"
+            android:layout_marginStart="8dp"
+            android:onClick="@{entryCategoryFragment::click}"
+            android:text="@string/back"
+            android:textColor="@color/mainColor"
+            app:layout_constraintBottom_toBottomOf="@id/backBtn"
+            app:layout_constraintStart_toEndOf="@id/backBtn"
+            app:layout_constraintTop_toTopOf="@id/backBtn" />
+
+        <TextView
+            android:id="@+id/it"
+            style="@style/text24700"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="35dp"
+            android:fontFamily="@font/pretendard_bold"
+            android:text="@string/IT"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/backBtn" />
+
+        <View
+            android:id="@+id/phoneHolder"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_category"
+            android:onClick="@{entryCategoryFragment::click}"
+            app:layout_constraintStart_toStartOf="@id/it"
+            app:layout_constraintTop_toBottomOf="@id/it" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_handphone"
+            app:layout_constraintBottom_toBottomOf="@id/phoneHolder"
+            app:layout_constraintEnd_toEndOf="@id/phoneHolder"
+            app:layout_constraintStart_toStartOf="@id/phoneHolder"
+            app:layout_constraintTop_toTopOf="@id/phoneHolder" />
+
+        <TextView
+            android:id="@+id/phoneTxt"
+            style="@style/text13500"
+            android:layout_marginTop="4dp"
+            android:text="@string/phone"
+            app:layout_constraintEnd_toEndOf="@id/phoneHolder"
+            app:layout_constraintStart_toStartOf="@id/phoneHolder"
+            app:layout_constraintTop_toBottomOf="@id/phoneHolder" />
+
+        <View
+            android:id="@+id/laptopHolder"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_category"
+            android:onClick="@{entryCategoryFragment::click}"
+            app:layout_constraintStart_toEndOf="@id/phoneHolder"
+            app:layout_constraintTop_toBottomOf="@id/it" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_laptop"
+            app:layout_constraintBottom_toBottomOf="@id/laptopHolder"
+            app:layout_constraintEnd_toEndOf="@id/laptopHolder"
+            app:layout_constraintStart_toStartOf="@id/laptopHolder"
+            app:layout_constraintTop_toTopOf="@id/laptopHolder" />
+
+        <TextView
+            android:id="@+id/laptopTxt"
+            style="@style/text13500"
+            android:layout_marginTop="4dp"
+            android:text="@string/laptop"
+            app:layout_constraintEnd_toEndOf="@id/laptopHolder"
+            app:layout_constraintStart_toStartOf="@id/laptopHolder"
+            app:layout_constraintTop_toBottomOf="@id/laptopHolder" />
+
+        <View
+            android:id="@+id/padHolder"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_category"
+            android:onClick="@{entryCategoryFragment::click}"
+            app:layout_constraintStart_toEndOf="@id/laptopHolder"
+            app:layout_constraintTop_toBottomOf="@id/it" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_pad"
+            app:layout_constraintBottom_toBottomOf="@id/padHolder"
+            app:layout_constraintEnd_toEndOf="@id/padHolder"
+            app:layout_constraintStart_toStartOf="@id/padHolder"
+            app:layout_constraintTop_toTopOf="@id/padHolder" />
+
+        <TextView
+            android:id="@+id/padTxt"
+            style="@style/text13500"
+            android:layout_marginTop="4dp"
+            android:text="@string/pad"
+            app:layout_constraintEnd_toEndOf="@id/padHolder"
+            app:layout_constraintStart_toStartOf="@id/padHolder"
+            app:layout_constraintTop_toBottomOf="@id/padHolder" />
+
+        <View
+            android:id="@+id/wearHolder"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_category"
+            android:onClick="@{entryCategoryFragment::click}"
+            app:layout_constraintStart_toEndOf="@id/padHolder"
+            app:layout_constraintTop_toBottomOf="@id/it" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_wear"
+            app:layout_constraintBottom_toBottomOf="@id/wearHolder"
+            app:layout_constraintEnd_toEndOf="@id/wearHolder"
+            app:layout_constraintStart_toStartOf="@id/wearHolder"
+            app:layout_constraintTop_toTopOf="@id/wearHolder" />
+
+        <TextView
+            android:id="@+id/wearTxt"
+            style="@style/text13500"
+            android:layout_marginTop="4dp"
+            android:text="@string/wear"
+            app:layout_constraintEnd_toEndOf="@id/wearHolder"
+            app:layout_constraintStart_toStartOf="@id/wearHolder"
+            app:layout_constraintTop_toBottomOf="@id/wearHolder" />
+
+        <View
+            android:id="@+id/earPhoneHolder"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_category"
+            android:onClick="@{entryCategoryFragment::click}"
+            app:layout_constraintStart_toEndOf="@id/wearHolder"
+            app:layout_constraintTop_toBottomOf="@id/it" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_earphone"
+            app:layout_constraintBottom_toBottomOf="@id/earPhoneHolder"
+            app:layout_constraintEnd_toEndOf="@id/earPhoneHolder"
+            app:layout_constraintStart_toStartOf="@id/earPhoneHolder"
+            app:layout_constraintTop_toTopOf="@id/earPhoneHolder" />
+
+        <TextView
+            android:id="@+id/earPhoneTxt"
+            style="@style/text13500"
+            android:layout_marginTop="4dp"
+            android:text="@string/earphone"
+            app:layout_constraintEnd_toEndOf="@id/earPhoneHolder"
+            app:layout_constraintStart_toStartOf="@id/earPhoneHolder"
+            app:layout_constraintTop_toBottomOf="@id/earPhoneHolder" />
+
+        <TextView
+            android:id="@+id/metal"
+            style="@style/text24700"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/pretendard_bold"
+            android:text="@string/metal"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/phoneTxt" />
+
+        <View
+            android:id="@+id/ringHolder"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_category"
+            android:onClick="@{entryCategoryFragment::click}"
+            app:layout_constraintStart_toStartOf="@id/it"
+            app:layout_constraintTop_toBottomOf="@id/metal" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_ring"
+            app:layout_constraintBottom_toBottomOf="@id/ringHolder"
+            app:layout_constraintEnd_toEndOf="@id/ringHolder"
+            app:layout_constraintStart_toStartOf="@id/ringHolder"
+            app:layout_constraintTop_toTopOf="@id/ringHolder" />
+
+        <TextView
+            android:id="@+id/ringTxt"
+            style="@style/text13500"
+            android:layout_marginTop="4dp"
+            android:text="@string/ring"
+            app:layout_constraintEnd_toEndOf="@id/ringHolder"
+            app:layout_constraintStart_toStartOf="@id/ringHolder"
+            app:layout_constraintTop_toBottomOf="@id/ringHolder" />
+
+        <View
+            android:id="@+id/handRingHolder"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_category"
+            android:onClick="@{entryCategoryFragment::click}"
+            app:layout_constraintStart_toEndOf="@id/ringHolder"
+            app:layout_constraintTop_toBottomOf="@id/metal" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_hand_ring"
+            app:layout_constraintBottom_toBottomOf="@id/handRingHolder"
+            app:layout_constraintEnd_toEndOf="@id/handRingHolder"
+            app:layout_constraintStart_toStartOf="@id/handRingHolder"
+            app:layout_constraintTop_toTopOf="@id/handRingHolder" />
+
+        <TextView
+            android:id="@+id/handRingTxt"
+            style="@style/text13500"
+            android:layout_marginTop="4dp"
+            android:text="@string/handRing"
+            app:layout_constraintEnd_toEndOf="@id/handRingHolder"
+            app:layout_constraintStart_toStartOf="@id/handRingHolder"
+            app:layout_constraintTop_toBottomOf="@id/handRingHolder" />
+
+        <View
+            android:id="@+id/neckRingHolder"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_category"
+            android:onClick="@{entryCategoryFragment::click}"
+            app:layout_constraintStart_toEndOf="@id/handRingHolder"
+            app:layout_constraintTop_toBottomOf="@id/metal" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_neck_ring"
+            app:layout_constraintBottom_toBottomOf="@id/neckRingHolder"
+            app:layout_constraintEnd_toEndOf="@id/neckRingHolder"
+            app:layout_constraintStart_toStartOf="@id/neckRingHolder"
+            app:layout_constraintTop_toTopOf="@id/neckRingHolder" />
+
+        <TextView
+            android:id="@+id/neckRingTxt"
+            style="@style/text13500"
+            android:layout_marginTop="4dp"
+            android:text="@string/neckRing"
+            app:layout_constraintEnd_toEndOf="@id/neckRingHolder"
+            app:layout_constraintStart_toStartOf="@id/neckRingHolder"
+            app:layout_constraintTop_toBottomOf="@id/neckRingHolder" />
+
+        <View
+            android:id="@+id/watchHolder"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_category"
+            android:onClick="@{entryCategoryFragment::click}"
+            app:layout_constraintStart_toEndOf="@id/neckRingHolder"
+            app:layout_constraintTop_toBottomOf="@id/metal" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_watch"
+            app:layout_constraintBottom_toBottomOf="@id/watchHolder"
+            app:layout_constraintEnd_toEndOf="@id/watchHolder"
+            app:layout_constraintStart_toStartOf="@id/watchHolder"
+            app:layout_constraintTop_toTopOf="@id/watchHolder" />
+
+        <TextView
+            android:id="@+id/watchTxt"
+            style="@style/text13500"
+            android:layout_marginTop="4dp"
+            android:text="@string/watch"
+            app:layout_constraintEnd_toEndOf="@id/watchHolder"
+            app:layout_constraintStart_toStartOf="@id/watchHolder"
+            app:layout_constraintTop_toBottomOf="@id/watchHolder" />
+
+        <TextView
+            android:id="@+id/cloth"
+            style="@style/text24700"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/pretendard_bold"
+            android:text="@string/cloth"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ringTxt" />
+
+        <TextView
+            android:id="@+id/titleTxt"
+            style="@style/text22700"
+            android:fontFamily="@font/pretendard_bold"
+            android:text="@string/lostEntry"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/backBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/backBtn" />
+
+        <View
+            android:id="@+id/outerHolder"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_category"
+            android:onClick="@{entryCategoryFragment::click}"
+            app:layout_constraintStart_toStartOf="@id/it"
+            app:layout_constraintTop_toBottomOf="@id/cloth" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_outer"
+            app:layout_constraintBottom_toBottomOf="@id/outerHolder"
+            app:layout_constraintEnd_toEndOf="@id/outerHolder"
+            app:layout_constraintStart_toStartOf="@id/outerHolder"
+            app:layout_constraintTop_toTopOf="@id/outerHolder" />
+
+        <TextView
+            android:id="@+id/outerTxt"
+            style="@style/text13500"
+            android:layout_marginTop="4dp"
+            android:text="@string/outer"
+            app:layout_constraintEnd_toEndOf="@id/outerHolder"
+            app:layout_constraintStart_toStartOf="@id/outerHolder"
+            app:layout_constraintTop_toBottomOf="@id/outerHolder" />
+
+        <View
+            android:id="@+id/bagHolder"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_category"
+            android:onClick="@{entryCategoryFragment::click}"
+            app:layout_constraintStart_toEndOf="@id/outerHolder"
+            app:layout_constraintTop_toBottomOf="@id/cloth" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_bag"
+            app:layout_constraintBottom_toBottomOf="@id/bagHolder"
+            app:layout_constraintEnd_toEndOf="@id/bagHolder"
+            app:layout_constraintStart_toStartOf="@id/bagHolder"
+            app:layout_constraintTop_toTopOf="@id/bagHolder" />
+
+        <TextView
+            android:id="@+id/bagTxt"
+            style="@style/text13500"
+            android:layout_marginTop="4dp"
+            android:text="@string/bag"
+            app:layout_constraintEnd_toEndOf="@id/bagHolder"
+            app:layout_constraintStart_toStartOf="@id/bagHolder"
+            app:layout_constraintTop_toBottomOf="@id/bagHolder" />
+
+        <View
+            android:id="@+id/walletHolder"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_category"
+            android:onClick="@{entryCategoryFragment::click}"
+            app:layout_constraintStart_toEndOf="@id/bagHolder"
+            app:layout_constraintTop_toBottomOf="@id/cloth" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_wallet"
+            app:layout_constraintBottom_toBottomOf="@id/walletHolder"
+            app:layout_constraintEnd_toEndOf="@id/walletHolder"
+            app:layout_constraintStart_toStartOf="@id/walletHolder"
+            app:layout_constraintTop_toTopOf="@id/walletHolder" />
+
+        <TextView
+            android:id="@+id/walletTxt"
+            style="@style/text13500"
+            android:layout_marginTop="4dp"
+            android:text="@string/wallet"
+            app:layout_constraintEnd_toEndOf="@id/walletHolder"
+            app:layout_constraintStart_toStartOf="@id/walletHolder"
+            app:layout_constraintTop_toBottomOf="@id/walletHolder" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/nextBtn"
+            android:onClick="@{entryCategoryFragment::click}"
+            style="@style/registerBtn"
+            android:text="@string/next"
+            android:layout_marginBottom="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
