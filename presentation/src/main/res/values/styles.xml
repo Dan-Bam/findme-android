@@ -45,6 +45,18 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="searchText">
+        <item name="android:fontFamily">@font/pretendard</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@null</item>
+        <item name="hintTextColor">@color/gray2</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontWeight">400</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="text24700">
         <item name="android:fontFamily">@font/pretendard</item>
         <item name="android:fontStyle">normal</item>
@@ -54,12 +66,12 @@
         <item name="android:fontWeight">700</item>
     </style>
 
-    <style name="text22700">
+    <style name="text18500">
         <item name="android:fontFamily">@font/pretendard</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">22sp</item>
-        <item name="android:fontWeight">700</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontWeight">500</item>
     </style>
     
     <style name="text16500">
