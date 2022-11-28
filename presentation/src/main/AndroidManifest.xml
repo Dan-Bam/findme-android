@@ -4,10 +4,10 @@
     package="com.example.lost_android">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".di.FindMeApp"
@@ -16,6 +16,7 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Lostandroid"
@@ -44,12 +45,15 @@
         <activity
             android:name=".ui.component.register.RegisterActivity"
             android:exported="false" />
-        <activity android:name=".ui.component.detail.DetailActivity"
-            android:exported="false"/>
-        <activity android:name=".ui.component.entry.EntryActivity"
-            android:exported="false"/>
-        <activity android:name=".ui.component.profile.ProfileActivity"
-            android:exported="false"/>
+        <activity
+            android:name=".ui.component.detail.DetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.component.entry.EntryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.component.profile.ProfileActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
