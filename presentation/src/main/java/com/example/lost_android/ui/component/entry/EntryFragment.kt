@@ -29,7 +29,14 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
         setTitle()
         isEntry()
         isData()
+        observeIsEntry()
         binding.isSafeSwitch.setOnCheckedChangeListener { _, b ->
+        }
+    }
+
+    private fun observeIsEntry() = entryViewModel.isEntry.observe(this) {
+        if (it) {
+            requireActivity().finish()
         }
     }
 
@@ -98,7 +105,6 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
                 entryViewModel.entryLost(
                     File(entryViewModel.currentUri.value!!.getPath(requireContext()))
                 )
-                requireActivity().finish()
             }
         }
     }

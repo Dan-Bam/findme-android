@@ -28,6 +28,8 @@ class EntryViewModel @Inject constructor(
     val category: MutableLiveData<String> get() = _category
     private val _params = SingleLiveEvent<HashMap<String, String>>()
     val params: MutableLiveData<HashMap<String, String>> get() = _params
+    private val _isEntry = SingleLiveEvent<Boolean>()
+    val isEntry: MutableLiveData<Boolean> get() = _isEntry
 
     fun setTitle(title: String) {
         _title.value = title
@@ -58,6 +60,7 @@ class EntryViewModel @Inject constructor(
 
     fun entryLost(file: File) = viewModelScope.launch {
         kotlin.runCatching {
+            _isEntry.value = false
             val params = LostParam(
                 _params.value!!["title"]!!,
                 _params.value!!["description"]!!,
@@ -70,7 +73,7 @@ class EntryViewModel @Inject constructor(
             )
             entryLostUseCase.execute(params, file.toRequestBody())
         }.onSuccess {
-
+            _isEntry.value = true
         }.onFailure {
             println("안녕 $it")
         }
