@@ -139,14 +139,65 @@
                 app:layout_constraintStart_toStartOf="@id/backBtn"
                 app:layout_constraintTop_toBottomOf="@id/writeDescription" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/chooseLocationBtn"
-                style="@style/blueBtn"
+                style="@style/whiteBtn"
+                android:onClick="@{entryFragment::click}"
                 android:layout_marginTop="12dp"
-                android:text="@string/chooseLocation"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/chooseLocation" />
+                app:layout_constraintTop_toBottomOf="@id/chooseLocation">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/unSelectLocationLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/chooseLocationTxt"
+                        style="@style/text14500"
+                        android:text="@string/chooseLocation"
+                        android:textColor="@color/mainColor"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:background="@drawable/ic_pin_sharp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/chooseLocationTxt"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/selectedLocateLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/selectLocateTxt"
+                        style="@style/text14500"
+                        android:layout_marginStart="28dp"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        style="@style/text13500"
+                        android:layout_marginEnd="32dp"
+                        android:text="@string/change"
+                        android:textColor="@color/mainColor"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/setTag"

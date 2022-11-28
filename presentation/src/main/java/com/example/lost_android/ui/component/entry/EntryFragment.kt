@@ -13,6 +13,7 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
         binding.entryFragment = this
         setTitle()
         isLost()
+        isSelectLocate()
     }
 
     private fun setTitle() {
@@ -29,10 +30,20 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
         }
     }
 
+    private fun isSelectLocate() {
+        if (entryViewModel.currentAddress.value != null) {
+            binding.selectLocateTxt.text = entryViewModel.currentAddress.value!!.address
+            binding.selectedLocateLayout.visibility = View.VISIBLE
+            binding.unSelectLocationLayout.visibility = View.GONE
+        }
+    }
+
     fun click(view: View) {
         when (view.id) {
             R.id.backBtn, R.id.backTxt -> requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.entryContainer, EntryCategoryFragment()).commit()
+            R.id.chooseLocationBtn -> requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.entryContainer, EntryMapFragment()).commit()
         }
     }
 }

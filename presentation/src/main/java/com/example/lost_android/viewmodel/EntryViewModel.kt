@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.domain.usecase.lost.EntryLostUseCase
 import com.example.lost_android.util.SingleLiveEvent
+import com.google.android.gms.maps.model.LatLng
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -13,8 +14,19 @@ class EntryViewModel @Inject constructor(
 ): ViewModel() {
     private val _title = SingleLiveEvent<String>()
     val title: MutableLiveData<String> get() = _title
+    private val _currentAddress = SingleLiveEvent<Address>()
+    val currentAddress: MutableLiveData<Address> get() = _currentAddress
 
     fun setTitle(title: String) {
         _title.value = title
     }
+
+    fun setAddress(address: Address) {
+        _currentAddress.value = address
+    }
+
+    data class Address(
+        val address:  String,
+        val latLng: LatLng
+    )
 }
