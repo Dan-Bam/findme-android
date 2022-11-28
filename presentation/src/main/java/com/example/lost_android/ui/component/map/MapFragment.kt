@@ -24,7 +24,6 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.maps.android.clustering.ClusterManager
-import com.google.maps.android.clustering.ClusterManager.OnClusterItemClickListener
 
 
 class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map), OnMapReadyCallback {
@@ -80,7 +79,7 @@ class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map), OnM
         mMap.apply {
             clusterManager = ClusterManager<MapData>(requireContext(), mMap)
             clusterManager.renderer = ClusterAdapter(requireContext(), mMap, clusterManager)
-            clusterManager.setOnClusterItemClickListener { it ->
+            clusterManager.setOnClusterItemClickListener {
                 DetailDialog(requireContext(), it).show()
                 false
             }
@@ -96,9 +95,13 @@ class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map), OnM
         if (currentMarker != null) {
             currentMarker!!.remove()
         }
-        currentMarker = this.addMarker(MarkerOptions().position(currentLatLng ?: LatLng(37.5662952,126.97794509999994)).icon(BitmapDescriptorFactory.fromBitmap(
-            getBitmapFromVectorDrawable(requireContext(), R.drawable.ic_my_location)!!
-        )))!!
+        currentMarker = this.addMarker(
+            MarkerOptions().position(currentLatLng ?: LatLng(37.5662952, 126.97794509999994)).icon(
+                BitmapDescriptorFactory.fromBitmap(
+                    getBitmapFromVectorDrawable(requireContext(), R.drawable.ic_my_location)!!
+                )
+            )
+        )!!
         moveCamera(
             CameraUpdateFactory.newLatLngZoom(
                 currentLatLng ?: LatLng(
@@ -125,7 +128,7 @@ class MapFragment : BaseFragment<FragmentMapBinding>(R.layout.fragment_map), OnM
     private fun getLocation() {
         val locationManager =
             activity?.getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        val location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+        val location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER) ?: locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
         currentLatLng = if (location == null) {
             Toast.makeText(context, "위치를 찾을 수 없습니다.", Toast.LENGTH_SHORT).show()
             LatLng(37.5662952, 126.97794509999994)
