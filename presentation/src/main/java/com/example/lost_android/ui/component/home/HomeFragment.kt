@@ -33,7 +33,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding> (R.layout.fragment_home) {
     }
 
     private fun initLostList() = binding.lostList.apply {
-        this@HomeFragment.adapter = LostAdapter {
+        this@HomeFragment.adapter = LostAdapter(requireContext()) {
             requireActivity().startActivity(Intent(context, DetailActivity::class.java).putExtra("lostId", it.id).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
         }
         adapter = this@HomeFragment.adapter
