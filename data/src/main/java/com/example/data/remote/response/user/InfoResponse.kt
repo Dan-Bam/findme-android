@@ -11,15 +11,12 @@ data class InfoResponse(
     @SerializedName("address")
     val address: String,
     @SerializedName("phoneNumber")
-    val phoneNumber: String,
-    @SerializedName("imageUrl")
-    val imageUrl: String
+    val phoneNumber: String
 )
 
 fun InfoResponse.toEntity() = InfoEntity(
     id = id,
     userName = userName,
     address = address,
-    phoneNumber = phoneNumber,
-    imageUrl = imageUrl
+    phoneNumber = phoneNumber
 )
