@@ -5,14 +5,16 @@ import com.example.data.remote.request.lost.EditLostRequest
 import com.example.data.remote.request.lost.LostRequest
 import com.example.data.remote.response.lost.LostResponse
 import com.example.data.util.HttpHandler
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import javax.inject.Inject
 
 class RemoteLostDataSourceImpl @Inject constructor(
     private val lostAPI: LostAPI
 ): RemoteLostDataSource {
-    override suspend fun registerLost(lostRequest: LostRequest) {
+    override suspend fun registerLost(lostRequest: LostRequest, file: MultipartBody.Part) {
         return HttpHandler<Unit>()
-            .httpRequest { lostAPI.registerLost(lostRequest) }
+            .httpRequest { lostAPI.registerLost(lostRequest, file) }
             .sendRequest()
     }
 

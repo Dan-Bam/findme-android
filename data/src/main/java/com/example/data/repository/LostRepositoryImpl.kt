@@ -7,13 +7,15 @@ import com.example.domain.entity.lost.LostEntity
 import com.example.domain.param.lost.EditLostParam
 import com.example.domain.param.lost.LostParam
 import com.example.domain.repository.LostRepository
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import javax.inject.Inject
 
 class LostRepositoryImpl @Inject constructor(
     private val lostDataSource: RemoteLostDataSource
 ): LostRepository {
-    override suspend fun registerLost(lostParam: LostParam) {
-        return lostDataSource.registerLost(lostParam.toRequest())
+    override suspend fun registerLost(lostParam: LostParam, file: MultipartBody.Part) {
+        return lostDataSource.registerLost(lostParam.toRequest(), file)
     }
 
     override suspend fun editLost(lostId: String, editLostParam: EditLostParam) {
