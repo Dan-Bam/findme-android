@@ -28,12 +28,11 @@ class EntryCategoryFragment :
             binding.bagHolder,
             binding.walletHolder
         )
-        entryViewModel.setTitle(requireActivity().intent.getStringExtra("type")!!)
-        observeTitle()
+        setTitle()
     }
 
-    private fun observeTitle() = entryViewModel.title.observe(this) {
-        binding.titleTxt.text = it
+    private fun setTitle() {
+        binding.titleTxt.text = entryViewModel.title.value
     }
 
     fun click(view: View) {
