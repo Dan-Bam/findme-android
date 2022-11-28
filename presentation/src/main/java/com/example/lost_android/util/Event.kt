@@ -12,10 +12,13 @@ import android.os.Build
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.Fragment
+import com.google.android.gms.maps.model.LatLng
+import java.io.IOException
 import java.util.*
 
 
@@ -90,4 +93,33 @@ fun checkPermission(context: Fragment, permissions: List<String>): Boolean {
         }
     }
     return true
+}
+
+fun getAddress(context: Context, latitude: Double, longitude: Double): String{
+    val geocoder = Geocoder(context, Locale.KOREA)
+    var nowAddr = "현재 위치를 확인 할 수 없습니다"
+    try {
+        val address = geocoder.getFromLocation(latitude,longitude,1)
+        if(address != null && address.isNotEmpty()){
+            nowAddr = address[0].getAddressLine(0).toString()
+        }
+    }catch (e: IOException){
+        Toast.makeText(context, "주소를 가져올 수 없습니다", Toast.LENGTH_SHORT).show()
+        e.printStackTrace()
+    }
+    return nowAddr
+}
+
+fun getPosition(context: Context, address: String): LatLng? {
+    val geocoder = Geocoder(context, Locale.KOREA)
+    var position = LatLng(37.554891, 126.970814)
+    val list = geocoder.getFromLocationName(address, 1)
+    if(list != null) {
+        if (list.size == 0) {
+            return null
+        } else {
+            return LatLng(list[0].latitude, list[0].longitude)
+        }
+    }
+    return null
 }
