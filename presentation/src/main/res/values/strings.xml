@@ -15,9 +15,12 @@
     <string name="editMyInfo">내정보 수정</string>
     <string name="finish">완료</string>
     <string name="changeLocation">위치 변경</string>
-    <string name="searchLocation">위치 검색</string>기
+    <string name="searchLocation">위치 검색</string>
     <string name="edit">수정하기</string>
     <string name="delete">삭제하기</string>
+    <string name="recommendLost">추천 습득물</string>
+    <string name="myLost">내 분실물</string>
+    <string name="myFound">내 습득물</string>
 
 <!--    등록-->
     <string name="selectCategory">분류될 카테고리를 선택해주세요.</string>
