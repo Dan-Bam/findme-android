@@ -63,6 +63,20 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="entryText">
+        <item name="android:fontFamily">@font/pretendard</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_search_text</item>
+        <item name="hintTextColor">@color/gray2</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginHorizontal">12dp</item>
+        <item name="android:paddingHorizontal">12dp</item>
+        <item name="android:paddingVertical">14dp</item>
+        <item name="android:fontWeight">400</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="text24700">
         <item name="android:fontFamily">@font/pretendard</item>
         <item name="android:fontStyle">normal</item>
