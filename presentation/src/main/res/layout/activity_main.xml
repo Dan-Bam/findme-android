@@ -73,6 +73,8 @@
             android:background="@drawable/ic_option_location"/>
 
         <ImageView
+            android:id="@+id/profileBtn"
+            android:onClick="@{mainActivity::click}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"

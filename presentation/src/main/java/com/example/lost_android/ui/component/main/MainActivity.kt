@@ -1,5 +1,6 @@
 package com.example.lost_android.ui.component.main
 
+import android.content.Intent
 import android.view.View
 import androidx.activity.viewModels
 import androidx.navigation.fragment.findNavController
@@ -7,6 +8,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.lost_android.ui.base.BaseActivity
 import com.example.lost_android.ui.component.home.AreaDialog
 import com.example.lost_android.ui.component.home.CategoryDialog
+import com.example.lost_android.ui.component.profile.ProfileActivity
 import com.example.lost_android.viewmodel.HomeViewModel
 import com.example.lost_android.viewmodel.MainViewModel
 import com.example.presentation.R
@@ -36,6 +38,9 @@ class MainActivity : BaseActivity<ActivityMainBinding> (R.layout.activity_main) 
                 CategoryDialog(this) {
                     homeViewModel.setCategory(it)
                 }.show()
+            }
+            R.id.profileBtn -> {
+                startActivity(Intent(this, ProfileActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
             }
         }
     }
