@@ -1,6 +1,7 @@
 package com.example.data.remote.datasource
 
 import com.example.data.remote.network.UserAPI
+import com.example.data.remote.request.user.EditInfoRequest
 import com.example.data.remote.response.user.InfoResponse
 import com.example.data.remote.response.user.MyEntryResponse
 import com.example.data.util.HttpHandler
@@ -24,6 +25,12 @@ class RemoteUserDataSourceImpl @Inject constructor(
     override suspend fun myInfo(): InfoResponse {
         return HttpHandler<InfoResponse>()
             .httpRequest { userAPI.myInfo() }
+            .sendRequest()
+    }
+
+    override suspend fun editInfo(editInfoRequest: EditInfoRequest) {
+        return HttpHandler<Unit>()
+            .httpRequest { userAPI.editInfo(editInfoRequest) }
             .sendRequest()
     }
 
