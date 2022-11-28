@@ -12,6 +12,7 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import retrofit2.create
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
@@ -36,18 +37,25 @@ object NetworkModule {
     @Provides
     fun provideRetrofitInstance(
         okHttpClient: OkHttpClient,
-        gsonConverterFactory: GsonConverterFactory
+        gsonConverterFactory: GsonConverterFactory,
+        scalarsConverterFactory: ScalarsConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(okHttpClient)
+            .addConverterFactory(scalarsConverterFactory)
             .addConverterFactory(gsonConverterFactory)
             .build()
     }
 
     @Provides
-    fun provideConverterFactory(): GsonConverterFactory {
+    fun provideGsonConverterFactory(): GsonConverterFactory {
         return GsonConverterFactory.create()
+    }
+
+    @Provides
+    fun provideScalarsConverterFactory(): ScalarsConverterFactory {
+        return ScalarsConverterFactory.create()
     }
 
     @Provides
