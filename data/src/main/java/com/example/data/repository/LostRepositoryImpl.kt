@@ -18,8 +18,12 @@ class LostRepositoryImpl @Inject constructor(
         return lostDataSource.registerLost(lostParam.toRequest(), file)
     }
 
-    override suspend fun editLost(lostId: String, editLostParam: EditLostParam) {
-        return lostDataSource.editLost(lostId, editLostParam.toRequest())
+    override suspend fun editLost(
+        lostId: String,
+        editLostParam: EditLostParam,
+        file: MultipartBody.Part?
+    ) {
+        return lostDataSource.editLost(lostId, editLostParam.toRequest(), file)
     }
 
     override suspend fun deleteLost(lostId: String) {

@@ -15,10 +15,12 @@ interface LostAPI {
         @Part file: MultipartBody.Part
     )
 
+    @Multipart
     @PATCH("lost/{lostId}")
     suspend fun editLost(
         @Path("lostId") lostId: String,
-        @Body editLostRequest: EditLostRequest
+        @Part("lostDto") editLostRequest: EditLostRequest,
+        @Part file: MultipartBody.Part?
     )
 
     @DELETE("lost/{lostId}")

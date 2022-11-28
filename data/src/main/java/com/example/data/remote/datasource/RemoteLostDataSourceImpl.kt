@@ -18,9 +18,13 @@ class RemoteLostDataSourceImpl @Inject constructor(
             .sendRequest()
     }
 
-    override suspend fun editLost(lostId: String, editLostRequest: EditLostRequest) {
+    override suspend fun editLost(
+        lostId: String,
+        editLostRequest: EditLostRequest,
+        file: MultipartBody.Part?
+    ) {
         return HttpHandler<Unit>()
-            .httpRequest { lostAPI.editLost(lostId, editLostRequest) }
+            .httpRequest { lostAPI.editLost(lostId, editLostRequest, file) }
             .sendRequest()
     }
 
