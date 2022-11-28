@@ -7,6 +7,7 @@ import com.example.domain.entity.lost.LostEntity
 import com.example.domain.usecase.lost.FindCategoryUseCase
 import com.example.lost_android.util.SingleLiveEvent
 import com.example.lost_android.util.removeDot
+import com.google.android.gms.maps.model.LatLng
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
@@ -31,8 +32,7 @@ class HomeViewModel @Inject constructor(
 
     fun searchArea(area: String) = viewModelScope.launch {
         kotlin.runCatching {
-            val url =
-                "https://api.vworld.kr/req/data?service=data&request=GetFeature&data=LT_C_ADEMD_INFO&key=F48905AB-F5F9-36F1-93AA-85933021A8FB&attrFilter=emd_kor_nm:like:$area"
+            val url = "https://api.vworld.kr/req/data?service=data&request=GetFeature&data=LT_C_ADEMD_INFO&key=F48905AB-F5F9-36F1-93AA-85933021A8FB&attrFilter=emd_kor_nm:like:$area"
             val client = OkHttpClient()
             val getArea = Request.Builder()
                 .url(url)
@@ -63,6 +63,40 @@ class HomeViewModel @Inject constructor(
                                 )
                             )
                         }
+                    }
+                }
+            })
+        }
+    }
+
+    fun searchSetArea(latLng: LatLng) = viewModelScope.launch {
+        kotlin.runCatching {
+            val url =
+                "https://api.vworld.kr/req/data?service=data&request=GetFeature&data=LT_C_ADEMD_INFO&key=F48905AB-F5F9-36F1-93AA-85933021A8FB&crs=EPSG:4326&geomFilter=point(${latLng!!.longitude} ${latLng!!.latitude})"
+            val client = OkHttpClient()
+            val getArea = Request.Builder()
+                .url(url)
+                .build()
+            client.newCall(getArea).enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    val jsonParser = JsonParser()
+                    val responseText = response.body()?.string()
+                    val status = ((jsonParser.parse(
+                        responseText
+                    ) as JsonObject)["response"] as JsonObject)["status"].toString().removeDot()
+                    if (status == "OK") {
+                        var result = ((((jsonParser.parse(
+                            responseText
+                        ) as JsonObject)["response"] as JsonObject)["result"] as JsonObject)["featureCollection"] as JsonObject)["features"] as JsonArray
+                        _currentArea.postValue(
+                            Area(
+                                (((result[0]!! as JsonObject)["properties"]) as JsonObject)["full_nm"].toString().removeDot(),
+                                (((result[0]!! as JsonObject)["properties"]) as JsonObject)["emd_kor_nm"].toString().removeDot()
+                            )
+                        )
                     }
                 }
             })
