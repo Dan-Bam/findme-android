@@ -40,6 +40,8 @@ object Dependency {
         const val RETROFIT = "com.squareup.retrofit2:retrofit:${Version.RETROFIT}"
         const val RETROFIT_CONVERTER_GSON =
             "com.squareup.retrofit2:converter-gson:${Version.RETROFIT}"
+        const val RETROFIT_CONVERTER_SCALA =
+            "com.squareup.retrofit2:converter-scalars:${Version.RETROFIT}"
         const val OKHTTP = "com.squareup.okhttp3:okhttp:${Version.OKHTTP}"
         const val OKHTTP_LOGGING_INTERCEPTOR =
             "com.squareup.okhttp3:logging-interceptor:${Version.OKHTTP}"
