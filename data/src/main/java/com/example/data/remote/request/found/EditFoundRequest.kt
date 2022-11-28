@@ -10,8 +10,6 @@ data class EditFoundRequest(
     val description: String,
     @SerializedName("tags")
     val tags: List<String>,
-    @SerializedName("isSafe")
-    val isSafe: Boolean,
     @SerializedName("place")
     val place: String,
     @SerializedName("latitude")
@@ -24,7 +22,6 @@ fun EditFoundParam.toRequest() = EditFoundRequest(
     title = title,
     description = description,
     tags = tags,
-    isSafe = isSafe,
     place = place,
     latitude = latitude,
     longitude = longitude

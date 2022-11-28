@@ -5,7 +5,6 @@ data class FoundParam(
     val description: String,
     val category: String,
     val tags: List<String>,
-    val isSafe: Boolean,
     val place: String,
     val latitude: String,
     val longitude: String

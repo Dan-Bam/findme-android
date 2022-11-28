@@ -12,8 +12,6 @@ data class FoundRequest(
     val category: String,
     @SerializedName("tags")
     val tags: List<String>,
-    @SerializedName("isSafe")
-    val isSafe: Boolean,
     @SerializedName("place")
     val place: String,
     @SerializedName("latitude")
@@ -27,7 +25,6 @@ fun FoundParam.toRequest() = FoundRequest(
     description = description,
     category = category,
     tags = tags,
-    isSafe = isSafe,
     place = place,
     latitude = latitude,
     longitude = longitude

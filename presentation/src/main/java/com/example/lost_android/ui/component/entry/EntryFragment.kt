@@ -102,9 +102,15 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
                 )
             }
             R.id.entryBtn -> {
-                entryViewModel.entryLost(
-                    File(entryViewModel.currentUri.value!!.getPath(requireContext()))
-                )
+                if (entryViewModel.title.value == getString(R.string.lostEntry)) {
+                    entryViewModel.entryLost(
+                        File(entryViewModel.currentUri.value!!.getPath(requireContext()))
+                    )
+                } else {
+                    entryViewModel.entryFound(
+                        File(entryViewModel.currentUri.value!!.getPath(requireContext()))
+                    )
+                }
             }
         }
     }

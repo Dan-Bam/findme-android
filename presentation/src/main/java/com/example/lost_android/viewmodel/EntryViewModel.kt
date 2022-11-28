@@ -4,7 +4,9 @@ import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.domain.param.found.FoundParam
 import com.example.domain.param.lost.LostParam
+import com.example.domain.usecase.found.EntryFoundUseCase
 import com.example.domain.usecase.lost.EntryLostUseCase
 import com.example.lost_android.util.SingleLiveEvent
 import com.example.lost_android.util.toRequestBody
@@ -16,7 +18,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class EntryViewModel @Inject constructor(
-    private val entryLostUseCase: EntryLostUseCase
+    private val entryLostUseCase: EntryLostUseCase,
+    private val entryFoundUseCase: EntryFoundUseCase
 ) : ViewModel() {
     private val _title = SingleLiveEvent<String>()
     val title: MutableLiveData<String> get() = _title
@@ -76,6 +79,27 @@ class EntryViewModel @Inject constructor(
             _isEntry.value = true
         }.onFailure {
             println("안녕 $it")
+        }
+    }
+
+    fun entryFound(file: File) = viewModelScope.launch {
+        kotlin.runCatching {
+            _isEntry.value = false
+            val params = FoundParam(
+                _params.value!!["title"]!!,
+                _params.value!!["description"]!!,
+                _category.value!!,
+                listOf("핸드폰"),
+                _currentAddress.value!!.address,
+                _currentAddress.value!!.latLng.latitude.toString(),
+                _currentAddress.value!!.latLng.longitude.toString()
+            )
+            println("안녕 $file")
+            entryFoundUseCase.execute(params, file.toRequestBody())
+        }.onSuccess {
+            _isEntry.value = true
+        }.onFailure {
+
         }
     }
 }

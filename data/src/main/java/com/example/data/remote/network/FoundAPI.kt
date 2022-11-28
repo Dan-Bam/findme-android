@@ -9,7 +9,7 @@ interface FoundAPI {
     @Multipart
     @POST("found")
     suspend fun registerFound(
-        @Part("fondDto") foundRequest: FoundRequest,
+        @Part("foundDto") foundRequest: FoundRequest,
         @Part file: MultipartBody.Part
     )
 
@@ -17,7 +17,7 @@ interface FoundAPI {
     @PATCH("found/{foundId}")
     suspend fun editFound(
         @Path("foundId") foundId: String,
-        @Part("fondDto") editFoundRequest: EditFoundRequest,
+        @Part("foundDto") editFoundRequest: EditFoundRequest,
         @Part file: MultipartBody.Part?
     )
 
