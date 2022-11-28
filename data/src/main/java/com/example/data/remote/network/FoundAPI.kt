@@ -2,22 +2,23 @@ package com.example.data.remote.network
 
 import com.example.data.remote.request.found.EditFoundRequest
 import com.example.data.remote.request.found.FoundRequest
-import retrofit2.http.Body
-import retrofit2.http.DELETE
-import retrofit2.http.PATCH
-import retrofit2.http.POST
-import retrofit2.http.Path
+import okhttp3.MultipartBody
+import retrofit2.http.*
 
 interface FoundAPI {
+    @Multipart
     @POST("found")
     suspend fun registerFound(
-        @Body foundRequest: FoundRequest
+        @Part("fondDto") foundRequest: FoundRequest,
+        @Part file: MultipartBody.Part
     )
 
+    @Multipart
     @PATCH("found/{foundId}")
     suspend fun editFound(
         @Path("foundId") foundId: String,
-        @Body editFoundRequest: EditFoundRequest
+        @Part("fondDto") editFoundRequest: EditFoundRequest,
+        @Part file: MultipartBody.Part?
     )
 
     @DELETE("found/{foundId}")
