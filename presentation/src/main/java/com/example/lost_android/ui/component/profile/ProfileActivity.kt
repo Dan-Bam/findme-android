@@ -17,6 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class ProfileActivity : BaseActivity<ActivityProfileBinding>(R.layout.activity_profile) {
     private lateinit var adapter: EntryAdapter
     private val profileViewModel by viewModels<ProfileViewModel>()
+    private var type = "lost"
     override fun createView() {
         binding.profileActivity = this
         profileViewModel.getInfo()
@@ -27,8 +28,8 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>(R.layout.activity_p
     }
 
     private fun initAdapter() {
-        adapter = EntryAdapter {
-            startActivity(Intent(this, DetailActivity::class.java).putExtra("lostId", it.id).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
+        adapter = EntryAdapter(this) {
+            startActivity(Intent(this, DetailActivity::class.java).putExtra("lostId", it.id).putExtra("type", type).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION))
         }
         binding.entryList.apply {
             adapter = this@ProfileActivity.adapter
@@ -49,9 +50,11 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>(R.layout.activity_p
             R.id.backTxt, R.id.backBtn -> finish()
             R.id.recommendLost -> {}
             R.id.myLost -> {
+                type = "lost"
                 profileViewModel.myLost()
             }
             R.id.myFound -> {
+                type = "found"
                 profileViewModel.myFound()
             }
         }

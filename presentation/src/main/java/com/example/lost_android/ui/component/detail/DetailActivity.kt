@@ -1,11 +1,13 @@
 package com.example.lost_android.ui.component.detail
 
+import android.content.Intent
 import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.api.load
 import com.example.lost_android.ui.adapter.TagAdapter
 import com.example.lost_android.ui.base.BaseActivity
+import com.example.lost_android.ui.component.entry.EntryActivity
 import com.example.lost_android.viewmodel.DetailViewModel
 import com.example.presentation.R
 import com.example.presentation.databinding.ActivityDetailBinding
@@ -17,7 +19,9 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
     private lateinit var adapter: TagAdapter
     override fun createView() {
         binding.detailActivity = this
-        detailViewModel.getDetail(intent.getStringExtra("lostId")!!)
+        if (intent.getStringExtra("type") == "lost") {
+            detailViewModel.getDetail(intent.getStringExtra("lostId")!!)
+        }
         observeLostData()
         initTagList()
     }
@@ -51,6 +55,9 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
             R.id.deleteBtn -> {
                 detailViewModel.deleteLost()
                 finish()
+            }
+            R.id.editBtn -> {
+                startActivity(Intent(this, EntryActivity::class.java).putExtra("type", "edit"))
             }
         }
     }
