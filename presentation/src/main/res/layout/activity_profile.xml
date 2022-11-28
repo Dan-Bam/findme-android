@@ -87,47 +87,48 @@
             <TextView
                 android:id="@+id/recommendLost"
                 style="@style/text16500"
+                android:layout_weight="3"
                 android:fontFamily="@font/pretendard_bold"
                 android:onClick="@{profileActivity::click}"
-                android:layout_weight="3"
-                android:textColor="@drawable/bg_profile_nav_item"
-                android:text="@string/recommendLost" />
+                android:text="@string/recommendLost"
+                android:textColor="@drawable/bg_profile_nav_item" />
 
             <TextView
                 android:id="@+id/myLost"
                 style="@style/text16500"
+                android:layout_weight="3"
                 android:fontFamily="@font/pretendard_bold"
                 android:onClick="@{profileActivity::click}"
-                android:layout_weight="3"
-                android:textColor="@drawable/bg_profile_nav_item"
-                android:text="@string/myLost" />
+                android:text="@string/myLost"
+                android:textColor="@drawable/bg_profile_nav_item" />
 
             <TextView
                 android:id="@+id/myFound"
                 style="@style/text16500"
+                android:layout_weight="3"
                 android:fontFamily="@font/pretendard_bold"
                 android:onClick="@{profileActivity::click}"
-                android:layout_weight="3"
-                android:textColor="@drawable/bg_profile_nav_item"
-                android:text="@string/myFound" />
+                android:text="@string/myFound"
+                android:textColor="@drawable/bg_profile_nav_item" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:visibility="gone"
             android:id="@+id/recommendList"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="12dp"
-            app:layout_constraintTop_toBottomOf="@id/profileItemLayout"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profileItemLayout" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/entryList"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginHorizontal="7dp"
             android:layout_marginTop="12dp"
-            app:layout_constraintTop_toBottomOf="@id/profileItemLayout"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profileItemLayout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
