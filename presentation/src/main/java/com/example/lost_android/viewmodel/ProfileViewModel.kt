@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.entity.user.InfoEntity
 import com.example.domain.entity.user.MyEntryEntity
+import com.example.domain.usecase.user.MyFoundUseCase
 import com.example.domain.usecase.user.MyInfoUseCase
 import com.example.domain.usecase.user.MyLostUseCase
 import com.example.lost_android.util.SingleLiveEvent
@@ -15,7 +16,8 @@ import javax.inject.Inject
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
     private val myInfoUseCase: MyInfoUseCase,
-    private val myLostUseCase: MyLostUseCase
+    private val myLostUseCase: MyLostUseCase,
+    private val myFoundUseCase: MyFoundUseCase
 ): ViewModel() {
     private val _info = SingleLiveEvent<InfoEntity>()
     val info: MutableLiveData<InfoEntity> get() = _info
@@ -37,7 +39,16 @@ class ProfileViewModel @Inject constructor(
         kotlin.runCatching {
             myLostUseCase.execute()
         }.onSuccess {
-            println("안녕 $it")
+            _myEntry.value = it
+        }.onFailure {
+
+        }
+    }
+
+    fun myFound() = viewModelScope.launch {
+        kotlin.runCatching {
+            myFoundUseCase.execute()
+        }.onSuccess {
             _myEntry.value = it
         }.onFailure {
 

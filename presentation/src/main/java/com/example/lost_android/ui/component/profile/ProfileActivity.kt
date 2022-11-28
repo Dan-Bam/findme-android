@@ -51,7 +51,9 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>(R.layout.activity_p
             R.id.myLost -> {
                 profileViewModel.myLost()
             }
-            R.id.myFound -> {}
+            R.id.myFound -> {
+                profileViewModel.myFound()
+            }
         }
         arrayOf(binding.recommendLost, binding.myLost, binding.myFound).forEach {
             it.isSelected = it == view
