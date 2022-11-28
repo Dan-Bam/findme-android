@@ -23,6 +23,9 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
     }
 
     private fun observeLostData() = detailViewModel.lostData.observe(this) {
+        if (it.isMine) {
+            binding.settingLayout.visibility = View.VISIBLE
+        }
         binding.lostImg.load(it.lostImages[0])
         binding.lostEntity = it
         adapter.submitList(it.tags)
@@ -39,6 +42,16 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
     fun click(view: View) {
         when (view.id) {
             R.id.backBtn, R.id.backTxt -> finish()
+            R.id.settingBtn -> {
+                binding.settingBtn.isActivated = !binding.settingBtn.isActivated
+                arrayOf(binding.deleteBtn, binding.editBtn).forEach {
+                    it.visibility = if (binding.settingBtn.isActivated) View.VISIBLE else View.GONE
+                }
+            }
+            R.id.deleteBtn -> {
+                detailViewModel.deleteLost()
+                finish()
+            }
         }
     }
 }

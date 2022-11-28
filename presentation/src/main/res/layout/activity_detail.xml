@@ -46,6 +46,50 @@
             app:layout_constraintStart_toEndOf="@id/backBtn"
             app:layout_constraintTop_toTopOf="@id/backBtn" />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:visibility="gone"
+            android:id="@+id/settingLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/AppBarBottom"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="12dp">
+            <ImageView
+                android:id="@+id/settingBtn"
+                android:onClick="@{detailActivity::click}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_entry_option"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/deleteBtn"
+                android:onClick="@{detailActivity::click}"
+                android:text="@string/delete"
+                style="@style/text13400"
+                android:textColor="@color/mainColor"
+                android:layout_marginEnd="7dp"
+                app:layout_constraintEnd_toStartOf="@id/settingBtn"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/editBtn"
+                android:onClick="@{detailActivity::click}"
+                android:text="@string/edit"
+                style="@style/text13400"
+                android:textColor="@color/mainColor"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toStartOf="@id/deleteBtn"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <ImageView
             android:id="@+id/lostImg"
             android:layout_width="match_parent"
