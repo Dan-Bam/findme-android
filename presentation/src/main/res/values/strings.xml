@@ -16,17 +16,18 @@
     <string name="finish">완료</string>
     <string name="changeLocation">위치 변경</string>
     <string name="searchLocation">위치 검색</string>
-    
-<!--    분실물 등록-->
+
+<!--    등록-->
     <string name="selectCategory">분류될 카테고리를 선택해주세요.</string>
     <string name="lostImageEntry">분실물 사진 등록</string>
+    <string name="findImageEntry">습득물 사진 등록</string>
     <string name="title">제목</string>
     <string name="writeTitle">제목을 입력해주세요.</string>
     <string name="description">설명</string>
     <string name="writeDescription">설명을 입력해주세요.</string>
     <string name="chooseLocation">위치 선택</string>
     <string name="setTag">특정 태그 설정</string>
-    <string name="addTag">태그 추가</string>
+    <string name="addTag">+ 태그 추가</string>
     <string name="securityService">안심 서비스</string>
     <string name="whatSecurityService">안심 서비스란?</string>
     
