@@ -1,9 +1,15 @@
 package com.example.lost_android.util
 
 import android.content.Context
+import android.net.Uri
+import android.provider.MediaStore
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
+import okhttp3.MediaType
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import java.io.File
 import java.text.ParseException
 import java.util.regex.Pattern
 import kotlin.math.roundToInt
@@ -39,4 +45,17 @@ fun EditText.setOnTextChanged(action: (p0: CharSequence?, p1: Int, p2: Int, p3: 
             action(p0, p1, p2, p3)
         }
     })
+}
+
+fun Uri.getPath(context: Context): String? {
+    val cursor = context.contentResolver.query(this, arrayOf(MediaStore.Images.Media.DATA), null, null, null)
+    cursor?.moveToNext()
+    val path = cursor!!.getString(cursor.getColumnIndex(MediaStore.MediaColumns.DATA))
+    cursor.close()
+    return path
+}
+
+fun File.toRequestBody(): MultipartBody.Part {
+    val requestFile = RequestBody.create(MediaType.parse("image/*"), this)
+    return MultipartBody.Part.createFormData("file", this.name, requestFile)
 }
