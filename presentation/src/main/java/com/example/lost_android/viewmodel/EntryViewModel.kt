@@ -47,6 +47,8 @@ class EntryViewModel @Inject constructor(
     val isEntry: MutableLiveData<Boolean> get() = _isEntry
     private val _addressInfo = SingleLiveEvent<List<RegisterViewModel.Address>>()
     val addressInfo: MutableLiveData<List<RegisterViewModel.Address>> get() = _addressInfo
+    private val _tags = SingleLiveEvent<List<String>>()
+    val tags: MutableLiveData<List<String>> get() = _tags
 
     fun setTitle(title: String) {
         _title.value = title
@@ -62,6 +64,20 @@ class EntryViewModel @Inject constructor(
 
     fun setUri(uri: Uri) {
         _currentUri.value = uri
+    }
+
+    fun setTags(tag: String) {
+        if (_tags.value == null) {
+            _tags.value = listOf(tag)
+        } else {
+            if (!_tags.value!!.contains(tag)) {
+                _tags.value = _tags.value!!.plus(tag)
+            }
+        }
+    }
+
+    fun deleteTags(tag: String) {
+        _tags.value = _tags.value!!.filter { it != tag }
     }
 
     data class Address(
@@ -82,7 +98,7 @@ class EntryViewModel @Inject constructor(
                 _params.value!!["title"]!!,
                 _params.value!!["description"]!!,
                 _category.value!!,
-                listOf("핸드폰"),
+                _tags.value!!,
                 false,
                 _currentAddress.value!!.address,
                 _currentAddress.value!!.latLng.latitude.toString(),
@@ -103,7 +119,7 @@ class EntryViewModel @Inject constructor(
                 _params.value!!["title"]!!,
                 _params.value!!["description"]!!,
                 _category.value!!,
-                listOf("핸드폰"),
+                _tags.value!!,
                 _currentAddress.value!!.address,
                 _currentAddress.value!!.latLng.latitude.toString(),
                 _currentAddress.value!!.latLng.longitude.toString()

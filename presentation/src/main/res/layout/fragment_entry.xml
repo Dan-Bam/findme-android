@@ -219,6 +219,7 @@
             <TextView
                 android:id="@+id/addTagBtn"
                 style="@style/text12700"
+                android:onClick="@{entryFragment::click}"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/bg_tag_btn"
                 android:fontFamily="@font/pretendard_bold"

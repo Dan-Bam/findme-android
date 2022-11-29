@@ -10,7 +10,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import coil.api.load
+import com.example.lost_android.ui.adapter.EntryTagAdapter
 import com.example.lost_android.ui.base.BaseFragment
 import com.example.lost_android.util.checkPermission
 import com.example.lost_android.util.getPath
@@ -25,6 +27,7 @@ import java.io.File
 class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry) {
     private val entryViewModel by activityViewModels<EntryViewModel>()
     private val detailViewModel by activityViewModels<DetailViewModel>()
+    private lateinit var adapter: EntryTagAdapter
     private var currentUri: Uri? = null
     private var file: File? = null
 
@@ -32,10 +35,22 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
         binding.entryFragment = this
         setTitle()
         isEntry()
-        isData()
         observeIsEntry()
         observeDetailViewModel()
+        observeTags()
+        initList()
+        isData()
         binding.isSafeSwitch.setOnCheckedChangeListener { _, b ->
+        }
+    }
+
+    private fun initList() {
+        adapter = EntryTagAdapter {
+            entryViewModel.deleteTags(it)
+        }
+        binding.tagList.apply {
+            adapter = this@EntryFragment.adapter
+            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         }
     }
 
@@ -43,6 +58,10 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
         if (it) {
             requireActivity().finish()
         }
+    }
+
+    private fun observeTags() = entryViewModel.tags.observe(this) {
+        adapter.submitList(it)
     }
 
     private fun observeDetailViewModel() {
@@ -140,6 +159,9 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
             binding.icImageEntry.visibility = View.GONE
             binding.imageEntryTxt.visibility = View.GONE
         }
+        if (tags.value != null) {
+            adapter.submitList(tags.value)
+        }
     }
 
     fun click(view: View) {
@@ -157,6 +179,13 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
                 } else {
                     requireActivity().supportFragmentManager.beginTransaction()
                         .replace(R.id.entryContainer, EntryCategoryFragment()).commit()
+                }
+            }
+            R.id.addTagBtn -> {
+                if (entryViewModel.tags.value == null || entryViewModel.tags.value!!.size <= 4) {
+                    EntryTagDialog().show(requireActivity().supportFragmentManager, "entryTagDialog")
+                } else {
+                    Toast.makeText(context, "태그는 5개까지 설정할 수 있습니다.", Toast.LENGTH_SHORT).show()
                 }
             }
             R.id.chooseLocationBtn -> {
