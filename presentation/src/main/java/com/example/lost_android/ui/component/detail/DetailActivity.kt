@@ -17,9 +17,11 @@ import dagger.hilt.android.AndroidEntryPoint
 class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_detail) {
     private val detailViewModel by viewModels<DetailViewModel>()
     private lateinit var adapter: TagAdapter
+    private lateinit var type: String
     override fun createView() {
         binding.detailActivity = this
-        if (intent.getStringExtra("type") == "lost") {
+        type = intent.getStringExtra("type")!!
+        if (type == getString(R.string.editLost)) {
             detailViewModel.getDetail(intent.getStringExtra("lostId")!!)
         }
         observeLostData()
@@ -57,7 +59,7 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
                 finish()
             }
             R.id.editBtn -> {
-                startActivity(Intent(this, EntryActivity::class.java).putExtra("type", "edit"))
+                startActivity(Intent(this, EntryActivity::class.java).putExtra("type", type))
             }
         }
     }

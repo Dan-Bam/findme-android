@@ -12,6 +12,10 @@ class EntryActivity: BaseActivity<ActivityEntryBinding> (R.layout.activity_entry
     private val entryViewModel by viewModels<EntryViewModel>()
     override fun createView() {
         entryViewModel.setTitle(intent.getStringExtra("type")!!)
-        supportFragmentManager.beginTransaction().replace(R.id.entryContainer, EntryCategoryFragment()).commit()
+        if (entryViewModel.title.value == getString(R.string.editLost) || entryViewModel.title.value == getString(R.string.editFound)) {
+            supportFragmentManager.beginTransaction().replace(R.id.entryContainer, EntryFragment()).commit()
+        } else {
+            supportFragmentManager.beginTransaction().replace(R.id.entryContainer, EntryCategoryFragment()).commit()
+        }
     }
 }
