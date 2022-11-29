@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.entity.found.FoundEntity
 import com.example.domain.entity.lost.LostEntity
+import com.example.domain.usecase.found.DeleteFoundUseCase
 import com.example.domain.usecase.found.DetailFoundUseCase
 import com.example.domain.usecase.lost.DeleteLostUseCase
 import com.example.domain.usecase.lost.DetailLostUseCase
@@ -17,7 +18,8 @@ import javax.inject.Inject
 class DetailViewModel @Inject constructor(
     private val detailLostUseCase: DetailLostUseCase,
     private val deleteLostUseCase: DeleteLostUseCase,
-    private val detailFoundUseCase: DetailFoundUseCase
+    private val detailFoundUseCase: DetailFoundUseCase,
+    private val deleteFoundUseCase: DeleteFoundUseCase
 ) : ViewModel() {
     private val _lostData = SingleLiveEvent<LostEntity>()
     val lostData: MutableLiveData<LostEntity> get() = _lostData
@@ -40,11 +42,18 @@ class DetailViewModel @Inject constructor(
         }
     }
 
-
-
     fun deleteLost() = viewModelScope.launch {
         kotlin.runCatching {
             deleteLostUseCase.execute(_lostData.value!!.id)
+        }.onSuccess {
+        }.onFailure {
+
+        }
+    }
+
+    fun deleteFound() = viewModelScope.launch {
+        kotlin.runCatching {
+            deleteFoundUseCase.execute(_foundData.value!!.id)
         }.onSuccess {
 
         }.onFailure {

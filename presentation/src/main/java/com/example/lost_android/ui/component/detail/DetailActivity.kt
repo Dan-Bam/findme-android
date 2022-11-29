@@ -70,7 +70,11 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
                 }
             }
             R.id.deleteBtn -> {
-                detailViewModel.deleteLost()
+                if (type == getString(R.string.editLost)) {
+                    detailViewModel.deleteLost()
+                } else {
+                    detailViewModel.deleteFound()
+                }
                 finish()
             }
             R.id.editBtn -> {
