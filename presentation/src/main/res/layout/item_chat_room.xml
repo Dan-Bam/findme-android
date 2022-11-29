@@ -10,6 +10,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/chatRoomLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="13dp"
@@ -26,8 +27,8 @@
         <TextView
             android:id="@+id/roomTitle"
             style="@style/text15500"
-            android:text="@{chatRoom.roomName}"
             android:layout_marginStart="10dp"
+            android:text="@{chatRoom.roomName}"
             android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@id/chatRoomImg"
             app:layout_constraintTop_toTopOf="parent" />
@@ -35,16 +36,16 @@
         <TextView
             android:id="@+id/lastChat"
             style="@style/text11400"
-            android:text="@{chatRoom.lastChat.lastMsg}"
             android:layout_marginTop="3dp"
+            android:text="@{chatRoom.lastChat.lastMsg}"
             app:layout_constraintStart_toStartOf="@id/roomTitle"
             app:layout_constraintTop_toBottomOf="@id/roomTitle" />
 
         <TextView
             android:id="@+id/lastSentAt"
             style="@style/text12400"
-            android:text="@{chatRoom.lastChat.lastSent}"
             android:layout_marginTop="3dp"
+            android:text="@{chatRoom.lastChat.lastSent}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

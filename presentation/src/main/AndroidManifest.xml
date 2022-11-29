@@ -54,6 +54,9 @@
         <activity
             android:name=".ui.component.profile.ProfileActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.component.chat.ChatActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
