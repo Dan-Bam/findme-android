@@ -28,4 +28,9 @@ abstract class RemoteDataSourceModule {
     abstract fun provideRemoteUserDataSource(
         remoteUserDataSourceImpl: RemoteUserDataSourceImpl
     ): RemoteUserDataSource
+
+    @Binds
+    abstract fun provideRemoteChatDataSource(
+        remoteChatDataSourceImpl: RemoteChatDataSourceImpl
+    ): RemoteChatDataSource
 }
