@@ -20,7 +20,7 @@ class FoundRepositoryImpl @Inject constructor(
     override suspend fun editFound(
         foundId: String,
         editFoundParam: EditFoundParam,
-        file: MultipartBody.Part
+        file: MultipartBody.Part?
     ) {
         return foundDataSource.editFound(foundId, editFoundParam.toRequest(), file)
     }

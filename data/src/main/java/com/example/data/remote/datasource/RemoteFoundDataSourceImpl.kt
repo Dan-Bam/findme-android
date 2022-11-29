@@ -20,7 +20,7 @@ class RemoteFoundDataSourceImpl @Inject constructor(
     override suspend fun editFound(
         foundId: String,
         editFoundRequest: EditFoundRequest,
-        file: MultipartBody.Part
+        file: MultipartBody.Part?
     ) {
         return HttpHandler<Unit>()
             .httpRequest { foundAPI.editFound(foundId, editFoundRequest, file) }

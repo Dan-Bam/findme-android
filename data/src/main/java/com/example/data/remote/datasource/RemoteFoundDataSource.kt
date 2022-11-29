@@ -8,7 +8,7 @@ import okhttp3.MultipartBody.Part
 
 interface RemoteFoundDataSource {
     suspend fun registerFound(foundRequest: FoundRequest, file: Part)
-    suspend fun editFound(foundId: String, editFoundRequest: EditFoundRequest, file: Part)
+    suspend fun editFound(foundId: String, editFoundRequest: EditFoundRequest, file: Part?)
     suspend fun deleteFound(foundId: String)
     suspend fun detailFound(foundId: String): FoundResponse
 }

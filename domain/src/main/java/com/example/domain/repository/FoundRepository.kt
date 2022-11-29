@@ -8,7 +8,7 @@ import okhttp3.MultipartBody.Part
 
 interface FoundRepository {
     suspend fun registerFound(foundParam: FoundParam, file: Part)
-    suspend fun editFound(foundId: String, editFoundParam: EditFoundParam, file: Part)
+    suspend fun editFound(foundId: String, editFoundParam: EditFoundParam, file: Part?)
     suspend fun deleteFound(foundId: String)
     suspend fun detailFound(foundId: String): FoundEntity
 }
