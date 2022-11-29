@@ -2,6 +2,8 @@ package com.example.data.repository
 
 import com.example.data.remote.datasource.RemoteFoundDataSource
 import com.example.data.remote.request.found.toRequest
+import com.example.data.remote.response.found.toEntity
+import com.example.domain.entity.found.FoundEntity
 import com.example.domain.param.found.EditFoundParam
 import com.example.domain.param.found.FoundParam
 import com.example.domain.repository.FoundRepository
@@ -25,5 +27,9 @@ class FoundRepositoryImpl @Inject constructor(
 
     override suspend fun deleteFound(foundId: String) {
         return foundDataSource.deleteFound(foundId)
+    }
+
+    override suspend fun detailFound(foundId: String): FoundEntity {
+        return foundDataSource.detailFound(foundId).toEntity()
     }
 }

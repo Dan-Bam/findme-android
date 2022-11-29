@@ -3,6 +3,7 @@ package com.example.data.remote.datasource
 import com.example.data.remote.network.FoundAPI
 import com.example.data.remote.request.found.EditFoundRequest
 import com.example.data.remote.request.found.FoundRequest
+import com.example.data.remote.response.found.FoundResponse
 import com.example.data.util.HttpHandler
 import okhttp3.MultipartBody
 import javax.inject.Inject
@@ -29,6 +30,12 @@ class RemoteFoundDataSourceImpl @Inject constructor(
     override suspend fun deleteFound(foundId: String) {
         return HttpHandler<Unit>()
             .httpRequest { foundAPI.deleteFound(foundId) }
+            .sendRequest()
+    }
+
+    override suspend fun detailFound(foundId: String): FoundResponse {
+        return HttpHandler<FoundResponse>()
+            .httpRequest { foundAPI.detailFound(foundId) }
             .sendRequest()
     }
 }

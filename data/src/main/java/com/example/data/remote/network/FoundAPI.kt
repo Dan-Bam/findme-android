@@ -2,6 +2,7 @@ package com.example.data.remote.network
 
 import com.example.data.remote.request.found.EditFoundRequest
 import com.example.data.remote.request.found.FoundRequest
+import com.example.data.remote.response.found.FoundResponse
 import okhttp3.MultipartBody
 import retrofit2.http.*
 
@@ -25,4 +26,9 @@ interface FoundAPI {
     suspend fun deleteFound(
         @Path("foundId") foundId: String
     )
+
+    @GET("found/{foundId}")
+    suspend fun detailFound(
+        @Path("foundId") foundId: String
+    ): FoundResponse
 }
