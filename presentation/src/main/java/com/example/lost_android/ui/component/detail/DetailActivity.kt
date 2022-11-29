@@ -24,19 +24,32 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
         type = intent.getStringExtra("type")!!
         id = intent.getStringExtra("lostId")!!
         if (type == getString(R.string.editLost)) {
-            detailViewModel.getDetail(id)
+            detailViewModel.detailLost(id)
+        } else {
+            detailViewModel.detailFound(id)
         }
-        observeLostData()
+        observeEntryData()
         initTagList()
     }
 
-    private fun observeLostData() = detailViewModel.lostData.observe(this) {
-        if (it.isMine) {
-            binding.settingLayout.visibility = View.VISIBLE
+    private fun observeEntryData() {
+        detailViewModel.lostData.observe(this) {
+            if (it.isMine) {
+                binding.settingLayout.visibility = View.VISIBLE
+            } else {
+                binding.findBtn.visibility = View.VISIBLE
+            }
+            binding.lostImg.load(it.lostImages[0])
+            binding.lostEntity = it
+            adapter.submitList(it.tags)
         }
-        binding.lostImg.load(it.lostImages[0])
-        binding.lostEntity = it
-        adapter.submitList(it.tags)
+        detailViewModel.foundData.observe(this) {
+            binding.settingLayout.visibility = View.VISIBLE
+            binding.lostImg.load(it.lostImages[0])
+            binding.titleTxt.text = it.title
+            binding.descriptionTxt.text = it.description
+            adapter.submitList(it.tags)
+        }
     }
 
     private fun initTagList() {

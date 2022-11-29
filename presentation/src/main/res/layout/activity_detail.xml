@@ -47,47 +47,48 @@
             app:layout_constraintTop_toTopOf="@id/backBtn" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:visibility="gone"
             android:id="@+id/settingLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginEnd="12dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@id/AppBarBottom"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="12dp">
+            app:layout_constraintTop_toTopOf="parent">
+
             <ImageView
                 android:id="@+id/settingBtn"
-                android:onClick="@{detailActivity::click}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/ic_entry_option"
-                app:layout_constraintTop_toTopOf="parent"
+                android:onClick="@{detailActivity::click}"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:visibility="gone"
                 android:id="@+id/deleteBtn"
+                style="@style/text13400"
+                android:layout_marginEnd="7dp"
                 android:onClick="@{detailActivity::click}"
                 android:text="@string/delete"
-                style="@style/text13400"
                 android:textColor="@color/mainColor"
-                android:layout_marginEnd="7dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/settingBtn"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:visibility="gone"
                 android:id="@+id/editBtn"
+                style="@style/text13400"
+                android:layout_marginEnd="8dp"
                 android:onClick="@{detailActivity::click}"
                 android:text="@string/edit"
-                style="@style/text13400"
                 android:textColor="@color/mainColor"
-                android:layout_marginEnd="8dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/deleteBtn"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
@@ -128,14 +129,16 @@
             android:id="@+id/tagList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
             android:layout_marginHorizontal="12dp"
-            app:layout_constraintTop_toBottomOf="@id/descriptionTxt"/>
+            android:layout_marginTop="18dp"
+            app:layout_constraintTop_toBottomOf="@id/descriptionTxt" />
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/findBtn"
             style="@style/blueBtn"
-            android:text="@string/find"
             android:layout_marginBottom="24dp"
+            android:text="@string/find"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

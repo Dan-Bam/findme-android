@@ -45,26 +45,49 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
         }
     }
 
-    private fun observeDetailViewModel() = detailViewModel.lostData.observe(this) {
-        binding.imageEntryHolder.load(it.lostImages[0])
-        binding.writeTitle.setText(it.title)
-        binding.writeDescription.setText(it.description)
-        binding.selectLocateTxt.text = it.place
-        binding.selectedLocateLayout.visibility = View.VISIBLE
-        binding.unSelectLocationLayout.visibility = View.GONE
-        binding.icImageEntry.visibility = View.GONE
-        binding.imageEntryTxt.visibility = View.GONE
-        entryViewModel.saveData(
-            binding.writeTitle.text.toString(),
-            binding.writeDescription.text.toString()
-        )
-        entryViewModel.setUri(it.lostImages[0].toUri())
-        entryViewModel.setAddress(
-            EntryViewModel.Address(
-                it.place,
-                LatLng(it.latitude.toDouble(), it.longitude.toDouble())
+    private fun observeDetailViewModel() {
+        detailViewModel.lostData.observe(this) {
+            binding.imageEntryHolder.load(it.lostImages[0])
+            binding.writeTitle.setText(it.title)
+            binding.writeDescription.setText(it.description)
+            binding.selectLocateTxt.text = it.place
+            binding.selectedLocateLayout.visibility = View.VISIBLE
+            binding.unSelectLocationLayout.visibility = View.GONE
+            binding.icImageEntry.visibility = View.GONE
+            binding.imageEntryTxt.visibility = View.GONE
+            entryViewModel.saveData(
+                binding.writeTitle.text.toString(),
+                binding.writeDescription.text.toString()
             )
-        )
+            entryViewModel.setUri(it.lostImages[0].toUri())
+            entryViewModel.setAddress(
+                EntryViewModel.Address(
+                    it.place,
+                    LatLng(it.latitude.toDouble(), it.longitude.toDouble())
+                )
+            )
+        }
+        detailViewModel.foundData.observe(this) {
+            binding.imageEntryHolder.load(it.lostImages[0])
+            binding.writeTitle.setText(it.title)
+            binding.writeDescription.setText(it.description)
+            binding.selectLocateTxt.text = it.place
+            binding.selectedLocateLayout.visibility = View.VISIBLE
+            binding.unSelectLocationLayout.visibility = View.GONE
+            binding.icImageEntry.visibility = View.GONE
+            binding.imageEntryTxt.visibility = View.GONE
+            entryViewModel.saveData(
+                binding.writeTitle.text.toString(),
+                binding.writeDescription.text.toString()
+            )
+            entryViewModel.setUri(it.lostImages[0].toUri())
+            entryViewModel.setAddress(
+                EntryViewModel.Address(
+                    it.place,
+                    LatLng(it.latitude.toDouble(), it.longitude.toDouble())
+                )
+            )
+        }
     }
 
     private fun isEntry() {
@@ -171,6 +194,8 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
                         entryViewModel.currentUri.value!!.getPath(requireContext())
                             ?.let { File(it) }
                     )
+                } else {
+                    "여기 작업"
                 }
             }
         }

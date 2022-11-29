@@ -16,9 +16,9 @@ class EntryActivity: BaseActivity<ActivityEntryBinding> (R.layout.activity_entry
         entryViewModel.setTitle(intent.getStringExtra("type")!!)
         if (entryViewModel.title.value == getString(R.string.editLost) || entryViewModel.title.value == getString(R.string.editFound)) {
             if (entryViewModel.title.value == getString(R.string.editLost)) {
-                detailViewModel.getDetail((intent.getStringExtra("id")!!))
+                detailViewModel.detailLost((intent.getStringExtra("id")!!))
             } else if (entryViewModel.title.value == getString(R.string.editFound)) {
-
+                detailViewModel.detailFound((intent.getStringExtra("id")!!))
             }
             supportFragmentManager.beginTransaction().replace(R.id.entryContainer, EntryFragment()).commit()
         } else {
