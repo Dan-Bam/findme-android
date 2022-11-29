@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="chatRoom"
+            type="com.example.domain.entity.chat.ChatListEntity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="13dp"
+        android:layout_marginVertical="10dp">
+
+        <ImageView
+            android:id="@+id/chatRoomImg"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/roomTitle"
+            style="@style/text15500"
+            android:text="@{chatRoom.roomName}"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@id/chatRoomImg"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/lastChat"
+            style="@style/text11400"
+            android:text="@{chatRoom.lastChat.lastMsg}"
+            android:layout_marginTop="3dp"
+            app:layout_constraintStart_toStartOf="@id/roomTitle"
+            app:layout_constraintTop_toBottomOf="@id/roomTitle" />
+
+        <TextView
+            android:id="@+id/lastSentAt"
+            style="@style/text12400"
+            android:text="@{chatRoom.lastChat.lastSent}"
+            android:layout_marginTop="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
