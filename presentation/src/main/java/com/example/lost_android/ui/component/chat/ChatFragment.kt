@@ -1,5 +1,6 @@
 package com.example.lost_android.ui.component.chat
 
+import android.content.Intent
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lost_android.ui.adapter.ChatRoomAdapter
@@ -22,7 +23,7 @@ class ChatFragment: BaseFragment<FragmentChatBinding> (R.layout.fragment_chat) {
 
     private fun initList() {
         adapter = ChatRoomAdapter() {
-
+            requireActivity().startActivity(Intent(context, ChatActivity::class.java).putExtra("roomId", it.roomId))
         }
         binding.chatList.apply {
             adapter = this@ChatFragment.adapter

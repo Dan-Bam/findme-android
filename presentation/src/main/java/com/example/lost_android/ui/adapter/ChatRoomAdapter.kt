@@ -15,6 +15,7 @@ class ChatRoomAdapter(private val itemClick: (ChatListEntity) -> Unit) : ListAda
         fun bind(item: ChatListEntity, itemClick: (ChatListEntity) -> Unit) {
             binding.chatRoom = item
             binding.chatRoomImg.load(item.roomImage)
+            binding.chatRoomLayout.setOnClickListener { itemClick(item) }
         }
     }
 
