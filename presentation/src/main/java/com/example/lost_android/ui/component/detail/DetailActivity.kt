@@ -70,12 +70,7 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
                 }
             }
             R.id.deleteBtn -> {
-                if (type == getString(R.string.editLost)) {
-                    detailViewModel.deleteLost()
-                } else {
-                    detailViewModel.deleteFound()
-                }
-                finish()
+                DeleteDialog(type).show(supportFragmentManager, "deleteDialog")
             }
             R.id.editBtn -> {
                 startActivity(Intent(this, EntryActivity::class.java).putExtra("type", type).putExtra("id", id))

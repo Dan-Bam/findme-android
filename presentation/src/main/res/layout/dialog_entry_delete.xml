@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="deleteEntryDialog"
+            type="com.example.lost_android.ui.component.detail.DeleteDialog" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_search_area_layout">
+
+        <TextView
+            android:id="@+id/deleteEntry"
+            style="@style/text18500"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/pretendard_bold"
+            android:text="@string/deleteEntry"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/areDeleteEntry"
+            style="@style/text13400"
+            android:gravity="center"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/black"
+            android:text="@string/areDeleteEntry"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/deleteEntry" />
+
+        <View
+            android:id="@+id/horizontalDivide"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="16dp"
+            android:background="#435C3C3C"
+            app:layout_constraintTop_toBottomOf="@id/areDeleteEntry" />
+
+        <View
+            android:id="@+id/verticalDivide"
+            android:layout_width="0.5dp"
+            android:layout_height="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/horizontalDivide"
+            android:background="#435C3C3C"/>
+        
+        <TextView
+            android:id="@+id/cancelBtn"
+            android:onClick="@{deleteEntryDialog::click}"
+            android:textColor="@color/mainColor"
+            android:text="@string/cancel"
+            style="@style/text17300"
+            app:layout_constraintTop_toBottomOf="@id/horizontalDivide"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/verticalDivide"/>
+
+        <TextView
+            android:id="@+id/deleteBtn"
+            android:onClick="@{deleteEntryDialog::click}"
+            android:textColor="@color/mainColor"
+            android:text="@string/yesDelete"
+            style="@style/text17300"
+            app:layout_constraintTop_toBottomOf="@id/horizontalDivide"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/verticalDivide"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
