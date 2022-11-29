@@ -195,7 +195,11 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
                             ?.let { File(it) }
                     )
                 } else {
-                    "여기 작업"
+                    entryViewModel.editFound(
+                        detailViewModel.foundData.value!!.id,
+                        entryViewModel.currentUri.value!!.getPath(requireContext())
+                            ?.let { File(it) }
+                    )
                 }
             }
         }

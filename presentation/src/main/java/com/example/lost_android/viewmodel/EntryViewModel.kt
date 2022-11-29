@@ -4,9 +4,11 @@ import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.domain.param.found.EditFoundParam
 import com.example.domain.param.found.FoundParam
 import com.example.domain.param.lost.EditLostParam
 import com.example.domain.param.lost.LostParam
+import com.example.domain.usecase.found.EditFoundUseCase
 import com.example.domain.usecase.found.EntryFoundUseCase
 import com.example.domain.usecase.lost.EditLostUseCase
 import com.example.domain.usecase.lost.EntryLostUseCase
@@ -28,7 +30,8 @@ import javax.inject.Inject
 class EntryViewModel @Inject constructor(
     private val entryLostUseCase: EntryLostUseCase,
     private val entryFoundUseCase: EntryFoundUseCase,
-    private val editLostUseCase: EditLostUseCase
+    private val editLostUseCase: EditLostUseCase,
+    private val editFoundUseCase: EditFoundUseCase
 ) : ViewModel() {
     private val _title = SingleLiveEvent<String>()
     val title: MutableLiveData<String> get() = _title
@@ -125,8 +128,26 @@ class EntryViewModel @Inject constructor(
                 _currentAddress.value!!.latLng.latitude.toString(),
                 _currentAddress.value!!.latLng.longitude.toString()
             )
-            println("안녕 $params")
             editLostUseCase.execute(lostId, params, file?.toRequestBody())
+        }.onSuccess {
+            _isEntry.value = true
+        }.onFailure {
+            println("안녕 ${it}")
+        }
+    }
+
+    fun editFound(foundId: String, file: File?) = viewModelScope.launch {
+        kotlin.runCatching {
+            _isEntry.value = false
+            val params = EditFoundParam(
+                _params.value!!["title"]!!,
+                _params.value!!["description"]!!,
+                listOf("핸드폰"),
+                _currentAddress.value!!.address,
+                _currentAddress.value!!.latLng.latitude.toString(),
+                _currentAddress.value!!.latLng.longitude.toString()
+            )
+            editFoundUseCase.execute(foundId, params, file?.toRequestBody())
         }.onSuccess {
             _isEntry.value = true
         }.onFailure {
