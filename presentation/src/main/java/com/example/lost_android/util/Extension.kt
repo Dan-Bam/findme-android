@@ -50,8 +50,8 @@ fun EditText.setOnTextChanged(action: (p0: CharSequence?, p1: Int, p2: Int, p3: 
 fun Uri.getPath(context: Context): String? {
     val cursor = context.contentResolver.query(this, arrayOf(MediaStore.Images.Media.DATA), null, null, null)
     cursor?.moveToNext()
-    val path = cursor!!.getString(cursor.getColumnIndex(MediaStore.MediaColumns.DATA))
-    cursor.close()
+    val path = cursor?.getString(cursor.getColumnIndex(MediaStore.MediaColumns.DATA))
+    cursor?.close()
     return path
 }
 
