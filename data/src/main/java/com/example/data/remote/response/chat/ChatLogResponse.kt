@@ -4,7 +4,7 @@ import com.example.domain.entity.chat.ChatLogEntity
 import com.google.gson.annotations.SerializedName
 
 data class ChatLogResponse(
-    @SerializedName("id")
+    @SerializedName("roomId")
     val id: String,
     @SerializedName("isMine")
     val isMine: Boolean,
