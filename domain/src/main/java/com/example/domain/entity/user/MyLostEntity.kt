@@ -1,6 +1,6 @@
 package com.example.domain.entity.user
 
-data class MyEntryEntity(
+data class MyLostEntity(
     val id: String,
     val userId: String,
     val isMine: Boolean,

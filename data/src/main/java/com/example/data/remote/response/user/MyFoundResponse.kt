@@ -1,15 +1,15 @@
 package com.example.data.remote.response.user
 
-import com.example.domain.entity.user.MyEntryEntity
+import com.example.data.remote.response.found.FoundResponse
+import com.example.domain.entity.found.FoundEntity
+import com.example.domain.entity.user.MyFoundEntity
 import com.google.gson.annotations.SerializedName
 
-data class MyEntryResponse(
+data class MyFoundResponse(
     @SerializedName("id")
     val id: String,
     @SerializedName("userId")
     val userId: String,
-    @SerializedName("isMine")
-    val isMine: Boolean,
     @SerializedName("title")
     val title: String,
     @SerializedName("description")
@@ -22,25 +22,21 @@ data class MyEntryResponse(
     val category: String,
     @SerializedName("tags")
     val tags: List<String>,
-    @SerializedName("isSafe")
-    val isSafe: Boolean,
     @SerializedName("latitude")
     val latitude: String,
     @SerializedName("longitude")
     val longitude: String
 )
 
-fun MyEntryResponse.toEntity() = MyEntryEntity(
+fun MyFoundResponse.toEntity() = MyFoundEntity(
     id = id,
     userId = userId,
-    isMine = isMine,
     title = title,
     description = description,
     place = place,
     lostImages = lostImages,
     category = category,
     tags = tags,
-    isSafe = isSafe,
     latitude = latitude,
     longitude = longitude
 )
