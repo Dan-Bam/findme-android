@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="chatLog"
+            type="com.example.domain.entity.chat.ChatLogEntity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="39dp">
+
+        <TextView
+            android:id="@+id/chatTxt"
+            style="@style/text17300"
+            android:background="@drawable/bg_my_chat"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            android:text="@{chatLog.message}"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            style="@style/text11400"
+            android:layout_marginTop="8dp"
+            android:text="@{chatLog.sentAt}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/chatTxt" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
