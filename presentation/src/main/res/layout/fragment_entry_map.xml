@@ -81,5 +81,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"/>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/addressList"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/AppBarBottom"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

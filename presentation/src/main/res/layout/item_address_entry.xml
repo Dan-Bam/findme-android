@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="address"
+            type="com.example.lost_android.viewmodel.RegisterViewModel.Address" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="36dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/selectAddress"
+            style="@style/text13500"
+            android:layout_marginEnd="7dp"
+            android:background="@color/transparent"
+            android:text="@string/select"
+            android:textColor="@color/mainColor"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/roadName"
+            style="@style/text13500"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/buildingName"
+            android:textColor="@color/gray3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/roadNum"
+            style="@style/text13500"
+            android:layout_marginBottom="13dp"
+            android:text="@string/roadNum"
+            android:textColor="@color/gray3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/roadName"
+            app:layout_constraintTop_toTopOf="@id/roadNumTxt" />
+
+        <TextView
+            android:id="@+id/roadNameTxt"
+            style="@style/text13500"
+            android:layout_width="0dp"
+            android:layout_marginStart="18dp"
+            android:text="@{address.address}"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@id/selectAddress"
+            app:layout_constraintStart_toEndOf="@id/roadName"
+            app:layout_constraintTop_toTopOf="@id/roadName" />
+
+        <TextView
+            android:id="@+id/roadNumTxt"
+            style="@style/text13500"
+            android:layout_width="0dp"
+            android:layout_marginTop="7dp"
+            android:text="@{address.road}"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@id/selectAddress"
+            app:layout_constraintStart_toStartOf="@id/roadNameTxt"
+            app:layout_constraintTop_toBottomOf="@id/roadNameTxt" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

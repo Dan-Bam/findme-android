@@ -11,11 +11,17 @@ import com.example.domain.usecase.found.EntryFoundUseCase
 import com.example.domain.usecase.lost.EditLostUseCase
 import com.example.domain.usecase.lost.EntryLostUseCase
 import com.example.lost_android.util.SingleLiveEvent
+import com.example.lost_android.util.removeDot
 import com.example.lost_android.util.toRequestBody
 import com.google.android.gms.maps.model.LatLng
+import com.google.gson.JsonArray
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import okhttp3.*
 import java.io.File
+import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
@@ -36,6 +42,8 @@ class EntryViewModel @Inject constructor(
     val params: MutableLiveData<HashMap<String, String>> get() = _params
     private val _isEntry = SingleLiveEvent<Boolean>()
     val isEntry: MutableLiveData<Boolean> get() = _isEntry
+    private val _addressInfo = SingleLiveEvent<List<RegisterViewModel.Address>>()
+    val addressInfo: MutableLiveData<List<RegisterViewModel.Address>> get() = _addressInfo
 
     fun setTitle(title: String) {
         _title.value = title
@@ -123,6 +131,110 @@ class EntryViewModel @Inject constructor(
             _isEntry.value = true
         }.onFailure {
             println("안녕 ${it}")
+        }
+    }
+
+    fun getAddress(latLng: LatLng) = viewModelScope.launch {
+        kotlin.runCatching {
+            val url =
+                "https://api.vworld.kr/req/address?service=address&request=getAddress&version=2.0&crs=epsg:4326&point=${latLng.longitude},${latLng.latitude}&type=both&zipcode=true&simple=false&key=F48905AB-F5F9-36F1-93AA-85933021A8FB"
+            val client = OkHttpClient()
+            val getArea = Request.Builder()
+                .url(url)
+                .build()
+            client.newCall(getArea).enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    val jsonParser = JsonParser()
+                    val responseText = response.body()?.string()
+                    val status = ((jsonParser.parse(
+                        responseText
+                    ) as JsonObject)["response"] as JsonObject)["status"].toString().removeDot()
+                    if (status == "OK") {
+                        var result = ((((jsonParser.parse(
+                            responseText
+                        ) as JsonObject)["response"] as JsonObject)["result"] as JsonArray))
+                        _currentAddress.postValue(
+                            Address(
+                                (result[0] as JsonObject)["text"].toString().removeDot(),
+                                latLng
+                            )
+                        )
+                    }
+                }
+            })
+        }
+    }
+
+    fun getLanLng(address: String) = viewModelScope.launch {
+        kotlin.runCatching {
+            val url =
+                "https://api.vworld.kr/req/address?service=address&request=getcoord&version=2.0&crs=epsg:4326&address=$address&refine=true&simple=false&type=parcel&key=F48905AB-F5F9-36F1-93AA-85933021A8FB"
+            val client = OkHttpClient()
+            val getLatLng = Request.Builder()
+                .url(url)
+                .build()
+            client.newCall(getLatLng).enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    val jsonParser = JsonParser()
+                    val response1 = (jsonParser.parse(
+                        response.body()?.string()
+                    ) as JsonObject)["response"] as JsonObject
+                    if (response1.toString() != "null") {
+                        val refined = response1["refined"] as JsonObject
+                        val result = (response1["result"] as JsonObject)["point"] as JsonObject
+                        _currentAddress.postValue(
+                            Address(
+                                refined["text"].toString().removeDot(),
+                                LatLng(
+                                    result["y"].toString().removeDot().toDouble(),
+                                    result["x"].toString().removeDot().toDouble()
+                                )
+                            )
+                        )
+                    }
+                }
+            })
+        }
+    }
+
+    fun getAddress(address: String) = viewModelScope.launch {
+        kotlin.runCatching {
+            val url =
+                "https://business.juso.go.kr/addrlink/addrLinkApi.do?keyword=$address&confmKey=devU01TX0FVVEgyMDIyMTEwNzE4MDQ1MjExMzE5NTY=&resultType=json&countPerPage=100"
+            val client = OkHttpClient()
+            val getAddress = Request.Builder()
+                .url(url)
+                .build()
+            client.newCall(getAddress).enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+                    val jsonParser = JsonParser()
+                    val result = ((jsonParser.parse(
+                        response.body()?.string()
+                    ) as JsonObject)["results"] as JsonObject)["juso"]
+                    if (result.toString() != "null") {
+                        var resultList = listOf<RegisterViewModel.Address>()
+                        (result as JsonArray).forEach {
+                            it as JsonObject
+                            resultList = resultList.plus(
+                                RegisterViewModel.Address(
+                                    it["bdNm"].toString().removeDot(),
+                                    it["jibunAddr"].toString().removeDot()
+                                )
+                            )
+                        }
+                        _addressInfo.postValue(resultList)
+                    }
+                }
+            })
         }
     }
 }

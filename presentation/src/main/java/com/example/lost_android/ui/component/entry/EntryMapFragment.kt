@@ -7,12 +7,11 @@ import android.location.LocationManager
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import com.example.lost_android.ui.adapter.ClusterAdapter
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.lost_android.ui.adapter.EntryAddressAdapter
 import com.example.lost_android.ui.base.BaseFragment
-import com.example.lost_android.ui.component.map.DetailDialog
-import com.example.lost_android.ui.component.map.model.MapData
-import com.example.lost_android.util.getAddress
 import com.example.lost_android.util.getBitmapFromVectorDrawable
+import com.example.lost_android.util.setOnTextChanged
 import com.example.lost_android.viewmodel.EntryViewModel
 import com.example.presentation.R
 import com.example.presentation.databinding.FragmentEntryMapBinding
@@ -23,7 +22,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.maps.android.clustering.ClusterManager
 
 class EntryMapFragment : BaseFragment<FragmentEntryMapBinding>(R.layout.fragment_entry_map),
     OnMapReadyCallback {
@@ -32,12 +30,54 @@ class EntryMapFragment : BaseFragment<FragmentEntryMapBinding>(R.layout.fragment
     private var currentMarker: Marker? = null
     private var currentLatLng: LatLng? = null
     private var chooseMarker: Marker? = null
+    private lateinit var adapter: EntryAddressAdapter
 
     override fun createView() {
         binding.entryMapFragment = this
         binding.map.apply {
             onCreate(savedInstanceState)
             getMapAsync(this@EntryMapFragment)
+        }
+        initList()
+        searchAddress()
+    }
+
+    private fun initList() {
+        adapter = EntryAddressAdapter {
+            entryViewModel.getLanLng(it.road)
+        }
+        binding.addressList.apply {
+            adapter = this@EntryMapFragment.adapter
+            layoutManager = LinearLayoutManager(context)
+        }
+        entryViewModel.currentAddress.observe(this) {
+            binding.addressList.visibility = View.GONE
+            if (chooseMarker != null) {
+                chooseMarker!!.remove()
+            }
+            chooseMarker = mMap.addMarker(
+                MarkerOptions().position(it.latLng).icon(
+                    BitmapDescriptorFactory.fromBitmap(
+                        getBitmapFromVectorDrawable(
+                            requireContext(),
+                            R.drawable.ic_pin
+                        )!!
+                    )
+                )
+            )
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(it.latLng))
+            binding.selectBtn.isEnabled = true
+            binding.selectBtn.isActivated = true
+        }
+    }
+
+    private fun searchAddress() {
+        binding.searchAreaTxt.setOnTextChanged { p0, _, _, _ ->
+            binding.addressList.visibility = View.VISIBLE
+            entryViewModel.getAddress(p0.toString())
+        }
+        entryViewModel.addressInfo.observe(this) {
+            adapter.submitList(it)
         }
     }
 
@@ -75,13 +115,7 @@ class EntryMapFragment : BaseFragment<FragmentEntryMapBinding>(R.layout.fragment
                         )
                     )
                 )
-                val address = getAddress(requireContext(), it.latitude, it.longitude)
-                entryViewModel.setAddress(
-                    EntryViewModel.Address(
-                        address.slice(5 until address.length),
-                        LatLng(it.latitude, it.longitude)
-                    )
-                )
+                entryViewModel.getAddress(LatLng(it.latitude, it.longitude))
                 binding.selectBtn.isEnabled = true
                 binding.selectBtn.isActivated = true
             }
