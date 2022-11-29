@@ -5,8 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.param.found.FoundParam
+import com.example.domain.param.lost.EditLostParam
 import com.example.domain.param.lost.LostParam
 import com.example.domain.usecase.found.EntryFoundUseCase
+import com.example.domain.usecase.lost.EditLostUseCase
 import com.example.domain.usecase.lost.EntryLostUseCase
 import com.example.lost_android.util.SingleLiveEvent
 import com.example.lost_android.util.toRequestBody
@@ -19,7 +21,8 @@ import javax.inject.Inject
 @HiltViewModel
 class EntryViewModel @Inject constructor(
     private val entryLostUseCase: EntryLostUseCase,
-    private val entryFoundUseCase: EntryFoundUseCase
+    private val entryFoundUseCase: EntryFoundUseCase,
+    private val editLostUseCase: EditLostUseCase
 ) : ViewModel() {
     private val _title = SingleLiveEvent<String>()
     val title: MutableLiveData<String> get() = _title
@@ -94,12 +97,32 @@ class EntryViewModel @Inject constructor(
                 _currentAddress.value!!.latLng.latitude.toString(),
                 _currentAddress.value!!.latLng.longitude.toString()
             )
-            println("안녕 $file")
             entryFoundUseCase.execute(params, file.toRequestBody())
         }.onSuccess {
             _isEntry.value = true
         }.onFailure {
 
+        }
+    }
+
+    fun editLost(lostId: String, file: File?) = viewModelScope.launch {
+        kotlin.runCatching {
+            _isEntry.value = false
+            val params = EditLostParam(
+                _params.value!!["title"]!!,
+                _params.value!!["description"]!!,
+                listOf("핸드폰"),
+                false,
+                _currentAddress.value!!.address,
+                _currentAddress.value!!.latLng.latitude.toString(),
+                _currentAddress.value!!.latLng.longitude.toString()
+            )
+            println("안녕 $params")
+            editLostUseCase.execute(lostId, params, file?.toRequestBody())
+        }.onSuccess {
+            _isEntry.value = true
+        }.onFailure {
+            println("안녕 ${it}")
         }
     }
 }

@@ -54,6 +54,10 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
         binding.unSelectLocationLayout.visibility = View.GONE
         binding.icImageEntry.visibility = View.GONE
         binding.imageEntryTxt.visibility = View.GONE
+        entryViewModel.saveData(
+            binding.writeTitle.text.toString(),
+            binding.writeDescription.text.toString()
+        )
         entryViewModel.setUri(it.lostImages[0].toUri())
         entryViewModel.setAddress(
             EntryViewModel.Address(
@@ -69,9 +73,13 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
                 if (!binding.writeTitle.text.isNullOrBlank() && !binding.writeDescription.text.isNullOrBlank() && entryViewModel.currentAddress.value != null && entryViewModel.currentUri.value != null) {
                     binding.entryBtn.isEnabled = true
                     binding.entryBtn.isActivated = true
+                    binding.editBtn.isEnabled = true
+                    binding.editBtn.isActivated = true
                 } else {
                     binding.entryBtn.isEnabled = false
                     binding.entryBtn.isActivated = false
+                    binding.editBtn.isEnabled = false
+                    binding.editBtn.isActivated = false
                 }
             }
         }
@@ -112,6 +120,10 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
     }
 
     fun click(view: View) {
+        entryViewModel.saveData(
+            binding.writeTitle.text.toString(),
+            binding.writeDescription.text.toString()
+        )
         when (view.id) {
             R.id.backBtn, R.id.backTxt -> {
                 if (entryViewModel.title.value == getString(R.string.editLost) || entryViewModel.title.value == getString(
@@ -125,10 +137,6 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
                 }
             }
             R.id.chooseLocationBtn -> {
-                entryViewModel.saveData(
-                    binding.writeTitle.text.toString(),
-                    binding.writeDescription.text.toString()
-                )
                 requireActivity().supportFragmentManager.beginTransaction()
                     .replace(R.id.entryContainer, EntryMapFragment()).commit()
             }
@@ -153,6 +161,15 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
                 } else {
                     entryViewModel.entryFound(
                         File(entryViewModel.currentUri.value!!.getPath(requireContext()))
+                    )
+                }
+            }
+            R.id.editBtn -> {
+                if (entryViewModel.title.value == getString(R.string.editLost)) {
+                    entryViewModel.editLost(
+                        detailViewModel.lostData.value!!.id,
+                        entryViewModel.currentUri.value!!.getPath(requireContext())
+                            ?.let { File(it) }
                     )
                 }
             }
