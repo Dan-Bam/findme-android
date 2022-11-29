@@ -4,7 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.entity.user.InfoEntity
-import com.example.domain.entity.user.MyEntryEntity
+import com.example.domain.entity.user.MyFoundEntity
+import com.example.domain.entity.user.MyLostEntity
 import com.example.domain.usecase.user.MyFoundUseCase
 import com.example.domain.usecase.user.MyInfoUseCase
 import com.example.domain.usecase.user.MyLostUseCase
@@ -21,8 +22,10 @@ class ProfileViewModel @Inject constructor(
 ): ViewModel() {
     private val _info = SingleLiveEvent<InfoEntity>()
     val info: MutableLiveData<InfoEntity> get() = _info
-    private val _myEntry = SingleLiveEvent<List<MyEntryEntity>>()
-    val myEntry: MutableLiveData<List<MyEntryEntity>> get() = _myEntry
+    private val _myLost = SingleLiveEvent<List<MyLostEntity>>()
+    val myLost: MutableLiveData<List<MyLostEntity>> get() = _myLost
+    private val _myFound = SingleLiveEvent<List<MyFoundEntity>>()
+    val myFound: MutableLiveData<List<MyFoundEntity>> get() = _myFound
 
     fun getInfo() = viewModelScope.launch {
         kotlin.runCatching {
@@ -39,7 +42,7 @@ class ProfileViewModel @Inject constructor(
         kotlin.runCatching {
             myLostUseCase.execute()
         }.onSuccess {
-            _myEntry.value = it
+            _myLost.value = it
         }.onFailure {
 
         }
@@ -49,7 +52,7 @@ class ProfileViewModel @Inject constructor(
         kotlin.runCatching {
             myFoundUseCase.execute()
         }.onSuccess {
-            _myEntry.value = it
+            _myFound.value = it
         }.onFailure {
 
         }

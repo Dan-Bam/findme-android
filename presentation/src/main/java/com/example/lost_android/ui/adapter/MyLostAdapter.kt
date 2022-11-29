@@ -8,16 +8,14 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
-import com.example.domain.entity.lost.LostEntity
-import com.example.domain.entity.user.MyEntryEntity
-import com.example.presentation.databinding.ItemEntryBinding
-import com.example.presentation.databinding.ItemLostBinding
+import com.example.domain.entity.user.MyLostEntity
+import com.example.presentation.databinding.ItemMyLostBinding
 
-class EntryAdapter(private val context: Context, private val callback: (MyEntryEntity) -> Unit) :
-    ListAdapter<MyEntryEntity, EntryAdapter.EntryViewHolder>(diffUtil) {
-    inner class EntryViewHolder(private val binding: ItemEntryBinding) :
+class MyLostAdapter(private val context: Context, private val callback: (MyLostEntity) -> Unit) :
+    ListAdapter<MyLostEntity, MyLostAdapter.MyLostViewHolder>(diffUtil) {
+    inner class MyLostViewHolder(private val binding: ItemMyLostBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: MyEntryEntity, context: Context) = binding.apply {
+        fun bind(item: MyLostEntity, context: Context) = binding.apply {
             binding.entryItem = item
             val height = (context.resources.displayMetrics.heightPixels * 0.2).toInt()
             binding.lostImgHolder.layoutParams = ViewGroup.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, height)
@@ -26,9 +24,9 @@ class EntryAdapter(private val context: Context, private val callback: (MyEntryE
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EntryViewHolder {
-        return EntryViewHolder(
-            ItemEntryBinding.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyLostViewHolder {
+        return MyLostViewHolder(
+            ItemMyLostBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -36,19 +34,19 @@ class EntryAdapter(private val context: Context, private val callback: (MyEntryE
         )
     }
 
-    override fun onBindViewHolder(holder: EntryViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyLostViewHolder, position: Int) {
         holder.bind(currentList[position], context)
     }
 
     companion object {
-        val diffUtil = object : DiffUtil.ItemCallback<MyEntryEntity>() {
-            override fun areItemsTheSame(oldItem: MyEntryEntity, newItem: MyEntryEntity): Boolean {
+        val diffUtil = object : DiffUtil.ItemCallback<MyLostEntity>() {
+            override fun areItemsTheSame(oldItem: MyLostEntity, newItem: MyLostEntity): Boolean {
                 return oldItem == newItem
             }
 
             override fun areContentsTheSame(
-                oldItem: MyEntryEntity,
-                newItem: MyEntryEntity
+                oldItem: MyLostEntity,
+                newItem: MyLostEntity
             ): Boolean {
                 return oldItem == newItem
             }

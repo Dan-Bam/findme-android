@@ -6,7 +6,7 @@
 
         <variable
             name="entryItem"
-            type="com.example.domain.entity.user.MyEntryEntity" />
+            type="com.example.domain.entity.user.MyFoundEntity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
