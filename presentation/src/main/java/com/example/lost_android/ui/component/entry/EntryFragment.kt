@@ -3,7 +3,6 @@ package com.example.lost_android.ui.component.entry
 import android.Manifest
 import android.app.Activity.RESULT_OK
 import android.content.Intent
-import android.net.Uri
 import android.provider.MediaStore
 import android.view.View
 import android.widget.Toast
@@ -28,7 +27,6 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
     private val entryViewModel by activityViewModels<EntryViewModel>()
     private val detailViewModel by activityViewModels<DetailViewModel>()
     private lateinit var adapter: EntryTagAdapter
-    private var currentUri: Uri? = null
     private var file: File? = null
 
     override fun createView() {
@@ -41,6 +39,7 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
         initList()
         isData()
         binding.isSafeSwitch.setOnCheckedChangeListener { _, b ->
+            entryViewModel.setIsSafe(b)
         }
     }
 
@@ -74,6 +73,10 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
             binding.unSelectLocationLayout.visibility = View.GONE
             binding.icImageEntry.visibility = View.GONE
             binding.imageEntryTxt.visibility = View.GONE
+            binding.isSafeSwitch.isChecked = it.isSafe
+            it.tags.map { tag ->
+                entryViewModel.setTags(tag)
+            }
             entryViewModel.saveData(
                 binding.writeTitle.text.toString(),
                 binding.writeDescription.text.toString()
@@ -95,6 +98,9 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
             binding.unSelectLocationLayout.visibility = View.GONE
             binding.icImageEntry.visibility = View.GONE
             binding.imageEntryTxt.visibility = View.GONE
+            it.tags.map { tag ->
+                entryViewModel.setTags(tag)
+            }
             entryViewModel.saveData(
                 binding.writeTitle.text.toString(),
                 binding.writeDescription.text.toString()

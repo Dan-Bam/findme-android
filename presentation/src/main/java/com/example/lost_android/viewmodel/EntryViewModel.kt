@@ -49,6 +49,8 @@ class EntryViewModel @Inject constructor(
     val addressInfo: MutableLiveData<List<RegisterViewModel.Address>> get() = _addressInfo
     private val _tags = SingleLiveEvent<List<String>>()
     val tags: MutableLiveData<List<String>> get() = _tags
+    private val _isSafe = SingleLiveEvent<Boolean>()
+    val isSafe: MutableLiveData<Boolean> get() = _isSafe
 
     fun setTitle(title: String) {
         _title.value = title
@@ -64,6 +66,10 @@ class EntryViewModel @Inject constructor(
 
     fun setUri(uri: Uri) {
         _currentUri.value = uri
+    }
+
+    fun setIsSafe(isSafe: Boolean) {
+        _isSafe.value = isSafe
     }
 
     fun setTags(tag: String) {
@@ -99,7 +105,7 @@ class EntryViewModel @Inject constructor(
                 _params.value!!["description"]!!,
                 _category.value!!,
                 _tags.value!!,
-                false,
+                _isSafe.value ?: false,
                 _currentAddress.value!!.address,
                 _currentAddress.value!!.latLng.latitude.toString(),
                 _currentAddress.value!!.latLng.longitude.toString(),
@@ -138,8 +144,8 @@ class EntryViewModel @Inject constructor(
             val params = EditLostParam(
                 _params.value!!["title"]!!,
                 _params.value!!["description"]!!,
-                listOf("핸드폰"),
-                false,
+                _tags.value!!,
+                _isSafe.value ?: false,
                 _currentAddress.value!!.address,
                 _currentAddress.value!!.latLng.latitude.toString(),
                 _currentAddress.value!!.latLng.longitude.toString()
@@ -158,7 +164,7 @@ class EntryViewModel @Inject constructor(
             val params = EditFoundParam(
                 _params.value!!["title"]!!,
                 _params.value!!["description"]!!,
-                listOf("핸드폰"),
+                _tags.value!!,
                 _currentAddress.value!!.address,
                 _currentAddress.value!!.latLng.latitude.toString(),
                 _currentAddress.value!!.latLng.longitude.toString()
