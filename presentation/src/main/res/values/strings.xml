@@ -36,6 +36,9 @@
     <string name="chooseLocation">위치 선택</string>
     <string name="setTag">특정 태그 설정</string>
     <string name="addTag">+ 태그 추가</string>
+    <string name="tag">태그</string>
+    <string name="writeTag">태그를 입력해주세요.</string>
+    <string name="add">추가</string>
     <string name="securityService">안심 서비스</string>
     <string name="whatSecurityService">안심 서비스란?</string>
     
