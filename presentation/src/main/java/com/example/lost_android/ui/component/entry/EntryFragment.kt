@@ -8,19 +8,23 @@ import android.provider.MediaStore
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.fragment.app.activityViewModels
 import coil.api.load
 import com.example.lost_android.ui.base.BaseFragment
 import com.example.lost_android.util.checkPermission
 import com.example.lost_android.util.getPath
 import com.example.lost_android.util.setOnTextChanged
+import com.example.lost_android.viewmodel.DetailViewModel
 import com.example.lost_android.viewmodel.EntryViewModel
 import com.example.presentation.R
 import com.example.presentation.databinding.FragmentEntryBinding
+import com.google.android.gms.maps.model.LatLng
 import java.io.File
 
 class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry) {
     private val entryViewModel by activityViewModels<EntryViewModel>()
+    private val detailViewModel by activityViewModels<DetailViewModel>()
     private var currentUri: Uri? = null
     private var file: File? = null
 
@@ -30,6 +34,7 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
         isEntry()
         isData()
         observeIsEntry()
+        observeDetailViewModel()
         binding.isSafeSwitch.setOnCheckedChangeListener { _, b ->
         }
     }
@@ -38,6 +43,24 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
         if (it) {
             requireActivity().finish()
         }
+    }
+
+    private fun observeDetailViewModel() = detailViewModel.lostData.observe(this) {
+        binding.imageEntryHolder.load(it.lostImages[0])
+        binding.writeTitle.setText(it.title)
+        binding.writeDescription.setText(it.description)
+        binding.selectLocateTxt.text = it.place
+        binding.selectedLocateLayout.visibility = View.VISIBLE
+        binding.unSelectLocationLayout.visibility = View.GONE
+        binding.icImageEntry.visibility = View.GONE
+        binding.imageEntryTxt.visibility = View.GONE
+        entryViewModel.setUri(it.lostImages[0].toUri())
+        entryViewModel.setAddress(
+            EntryViewModel.Address(
+                it.place,
+                LatLng(it.latitude.toDouble(), it.longitude.toDouble())
+            )
+        )
     }
 
     private fun isEntry() {
@@ -63,7 +86,13 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
             binding.writeTitle.setText(params.value!!["title"])
             binding.writeDescription.setText(params.value!!["description"])
         }
-        if (title.value != getString(R.string.lostEntry)) with(binding) {
+        if (title.value == getString(R.string.editLost) || title.value == getString(R.string.editFound)) {
+            binding.entryBtn.visibility = View.GONE
+            binding.editBtn.visibility = View.VISIBLE
+        }
+        if (title.value != getString(R.string.lostEntry) && title.value != getString(R.string.editLost)) with(
+            binding
+        ) {
             imageEntry.text = getString(R.string.findImageEntry)
             imageEntryTxt.text = getString(R.string.findImageEntry)
             securityService.visibility = View.INVISIBLE
@@ -84,8 +113,17 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
 
     fun click(view: View) {
         when (view.id) {
-            R.id.backBtn, R.id.backTxt -> requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.entryContainer, EntryCategoryFragment()).commit()
+            R.id.backBtn, R.id.backTxt -> {
+                if (entryViewModel.title.value == getString(R.string.editLost) || entryViewModel.title.value == getString(
+                        R.string.editFound
+                    )
+                ) {
+                    requireActivity().finish()
+                } else {
+                    requireActivity().supportFragmentManager.beginTransaction()
+                        .replace(R.id.entryContainer, EntryCategoryFragment()).commit()
+                }
+            }
             R.id.chooseLocationBtn -> {
                 entryViewModel.saveData(
                     binding.writeTitle.text.toString(),
@@ -95,7 +133,13 @@ class EntryFragment : BaseFragment<FragmentEntryBinding>(R.layout.fragment_entry
                     .replace(R.id.entryContainer, EntryMapFragment()).commit()
             }
             R.id.imageEntryHolder -> {
-                checkPermission(this, listOf(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE))
+                checkPermission(
+                    this,
+                    listOf(
+                        Manifest.permission.READ_EXTERNAL_STORAGE,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE
+                    )
+                )
                 startActivityForResult(
                     Intent(Intent.ACTION_PICK).setType(MediaStore.Images.Media.CONTENT_TYPE),
                     0

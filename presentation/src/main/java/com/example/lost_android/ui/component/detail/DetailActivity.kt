@@ -18,11 +18,13 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
     private val detailViewModel by viewModels<DetailViewModel>()
     private lateinit var adapter: TagAdapter
     private lateinit var type: String
+    private lateinit var id: String
     override fun createView() {
         binding.detailActivity = this
         type = intent.getStringExtra("type")!!
+        id = intent.getStringExtra("lostId")!!
         if (type == getString(R.string.editLost)) {
-            detailViewModel.getDetail(intent.getStringExtra("lostId")!!)
+            detailViewModel.getDetail(id)
         }
         observeLostData()
         initTagList()
@@ -59,7 +61,7 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
                 finish()
             }
             R.id.editBtn -> {
-                startActivity(Intent(this, EntryActivity::class.java).putExtra("type", type))
+                startActivity(Intent(this, EntryActivity::class.java).putExtra("type", type).putExtra("id", id))
             }
         }
     }
