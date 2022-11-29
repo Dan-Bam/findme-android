@@ -6,6 +6,8 @@ import com.google.gson.annotations.SerializedName
 data class ChatListResponse(
     @SerializedName("roomId")
     val roomId: String,
+    @SerializedName("roomName")
+    val roomName: String,
     @SerializedName("roomImage")
     val roomImage: String,
     @SerializedName("lastChat")
@@ -26,6 +28,7 @@ data class ChatListResponse(
 
 fun ChatListResponse.toEntity() = ChatListEntity(
     roomId = roomId,
+    roomName = roomName,
     roomImage = roomImage,
     lastChat = lastChat.toEntity()
 )
