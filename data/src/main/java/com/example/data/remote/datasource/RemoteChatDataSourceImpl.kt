@@ -3,6 +3,7 @@ package com.example.data.remote.datasource
 import com.example.data.remote.network.ChatAPI
 import com.example.data.remote.request.chat.MakeChatRoomRequest
 import com.example.data.remote.response.chat.ChatListResponse
+import com.example.data.remote.response.chat.ChatLogResponse
 import com.example.data.util.HttpHandler
 import javax.inject.Inject
 
@@ -18,6 +19,12 @@ class RemoteChatDataSourceImpl @Inject constructor(
     override suspend fun makeChatRoom(makeChatRoomRequest: MakeChatRoomRequest) {
         return HttpHandler<Unit>()
             .httpRequest { chatAPI.makeChatRoom(makeChatRoomRequest) }
+            .sendRequest()
+    }
+
+    override suspend fun chatLog(roomId: String): List<ChatLogResponse> {
+        return HttpHandler<List<ChatLogResponse>>()
+            .httpRequest { chatAPI.chatLog(roomId) }
             .sendRequest()
     }
 }
