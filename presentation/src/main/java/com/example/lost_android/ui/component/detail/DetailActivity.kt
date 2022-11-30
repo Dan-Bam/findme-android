@@ -19,10 +19,19 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
     private lateinit var adapter: TagAdapter
     private lateinit var type: String
     private lateinit var id: String
+    override fun onResume() {
+        super.onResume()
+        if (detailViewModel.foundData.value != null && type == getString(R.string.editFound)) {
+            detailViewModel.detailFound(id)
+        }
+        if (detailViewModel.lostData.value != null && type == getString(R.string.editLost)) {
+            detailViewModel.detailLost(id)
+        }
+    }
     override fun createView() {
-        binding.detailActivity = this
         type = intent.getStringExtra("type")!!
         id = intent.getStringExtra("lostId")!!
+        binding.detailActivity = this
         if (type == getString(R.string.editLost)) {
             detailViewModel.detailLost(id)
         } else {

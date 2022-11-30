@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.lost_android.ui.adapter.MyFoundAdapter
 import com.example.lost_android.ui.adapter.MyLostAdapter
+import com.example.lost_android.ui.adapter.RecommendFoundAdapter
 import com.example.lost_android.ui.base.BaseActivity
 import com.example.lost_android.ui.component.detail.DetailActivity
 import com.example.lost_android.viewmodel.ProfileViewModel
@@ -17,8 +18,23 @@ import dagger.hilt.android.AndroidEntryPoint
 class ProfileActivity : BaseActivity<ActivityProfileBinding>(R.layout.activity_profile) {
     private lateinit var myFoundAdapter: MyFoundAdapter
     private lateinit var myLostAdapter: MyLostAdapter
+    private lateinit var recommendFoundAdapter: RecommendFoundAdapter
     private val profileViewModel by viewModels<ProfileViewModel>()
     private var type: String? = null
+
+    override fun onResume() {
+        super.onResume()
+        if (profileViewModel.myLost.value != null) {
+            profileViewModel.myLost()
+        }
+        if (profileViewModel.myFound.value != null) {
+            profileViewModel.myFound()
+        }
+        if (profileViewModel.recommendFound.value != null) {
+            profileViewModel.recommendFound()
+        }
+    }
+
     override fun createView() {
         binding.profileActivity = this
         profileViewModel.getInfo()
@@ -43,6 +59,9 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>(R.layout.activity_p
                     .addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
             )
         }
+        recommendFoundAdapter = RecommendFoundAdapter(this) {
+
+        }
         binding.foundList.apply {
             adapter = this@ProfileActivity.myFoundAdapter
             layoutManager = GridLayoutManager(this@ProfileActivity, 2)
@@ -50,6 +69,10 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>(R.layout.activity_p
         binding.lostList.apply {
             adapter = this@ProfileActivity.myLostAdapter
             layoutManager = GridLayoutManager(this@ProfileActivity, 2)
+        }
+        binding.recommendList.apply {
+            adapter = this@ProfileActivity.recommendFoundAdapter
+            layoutManager = GridLayoutManager(this@ProfileActivity, 3)
         }
     }
 
@@ -62,15 +85,19 @@ class ProfileActivity : BaseActivity<ActivityProfileBinding>(R.layout.activity_p
             myLostAdapter.submitList(it)
         }
         profileViewModel.myFound.observe(this) {
-            println("안녕 $it")
             myFoundAdapter.submitList(it)
+        }
+        profileViewModel.recommendFound.observe(this) {
+            recommendFoundAdapter.submitList(it)
         }
     }
 
     fun click(view: View) {
         when (view.id) {
             R.id.backTxt, R.id.backBtn -> finish()
-            R.id.recommendLost -> {}
+            R.id.recommendLost -> {
+                profileViewModel.recommendFound()
+            }
             R.id.myLost -> {
                 type = getString(R.string.editLost)
                 profileViewModel.myLost()
