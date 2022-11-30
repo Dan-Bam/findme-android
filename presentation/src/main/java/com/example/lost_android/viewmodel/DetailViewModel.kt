@@ -25,6 +25,8 @@ class DetailViewModel @Inject constructor(
     val lostData: MutableLiveData<LostEntity> get() = _lostData
     private val _foundData = SingleLiveEvent<FoundEntity>()
     val foundData: MutableLiveData<FoundEntity> get() = _foundData
+    private val _isDelete = SingleLiveEvent<Boolean>()
+    val isDelete: MutableLiveData<Boolean> get() = _isDelete
 
     fun detailLost(lostId: String) = viewModelScope.launch {
         kotlin.runCatching {
@@ -46,6 +48,7 @@ class DetailViewModel @Inject constructor(
         kotlin.runCatching {
             deleteLostUseCase.execute(_lostData.value!!.id)
         }.onSuccess {
+            _isDelete.value = true
         }.onFailure {
 
         }
@@ -55,7 +58,7 @@ class DetailViewModel @Inject constructor(
         kotlin.runCatching {
             deleteFoundUseCase.execute(_foundData.value!!.id)
         }.onSuccess {
-
+            _isDelete.value = true
         }.onFailure {
 
         }
