@@ -30,7 +30,7 @@ class AuthorizationInterceptor @Inject constructor(
             DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH-mm-ss")
         )
         val currentTime = LocalDateTime.now(ZoneId.systemDefault())
-        if (expiredAt.isBefore(currentTime)) {
+        if (expiredAt.isAfter(currentTime)) {
             val client = OkHttpClient()
             val request = Request.Builder()
                 .url("http://3.35.190.72:8080/auth/reissue")
