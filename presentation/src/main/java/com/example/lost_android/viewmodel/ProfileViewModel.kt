@@ -9,6 +9,7 @@ import com.example.domain.entity.user.MyLostEntity
 import com.example.domain.usecase.user.MyFoundUseCase
 import com.example.domain.usecase.user.MyInfoUseCase
 import com.example.domain.usecase.user.MyLostUseCase
+import com.example.domain.usecase.user.RecommendFoundUseCase
 import com.example.lost_android.util.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -18,7 +19,8 @@ import javax.inject.Inject
 class ProfileViewModel @Inject constructor(
     private val myInfoUseCase: MyInfoUseCase,
     private val myLostUseCase: MyLostUseCase,
-    private val myFoundUseCase: MyFoundUseCase
+    private val myFoundUseCase: MyFoundUseCase,
+    private val recommendFoundUseCase: RecommendFoundUseCase
 ): ViewModel() {
     private val _info = SingleLiveEvent<InfoEntity>()
     val info: MutableLiveData<InfoEntity> get() = _info
@@ -26,6 +28,8 @@ class ProfileViewModel @Inject constructor(
     val myLost: MutableLiveData<List<MyLostEntity>> get() = _myLost
     private val _myFound = SingleLiveEvent<List<MyFoundEntity>>()
     val myFound: MutableLiveData<List<MyFoundEntity>> get() = _myFound
+    private val _recommendFound = SingleLiveEvent<List<MyFoundEntity>>()
+    val recommendFound: MutableLiveData<List<MyFoundEntity>> get() = _recommendFound
 
     fun getInfo() = viewModelScope.launch {
         kotlin.runCatching {
@@ -55,6 +59,14 @@ class ProfileViewModel @Inject constructor(
             _myFound.value = it
         }.onFailure {
 
+        }
+    }
+
+    fun recommendFound() = viewModelScope.launch {
+        kotlin.runCatching {
+            recommendFoundUseCase.execute()
+        }.onSuccess {
+            _recommendFound.value = it
         }
     }
 }
