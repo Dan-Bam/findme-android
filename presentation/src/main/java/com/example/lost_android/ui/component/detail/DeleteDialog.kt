@@ -25,6 +25,12 @@ class DeleteDialog(private val type: String): DialogFragment() {
     ): View? {
         _binding = DialogEntryDeleteBinding.inflate(inflater, container, false)
         binding.deleteEntryDialog = this
+        detailViewModel.isDelete.observe(this) {
+            if (it) {
+                requireActivity().finish()
+                dismiss()
+            }
+        }
         return binding.root
     }
 
@@ -42,8 +48,8 @@ class DeleteDialog(private val type: String): DialogFragment() {
             } else {
                 detailViewModel.deleteFound()
             }
-            requireActivity().finish()
+        } else {
+            dismiss()
         }
-        dismiss()
     }
 }
