@@ -17,6 +17,8 @@ interface UserAPI {
     suspend fun myInfo(): InfoResponse
     @PATCH("user")
     suspend fun editInfo(editInfoRequest: EditInfoRequest)
+    @GET("user/recommend")
+    suspend fun recommendFound(): List<MyFoundResponse>
     @DELETE("user/logout")
     suspend fun logout()
 }

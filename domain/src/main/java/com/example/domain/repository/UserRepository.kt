@@ -10,5 +10,6 @@ interface UserRepository {
     suspend fun myFound(): List<MyFoundEntity>
     suspend fun myInfo(): InfoEntity
     suspend fun editInfo(editInfoParam: EditInfoParam)
+    suspend fun recommendFound(): List<MyFoundEntity>
     suspend fun logout()
 }

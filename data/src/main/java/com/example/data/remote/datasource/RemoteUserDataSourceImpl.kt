@@ -35,6 +35,12 @@ class RemoteUserDataSourceImpl @Inject constructor(
             .sendRequest()
     }
 
+    override suspend fun recommendFound(): List<MyFoundResponse> {
+        return HttpHandler<List<MyFoundResponse>>()
+            .httpRequest { userAPI.recommendFound() }
+            .sendRequest()
+    }
+
     override suspend fun logout() {
         return HttpHandler<Unit>()
             .httpRequest { userAPI.logout() }

@@ -29,6 +29,10 @@ class UserRepositoryImpl @Inject constructor(
         return userDataSource.editInfo(editInfoParam.toRequest())
     }
 
+    override suspend fun recommendFound(): List<MyFoundEntity> {
+        return userDataSource.recommendFound().map { it.toEntity() }
+    }
+
     override suspend fun logout() {
         return userDataSource.logout()
     }

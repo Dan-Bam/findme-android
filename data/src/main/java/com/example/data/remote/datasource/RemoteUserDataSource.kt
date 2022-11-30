@@ -10,5 +10,6 @@ interface RemoteUserDataSource {
     suspend fun myFound(): List<MyFoundResponse>
     suspend fun myInfo(): InfoResponse
     suspend fun editInfo(editInfoRequest: EditInfoRequest)
+    suspend fun recommendFound(): List<MyFoundResponse>
     suspend fun logout()
 }
