@@ -13,13 +13,14 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ChatActivity: BaseActivity<ActivityChatBinding> (R.layout.activity_chat) {
     private val chatViewModel by viewModels<ChatViewModel>()
+    private lateinit var roomId: String
     private lateinit var adapter: ChatLogAdapter
     override fun createView() {
         binding.chatActivity = this
+        roomId = intent.getStringExtra("roomId")!!
+        chatViewModel.chatLog(roomId, getSharedPreferences("TOKEN", MODE_PRIVATE).getString("ACCESS_TOKEN", "") ?: "")
         initList()
         observeChat()
-        println("안녕 ${intent.getStringExtra("roomId")!!}")
-        chatViewModel.chatLog(intent.getStringExtra("roomId")!!)
     }
 
     private fun initList() {
@@ -39,6 +40,18 @@ class ChatActivity: BaseActivity<ActivityChatBinding> (R.layout.activity_chat) {
             R.id.backBtn, R.id.backTxt -> {
                 finish()
             }
+            R.id.sendBtn -> {
+                val message = binding.writeMessage.text.toString()
+                if (!message.isNullOrBlank()) {
+                    chatViewModel.sendMessage(roomId, message)
+                    binding.writeMessage.text = null
+                }
+            }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+//        chatViewModel.disconnect()
     }
 }
