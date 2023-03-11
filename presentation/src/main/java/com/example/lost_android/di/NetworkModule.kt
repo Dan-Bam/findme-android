@@ -17,7 +17,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-    const val BASE_URL = "http://3.35.190.72:8080/"
+    const val BASE_URL = "https://port-0-findme-server-1ih8d2gld1eleat.gksl2.cloudtype.app/"
 
     @Provides
     fun provideOkhttpClient(
